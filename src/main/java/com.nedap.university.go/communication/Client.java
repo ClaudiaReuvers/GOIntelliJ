@@ -49,8 +49,6 @@ public class Client extends Thread {
 	private BufferedReader in;
 	private BufferedWriter out;
 
-
-
 	public Client(InetAddress host, int port) throws IOException {
 		this.sock = new Socket(host, port);
 		this.in = new BufferedReader(new InputStreamReader(sock.getInputStream()));

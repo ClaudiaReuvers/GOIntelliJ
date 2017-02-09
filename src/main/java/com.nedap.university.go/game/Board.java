@@ -118,6 +118,6 @@ public class Board {
 //		board.addStone(1, 0, true);
 //		board.addStone(0, 1, true);
 //		board.addStone(2, 1, true);
-//		
+//
 //	}
 }
