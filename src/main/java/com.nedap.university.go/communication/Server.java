@@ -6,8 +6,10 @@ import java.io.CharArrayReader;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class Server {
 
@@ -26,11 +28,13 @@ public class Server {
     private int port;
     private List<ClientHandler> listClientHandlers;
     private List<Game> listGames;
+    private Map<Integer, ClientHandler> listWaiting;
 
     public Server(int port) {
         this.port = port;
         listClientHandlers = new LinkedList<>();
         listGames = new LinkedList<>();
+        listWaiting = new HashMap<>();
     }
 
     public void addToClientHandlerList(ClientHandler client) {
@@ -39,6 +43,36 @@ public class Server {
 
     public void removeFromClientHandlerList(ClientHandler client) {
         listClientHandlers.remove(client);
+    }
+
+    public List<ClientHandler> getClientList() {
+        return listClientHandlers;
+    }
+
+    public void addToWaitingList(int size, ClientHandler client) {
+        listWaiting.put(size, client);
+    }
+
+    public void removeFromWaitingList(int size) {
+        listWaiting.remove(size);
+    }
+
+    public boolean isMatch(int size) {
+        return listWaiting.containsKey(size);
+    }
+
+    public ClientHandler getMatch(int size) {
+        ClientHandler client = listWaiting.get(size);
+        removeFromWaitingList(size);
+        return client;
+    }
+
+    public void addToGamesList(Game game) {
+        listGames.add(game);
+    }
+
+    public void removeFromGamesList(Game game) {
+        listGames.remove(game);
     }
 
     public void run() {
@@ -85,7 +119,7 @@ public class Server {
         }
     }
 
-    public void boardcastToGame(Game game, String msg) {
+    public void broadcastToGame(Game game, String msg) {
         for (ClientHandler clients : game.getClients()) {
             clients.sendMessage(msg);
         }

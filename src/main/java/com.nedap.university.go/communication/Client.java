@@ -40,7 +40,7 @@ public class Client extends Thread {
 				client.sendMessage(input);
 			}
 		} catch (IOException e) {
-			System.out.println("ERROR: couldn't construc a client object");
+			System.out.println("ERROR: couldn't construct a client object");
 			System.exit(0);
 		}
 	}
