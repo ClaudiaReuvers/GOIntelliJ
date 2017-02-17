@@ -108,7 +108,8 @@ public class ClientHandler extends Thread {
                         pass.execute(server, this);
                         break;
                     case TABLEFLIP :
-                        keywordTableflip();
+                        Command tableflip = new CommandTABLEFLIP(line);
+                        tableflip.execute(server, this);
                         break;
                     case EXIT :
                         keywordExit();
@@ -225,35 +226,27 @@ public class ClientHandler extends Thread {
 //
 //    }
 
-    private void keywordCancel() {
-        server.removeFromClientHandlerList(this);
-        //TODO: close connection properly
-    }
+//    private void keywordCancel() {
+//        server.removeFromClientHandlerList(this);
+//        //TODO: close connection properly
+//    }
 
-    private void keywordMove(String[] line) {
-        int x; int y;
-        try {
-            x = Integer.parseInt(line[1]);
-            y = Integer.parseInt(line[2]);
-            for (ClientHandler clients : game.getClients()) {
-                clients.sendMessage("MOVE " + x + " " + y);
-            }
-        } catch (NumberFormatException e) {
-            //TODO
-        }
-
-        //TODO: check if move is valid
-        //TODO: if valid -> VALID + <color> + <x> + <y> to both players
-        //TODO: if invalid -> INVALID + <color> + <msg> to both players
-    }
-
-    private void keywordPass() {
-        //TODO: send PASSED + <color> to both players
-    }
-
-    private void keywordTableflip() {
-        //TODO: send TABLEFLIPPED + <color> to both players
-    }
+//    private void keywordMove(String[] line) {
+//        int x; int y;
+//        try {
+//            x = Integer.parseInt(line[1]);
+//            y = Integer.parseInt(line[2]);
+//            for (ClientHandler clients : game.getClients()) {
+//                clients.sendMessage("MOVE " + x + " " + y);
+//            }
+//        } catch (NumberFormatException e) {
+//            //TODO
+//        }
+//
+//        //TODO: check if move is valid
+//        //TODO: if valid -> VALID + <color> + <x> + <y> to both players
+//        //TODO: if invalid -> INVALID + <color> + <msg> to both players
+//    }
 
     private void keywordExit() {
         server.removeFromClientHandlerList(this);

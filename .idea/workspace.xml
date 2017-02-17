@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3856beec-f887-44f1-9277-2f05dfbcd602" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandPASS.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandTABLEFLIP.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandMOVE.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandMOVE.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Game.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Game.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,37 +53,18 @@
       <file leaf-file-name="ClientHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="107" column="51" lean-forward="true" selection-start-line="107" selection-start-column="51" selection-end-line="107" selection-end-column="51" />
+            <state relative-caret-position="508">
+              <caret line="116" column="31" lean-forward="true" selection-start-line="116" selection-start-column="31" selection-end-line="116" selection-end-column="31" />
               <folding>
                 <element signature="docComment;class#ClientHandler#0" expanded="false" />
                 <element signature="e#2178#2236#0" expanded="false" />
                 <element signature="e#2896#2954#0" expanded="false" />
                 <element signature="e#3837#3891#0" expanded="false" />
-                <element signature="e#5827#5876#0" expanded="false" />
+                <element signature="e#5912#5961#0" expanded="false" />
                 <element signature="method#startGame#0;class#ClientHandler#0" expanded="false" />
-                <element signature="e#6792#6837#0" expanded="false" />
-                <element signature="method#keywordCancel#0;class#ClientHandler#0" expanded="false" />
-                <element signature="method#keywordMove#0;class#ClientHandler#0" expanded="false" />
-                <element signature="method#keywordPass#0;class#ClientHandler#0" expanded="false" />
-                <element signature="method#keywordTableflip#0;class#ClientHandler#0" expanded="false" />
+                <element signature="e#6877#6922#0" expanded="false" />
                 <element signature="method#keywordExit#0;class#ClientHandler#0" expanded="false" />
                 <element signature="method#keywordChat#0;class#ClientHandler#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommandPLAYER.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandPLAYER.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="51" column="31" lean-forward="true" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#296#297#0" expanded="true" />
-                <element signature="e#328#329#0" expanded="true" />
-                <element signature="e#1361#1408#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -115,17 +94,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandPASS.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CommandPASS.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandPASS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="20" lean-forward="true" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+            <state relative-caret-position="765">
+              <caret line="51" column="5" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="51" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#282#283#0" expanded="true" />
                 <element signature="e#314#315#0" expanded="true" />
                 <element signature="e#1348#1349#0" expanded="true" />
                 <element signature="e#1375#1376#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandTABLEFLIP.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandTABLEFLIP.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#292#293#0" expanded="true" />
+                <element signature="e#324#325#0" expanded="true" />
+                <element signature="e#785#786#0" expanded="true" />
+                <element signature="e#813#814#0" expanded="true" />
+                <element signature="e#1031#1032#0" expanded="true" />
+                <element signature="e#1058#1059#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -231,10 +228,11 @@
         <option value="$PROJECT_DIR$/src/test/java/com/nedap/university/go/testThirdBoard.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Server.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Board.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandMOVE.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandPASS.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Game.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandTABLEFLIP.java" />
       </list>
     </option>
   </component>
@@ -912,7 +910,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -921,19 +919,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getMatch#0;class#Server#0" expanded="false" />
-            <element signature="e#4833#4834#0" expanded="true" />
-            <element signature="e#4893#4894#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -957,13 +942,9 @@
             <element signature="e#2178#2236#0" expanded="false" />
             <element signature="e#2896#2954#0" expanded="false" />
             <element signature="e#3837#3891#0" expanded="false" />
-            <element signature="e#5827#5876#0" expanded="false" />
+            <element signature="e#5912#5961#0" expanded="false" />
             <element signature="method#startGame#0;class#ClientHandler#0" expanded="false" />
-            <element signature="e#6792#6837#0" expanded="false" />
-            <element signature="method#keywordCancel#0;class#ClientHandler#0" expanded="false" />
-            <element signature="method#keywordMove#0;class#ClientHandler#0" expanded="false" />
-            <element signature="method#keywordPass#0;class#ClientHandler#0" expanded="false" />
-            <element signature="method#keywordTableflip#0;class#ClientHandler#0" expanded="false" />
+            <element signature="e#6877#6922#0" expanded="false" />
             <element signature="method#keywordExit#0;class#ClientHandler#0" expanded="false" />
             <element signature="method#keywordChat#0;class#ClientHandler#0" expanded="false" />
           </folding>
@@ -1035,13 +1016,9 @@
             <element signature="e#2178#2236#0" expanded="false" />
             <element signature="e#2896#2954#0" expanded="false" />
             <element signature="e#3837#3891#0" expanded="false" />
-            <element signature="e#5827#5876#0" expanded="false" />
+            <element signature="e#5912#5961#0" expanded="false" />
             <element signature="method#startGame#0;class#ClientHandler#0" expanded="false" />
-            <element signature="e#6792#6837#0" expanded="false" />
-            <element signature="method#keywordCancel#0;class#ClientHandler#0" expanded="false" />
-            <element signature="method#keywordMove#0;class#ClientHandler#0" expanded="false" />
-            <element signature="method#keywordPass#0;class#ClientHandler#0" expanded="false" />
-            <element signature="method#keywordTableflip#0;class#ClientHandler#0" expanded="false" />
+            <element signature="e#6877#6922#0" expanded="false" />
             <element signature="method#keywordExit#0;class#ClientHandler#0" expanded="false" />
             <element signature="method#keywordChat#0;class#ClientHandler#0" expanded="false" />
           </folding>
@@ -1113,13 +1090,9 @@
             <element signature="e#2178#2236#0" expanded="false" />
             <element signature="e#2896#2954#0" expanded="false" />
             <element signature="e#3837#3891#0" expanded="false" />
-            <element signature="e#5827#5876#0" expanded="false" />
+            <element signature="e#5912#5961#0" expanded="false" />
             <element signature="method#startGame#0;class#ClientHandler#0" expanded="false" />
-            <element signature="e#6792#6837#0" expanded="false" />
-            <element signature="method#keywordCancel#0;class#ClientHandler#0" expanded="false" />
-            <element signature="method#keywordMove#0;class#ClientHandler#0" expanded="false" />
-            <element signature="method#keywordPass#0;class#ClientHandler#0" expanded="false" />
-            <element signature="method#keywordTableflip#0;class#ClientHandler#0" expanded="false" />
+            <element signature="e#6877#6922#0" expanded="false" />
             <element signature="method#keywordExit#0;class#ClientHandler#0" expanded="false" />
             <element signature="method#keywordChat#0;class#ClientHandler#0" expanded="false" />
           </folding>
@@ -1492,28 +1465,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="107" column="51" lean-forward="true" selection-start-line="107" selection-start-column="51" selection-end-line="107" selection-end-column="51" />
-          <folding>
-            <element signature="docComment;class#ClientHandler#0" expanded="false" />
-            <element signature="e#2178#2236#0" expanded="false" />
-            <element signature="e#2896#2954#0" expanded="false" />
-            <element signature="e#3837#3891#0" expanded="false" />
-            <element signature="e#5827#5876#0" expanded="false" />
-            <element signature="method#startGame#0;class#ClientHandler#0" expanded="false" />
-            <element signature="e#6792#6837#0" expanded="false" />
-            <element signature="method#keywordCancel#0;class#ClientHandler#0" expanded="false" />
-            <element signature="method#keywordMove#0;class#ClientHandler#0" expanded="false" />
-            <element signature="method#keywordPass#0;class#ClientHandler#0" expanded="false" />
-            <element signature="method#keywordTableflip#0;class#ClientHandler#0" expanded="false" />
-            <element signature="method#keywordExit#0;class#ClientHandler#0" expanded="false" />
-            <element signature="method#keywordChat#0;class#ClientHandler#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandGO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1050">
@@ -1530,6 +1481,38 @@
           <caret line="39" column="29" lean-forward="false" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="116" column="31" lean-forward="true" selection-start-line="116" selection-start-column="31" selection-end-line="116" selection-end-column="31" />
+          <folding>
+            <element signature="docComment;class#ClientHandler#0" expanded="false" />
+            <element signature="e#2178#2236#0" expanded="false" />
+            <element signature="e#2896#2954#0" expanded="false" />
+            <element signature="e#3837#3891#0" expanded="false" />
+            <element signature="e#5912#5961#0" expanded="false" />
+            <element signature="method#startGame#0;class#ClientHandler#0" expanded="false" />
+            <element signature="e#6877#6922#0" expanded="false" />
+            <element signature="method#keywordExit#0;class#ClientHandler#0" expanded="false" />
+            <element signature="method#keywordChat#0;class#ClientHandler#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandPASS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="51" column="5" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="51" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#314#315#0" expanded="true" />
+            <element signature="e#1348#1349#0" expanded="true" />
+            <element signature="e#1375#1376#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1563,16 +1546,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandPASS.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandTABLEFLIP.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="20" lean-forward="true" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+        <state relative-caret-position="375">
+          <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#282#283#0" expanded="true" />
-            <element signature="e#314#315#0" expanded="true" />
-            <element signature="e#1348#1349#0" expanded="true" />
-            <element signature="e#1375#1376#0" expanded="true" />
+            <element signature="e#292#293#0" expanded="true" />
+            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#785#786#0" expanded="true" />
+            <element signature="e#813#814#0" expanded="true" />
+            <element signature="e#1031#1032#0" expanded="true" />
+            <element signature="e#1058#1059#0" expanded="true" />
           </folding>
         </state>
       </provider>
