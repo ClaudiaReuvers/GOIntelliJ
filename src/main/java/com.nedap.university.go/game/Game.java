@@ -6,12 +6,13 @@ import com.nedap.university.go.communication.ClientHandler;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Game extends Thread {
+public class Game {
 
 	private ClientHandler client1;
 	private ClientHandler client2;
 	private List<ClientHandler> listClients = new LinkedList<>();
 	private Board board;
+	private boolean turn; //true: turn of white; false; turn of black
 	
 	public Game(ClientHandler client1, ClientHandler client2, int dimension) {
 		this.client1 = client1;
@@ -19,6 +20,7 @@ public class Game extends Thread {
 		listClients.add(client1);
 		listClients.add(client2);
 		board = new Board(dimension);
+		this.turn = false;
 	}
 	
 //	public String[] getClientNames() {
@@ -45,11 +47,15 @@ public class Game extends Thread {
 		return board.toString();
 	}
 
-	public void run() {
-		//TODO
-		boolean exit = false;
-		while (!exit) {
-
-		}
+	public void alternateTurn() {
+		turn = !turn;
 	}
+
+    public void addStoneToBoard(int x, int y, boolean white) {
+	    board.addStone(x, y ,white);
+    }
+
+    public boolean isTurn(boolean white) {
+	    return (turn == white);
+    }
 }

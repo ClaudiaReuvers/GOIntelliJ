@@ -145,7 +145,7 @@ public class Server {
         CH2.sendMessage(READY + " white " + CH1.getClientName() + " " + size);
         Game game = new Game(CH1, CH2, size);
         addToGamesList(game);
-        game.start();
+//        game.start();
     }
 
     public boolean isValidMove(Game game, int x, int y) {
@@ -161,7 +161,6 @@ public class Server {
         }
         //Check for KO
         //TODO: check for KO
-
         return true;
     }
 

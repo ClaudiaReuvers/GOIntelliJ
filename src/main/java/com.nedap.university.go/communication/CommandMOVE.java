@@ -20,21 +20,29 @@ public class CommandMOVE implements Command {
 
     @Override
     public void execute(Server server, ClientHandler client) {
-        if (!checkArguments(server)) {
-            client.sendMessage("WARNING invalid command");
+        Game game = client.getGame();
+        //Check if it's the clients turn
+        if (!game.isTurn(client.getColor())) {
+            client.sendMessage("WARNING It is not your turn");
             return;
         }
-        Game game = client.getGame();
-        if (server.isValidMove(game, x, y)) {
-            boolean white = true; //TODO: get clientcolor
-            game.getBoard().addStone(x, y, white);
-            //TODO: check if end of game
-            String msg = "MOVED " + " " + booleanToColor(white) + "" + x + " " + y;
-            server.broadcastToGame(game, msg);
-        } else {
-
+        //Check if the command is valid
+        if (!checkArguments(server)) {
+            client.sendMessage("WARNING Invalid command");
+            return;
         }
-        //TODO: [somewhere] check if it is his/her turn
+        //Check if the move is valid
+        boolean white = client.getColor();
+        if (server.isValidMove(game, x, y)) {
+            game.addStoneToBoard(x, y, white);
+            String msg = "VALID " + booleanToColor(white) + " " + x + " " + y;
+            server.broadcastToGame(game, msg);
+            game.alternateTurn();
+        } else {
+            String msg = "INVALID " + booleanToColor(white) + " not a valid move";
+            server.broadcastToGame(game, msg);
+            //TODO: add why invalid move
+        }
     }
 
     @Override

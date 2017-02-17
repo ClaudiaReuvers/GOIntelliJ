@@ -71,7 +71,6 @@ public class CommandGO implements Command{
 
     public void startGame(ClientHandler client1, ClientHandler client2, int size) {
         Game game = new Game(client1, client2, size);
-        game.start();
     }
 
 
