@@ -6,17 +6,16 @@ import com.nedap.university.go.communication.ClientHandler;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Game {
+public class Game extends Thread {
 
 	private ClientHandler client1;
 	private ClientHandler client2;
-	private List<ClientHandler> listClients;
+	private List<ClientHandler> listClients = new LinkedList<>();
 	private Board board;
 	
 	public Game(ClientHandler client1, ClientHandler client2, int dimension) {
 		this.client1 = client1;
 		this.client2 = client2;
-		listClients = new LinkedList<>();
 		listClients.add(client1);
 		listClients.add(client2);
 		board = new Board(dimension);
@@ -41,5 +40,16 @@ public class Game {
 	public Board getBoard() {
 		return board;
 	}
-	
+
+	public String toString() {
+		return board.toString();
+	}
+
+	public void run() {
+		//TODO
+		boolean exit = false;
+		while (!exit) {
+
+		}
+	}
 }

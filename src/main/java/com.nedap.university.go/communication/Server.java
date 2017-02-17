@@ -1,5 +1,6 @@
 package com.nedap.university.go.communication;
 
+import com.nedap.university.go.game.Board;
 import com.nedap.university.go.game.Game;
 
 import java.io.CharArrayReader;
@@ -15,6 +16,8 @@ public class Server {
 
     private static final String USAGE
             = "usage: " + Server.class.getName() + " <port>";
+    private static final String CHAT = "CHAT";
+    private static final String READY = "READY";
 
     public static void main(String[] args) {
         if (args.length != 1) {
@@ -39,14 +42,22 @@ public class Server {
 
     public void addToClientHandlerList(ClientHandler client) {
         listClientHandlers.add(client);
+        //TODO: add check for double names
+    }
+
+    public List<ClientHandler> getCHList() {
+        return listClientHandlers;
+    }
+    public String getClientList() {
+        String clientNames = "";
+        for (ClientHandler clients : listClientHandlers) {
+            clientNames += "CHAT " + clients.getClientName() + "\n";
+        }
+        return clientNames;
     }
 
     public void removeFromClientHandlerList(ClientHandler client) {
         listClientHandlers.remove(client);
-    }
-
-    public List<ClientHandler> getClientList() {
-        return listClientHandlers;
     }
 
     public void addToWaitingList(int size, ClientHandler client) {
@@ -92,17 +103,15 @@ public class Server {
             } catch(IOException e) {
 
             }
-
         }
-
     }
 
     public boolean checkName(String name) {
         if (name.length() >= 20) {
             return false;
         }
-        for (char c : name.toCharArray()) {
-            if (!Character.isLetter(c) || Character.isLowerCase(c)) {
+        for(char c : name.toCharArray()) {
+            if (!(Character.isLetter(c) && Character.isLowerCase(c))) {
                 return false;
             }
         }
@@ -123,6 +132,37 @@ public class Server {
         for (ClientHandler clients : game.getClients()) {
             clients.sendMessage(msg);
         }
+    }
+
+    public void setGame(ClientHandler CH1, ClientHandler CH2, int size) {
+        CH1.setOpponent(CH2);
+        CH2.setOpponent(CH1);
+        CH1.setColor(false);
+        CH2.setColor(true);
+        CH1.sendMessage(CHAT + " You start a game with " + CH1.getClientName());
+        CH2.sendMessage(CHAT + " You start a game with " + CH2.getClientName());
+        CH1.sendMessage(READY + " black " + CH2.getClientName() + " " + size);
+        CH2.sendMessage(READY + " white " + CH1.getClientName() + " " + size);
+        Game game = new Game(CH1, CH2, size);
+        addToGamesList(game);
+        game.start();
+    }
+
+    public boolean isValidMove(Game game, int x, int y) {
+        Board board = game.getBoard();
+        int size = board.getDimension();
+        //Check if this field exists
+        if (x >= size || x < 0 || y >= size || y < 0 ) {
+            return false;
+        }
+        //Check if field is not already taken
+        if (!board.getField(x, y).isEmpty()) {
+            return false;
+        }
+        //Check for KO
+        //TODO: check for KO
+
+        return true;
     }
 
 //    public boolean checkRules(Stone[] fields, int x, int y) {

@@ -110,14 +110,35 @@ public class Board {
 	public Stone[] getAllFields(){
 		return fields;
 	}
-	
+
+	public String toString() {
+		String board = "";
+		for (int i = 0; i < DIM; i++) {
+			for (int j = 0; j < DIM; j++) {
+				String stone = " ";
+				if (getField(i, j).getState() == StoneState.BLACK) {
+					stone = "B";
+				} else if (getField(i, j).getState() == StoneState.WHITE){
+					stone = "W";
+				} else {
+					stone = ".";
+				}
+				board += stone;// + " - ";
+			}
+			if (i != DIM -1) {
+				board += "\n";
+			}
+		}
+		return board;
+	}
+
 //	public static void main(String[] args) {
-//		thirdBoard board = new thirdBoard(9);
+//		Board board = new Board(9);
 //		board.addStone(1, 1, true);
 //		board.addStone(1, 2, true);
-//		board.addStone(1, 0, true);
+//		board.addStone(1, 0, false);
 //		board.addStone(0, 1, true);
 //		board.addStone(2, 1, true);
-//
+//		System.out.println(board.toString());
 //	}
 }

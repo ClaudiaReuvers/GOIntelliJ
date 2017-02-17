@@ -16,6 +16,9 @@ public class ClientHandler extends Thread {
     private String name = "";
     private int size;
     private Game game;
+    private ClientHandler opponent;
+    private boolean color;
+
 
     private static final String PLAYER = "PLAYER";
     private static final String GO = "GO";
@@ -30,6 +33,7 @@ public class ClientHandler extends Thread {
     private static final String PASSED = "PASSED";
     private static final String EXIT = "EXIT";
     private static final String CHAT = "CHAT";
+    private static final String WARNING = "WARNING";
 
     public ClientHandler(Server server, Socket sock) throws IOException {
         this.server = server;
@@ -57,37 +61,47 @@ public class ClientHandler extends Thread {
                 switch(keyword) {
                     case PLAYER :
                         if (name.equals("")) {
-                            if (checkLength(words, 2)) {
-                                keywordPlayer(words);
-                            } else {
-                                sendMessage("Not a valid commando, to log onto the server use: PLAYER <name>");
-                                //TODO: not valid commando
-                            }
+                            Command player = new CommandPLAYER(line);
+                            player.execute(server, this);
+//                            if (checkLength(words, 2)) {
+//                                keywordPlayer(words);
+//                            } else {
+//                                sendMessage("WARNING Not a valid commando, to log onto the server use: PLAYER <name>");
+//                                //TODO: not valid commando
+//                            }
+//                        } else {
+//                            sendMessage("Player name is already set.");
                         } else {
-                            sendMessage("Player name is already set.");
+                            sendMessage(WARNING + " Player name already set");
                         }
                         break;
                     case GO :
                         if (size == 0) {
-                            if (checkLength(words, 2)) {
-                                keywordGO(words);
-                            } else {
-                                sendMessage("Not a valid commando, to add your boardsize use: GO <size>");
-                                //TODO: not valid commando
-                            }
+//                            if (checkLength(words, 2)) {
+//                                keywordGO(words);
+//                            } else {
+//                                sendMessage("Not a valid commando, to add your boardsize use: GO <size>");
+//                                //TODO: not valid commando
+//                            }
+                            Command GO = new CommandGO(line);
+                            GO.execute(server, this);
                         } else {
-                            sendMessage("Already put in a waiting list for a game of GO on boardsize " + size);
+                            sendMessage(WARNING + " Already put in a waiting list for a game of GO on boardsize " + size);
                         }
                         break;
                     case CANCEL :
-                        keywordCancel();
+                        Command cancel = new CommandCANCEL(line);
+                        cancel.execute(server, this);
+//                        keywordCancel();
                         break;
                     case MOVE :
-                        if (checkLength(words, 3)) {
-                            keywordMove(words);
-                        } else {
-                            //TODO: not valid commando
-                        }
+//                        if (checkLength(words, 3)) {
+//                            keywordMove(words);
+//                        } else {
+//                            //TODO: not valid commando
+//                        }
+                        Command move = new CommandMOVE(line);
+                        move.execute(server, this);
                         break;
                     case PASS :
                         keywordPass();
@@ -116,33 +130,60 @@ public class ClientHandler extends Thread {
         //TODO: add exception if length is incorrect
     }
 
-    private void setSize(int size) {
+    public void setSize(int size) {
         this.size = size;
     }
 
-    private void setClientName(String name) {
+    public void setClientName(String name) {
         this.name = name;
     }
 
-    private String getClientName() {
+    public String getClientName() {
         return name;
     }
 
-    private void keywordPlayer(String[] line) {
-        String name = line[1];
-        if (server.checkName(name)) {
-            setClientName(name);
-            server.addToClientHandlerList(this);
-            server.broadcastToAll("[Player " + name + " has entered]");
-            sendMessage("Current players:");
-            for (ClientHandler clients : server.getClientList()) {
-                sendMessage(clients.getClientName() + " \n");
-            }
-        } else {
-            sendMessage("Not a valid commando: the name must consist only of lowercase letters");
-            //TODO: commando not valid (exception?)
-        }
+    public int getClientSize() {
+        return size;
     }
+
+    public void setColor(boolean white) {
+        color = white;
+    }
+
+    public boolean getColor() {
+        return color;
+    }
+
+    public void setOpponent(ClientHandler opponent) {
+        this.opponent = opponent;
+    }
+
+    public ClientHandler getOpponent() {
+        return opponent;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+//    private void keywordPlayer(String[] line) {
+//        String name = line[1];
+//        if (server.checkName(name)) {
+////            sendMessage("Add player");
+//            setClientName(name);
+////            server.addToClientHandlerList(this);
+//            server.broadcastToAll("[Player " + name + " has entered]");
+//            sendMessage("Current players:");
+//            sendMessage(server.getClientList());
+//        } else {
+//            sendMessage("Not a valid commando: the name must consist only of lowercase letters");
+//            //TODO: commando not valid (exception?)
+//        }
+//    }
 
     private void startGame(ClientHandler client1, ClientHandler client2, int size) {
         this.game = new Game(client1, client2, size);
@@ -151,35 +192,37 @@ public class ClientHandler extends Thread {
         client2.sendMessage(READY + " white " + client1.getClientName() + size);
     }
 
-    private void keywordGO(String[] line) {
-        //Check if the second is a integer
-        int size = 0;
-        try {
-            size = Integer.parseInt(line[1]);
-            //Set size for this player
-            if (server.checkSize(size)) {
-                setSize(size);
-                if (server.isMatch(size)) {
-                    server.removeFromWaitingList(size);
-                    ClientHandler opponent = server.getMatch(size);
-                    startGame(this, opponent, size);
-
-
-                } else {
-                    server.addToWaitingList(size, this);
-                    sendMessage(WAITING);
-                }
-            } else {
-                //TODO
-                sendMessage("Not a valid size: use an uneven integer between 5 and 131");
-            }
-
-        } catch (NumberFormatException e) {
-            //TODO
-            sendMessage("Not a valid commando, use an uneven integer between 5 an 131");
-        }
-
-    }
+//    private void keywordGO(String[] line) {
+//        //Check if the second is a integer
+//        int size = 0;
+//        try {
+//            size = Integer.parseInt(line[1]);
+//            //Set size for this player
+//            if (server.checkSize(size)) {
+//                setSize(size);
+//                if (server.isMatch(size)) {
+//                    server.removeFromWaitingList(size);
+//                    ClientHandler opponent = server.getMatch(size);
+//                    sendMessage("You start a game with " + opponent.getClientName());
+//                    opponent.sendMessage("You start a game with " + this.getClientName());
+//                    startGame(this, opponent, size);
+//
+//
+//                } else {
+//                    server.addToWaitingList(size, this);
+//                    sendMessage(WAITING);
+//                }
+//            } else {
+//                //TODO
+//                sendMessage("Not a valid size: use an uneven integer between 5 and 131");
+//            }
+//
+//        } catch (NumberFormatException e) {
+//            //TODO
+//            sendMessage("Not a valid commando, use an uneven integer between 5 an 131");
+//        }
+//
+//    }
 
     private void keywordCancel() {
         server.removeFromClientHandlerList(this);
