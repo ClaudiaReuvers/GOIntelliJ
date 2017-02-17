@@ -55,7 +55,6 @@ public class ClientHandler extends Thread {
         try {
             String line;
             while ((line = in.readLine()) != null) {
-//                server.broadcast(txt);
                 String[] words = line.split(" ");
                 String keyword = words[0];
                 switch(keyword) {
@@ -63,26 +62,12 @@ public class ClientHandler extends Thread {
                         if (name.equals("")) {
                             Command player = new CommandPLAYER(line);
                             player.execute(server, this);
-//                            if (checkLength(words, 2)) {
-//                                keywordPlayer(words);
-//                            } else {
-//                                sendMessage("WARNING Not a valid commando, to log onto the server use: PLAYER <name>");
-//                                //TODO: not valid commando
-//                            }
-//                        } else {
-//                            sendMessage("Player name is already set.");
                         } else {
                             sendMessage(WARNING + " Player name already set");
                         }
                         break;
                     case GO :
                         if (size == 0) {
-//                            if (checkLength(words, 2)) {
-//                                keywordGO(words);
-//                            } else {
-//                                sendMessage("Not a valid commando, to add your boardsize use: GO <size>");
-//                                //TODO: not valid commando
-//                            }
                             Command GO = new CommandGO(line);
                             GO.execute(server, this);
                         } else {
@@ -92,14 +77,8 @@ public class ClientHandler extends Thread {
                     case CANCEL :
                         Command cancel = new CommandCANCEL(line);
                         cancel.execute(server, this);
-//                        keywordCancel();
                         break;
                     case MOVE :
-//                        if (checkLength(words, 3)) {
-//                            keywordMove(words);
-//                        } else {
-//                            //TODO: not valid commando
-//                        }
                         Command move = new CommandMOVE(line);
                         move.execute(server, this);
                         break;
@@ -115,7 +94,8 @@ public class ClientHandler extends Thread {
                         keywordExit();
                         break;
                     case CHAT :
-                        keywordChat(line);
+                        Command chat = new CommandCHAT(line);
+                        chat.execute(server, this);
                         break;
                     default :
                         sendMessage("Not a valid commando");
@@ -125,11 +105,6 @@ public class ClientHandler extends Thread {
         } catch (IOException e) {
                 //TODO
         }
-    }
-
-    private boolean checkLength(String[] line, int length) {
-        return (line.length == length);
-        //TODO: add exception if length is incorrect
     }
 
     public void setSize(int size) {
@@ -172,89 +147,8 @@ public class ClientHandler extends Thread {
         return game;
     }
 
-//    private void keywordPlayer(String[] line) {
-//        String name = line[1];
-//        if (server.checkName(name)) {
-////            sendMessage("Add player");
-//            setClientName(name);
-////            server.addToClientHandlerList(this);
-//            server.broadcastToAll("[Player " + name + " has entered]");
-//            sendMessage("Current players:");
-//            sendMessage(server.getClientList());
-//        } else {
-//            sendMessage("Not a valid commando: the name must consist only of lowercase letters");
-//            //TODO: commando not valid (exception?)
-//        }
-//    }
-
-    private void startGame(ClientHandler client1, ClientHandler client2, int size) {
-        this.game = new Game(client1, client2, size);
-        server.addToGamesList(game);
-        client1.sendMessage(READY + " black " + client2.getClientName() + size);
-        client2.sendMessage(READY + " white " + client1.getClientName() + size);
-    }
-
-//    private void keywordGO(String[] line) {
-//        //Check if the second is a integer
-//        int size = 0;
-//        try {
-//            size = Integer.parseInt(line[1]);
-//            //Set size for this player
-//            if (server.checkSize(size)) {
-//                setSize(size);
-//                if (server.isMatch(size)) {
-//                    server.removeFromWaitingList(size);
-//                    ClientHandler opponent = server.getMatch(size);
-//                    sendMessage("You start a game with " + opponent.getClientName());
-//                    opponent.sendMessage("You start a game with " + this.getClientName());
-//                    startGame(this, opponent, size);
-//
-//
-//                } else {
-//                    server.addToWaitingList(size, this);
-//                    sendMessage(WAITING);
-//                }
-//            } else {
-//                //TODO
-//                sendMessage("Not a valid size: use an uneven integer between 5 and 131");
-//            }
-//
-//        } catch (NumberFormatException e) {
-//            //TODO
-//            sendMessage("Not a valid commando, use an uneven integer between 5 an 131");
-//        }
-//
-//    }
-
-//    private void keywordCancel() {
-//        server.removeFromClientHandlerList(this);
-//        //TODO: close connection properly
-//    }
-
-//    private void keywordMove(String[] line) {
-//        int x; int y;
-//        try {
-//            x = Integer.parseInt(line[1]);
-//            y = Integer.parseInt(line[2]);
-//            for (ClientHandler clients : game.getClients()) {
-//                clients.sendMessage("MOVE " + x + " " + y);
-//            }
-//        } catch (NumberFormatException e) {
-//            //TODO
-//        }
-//
-//        //TODO: check if move is valid
-//        //TODO: if valid -> VALID + <color> + <x> + <y> to both players
-//        //TODO: if invalid -> INVALID + <color> + <msg> to both players
-//    }
-
     private void keywordExit() {
         server.removeFromClientHandlerList(this);
         //TODO: exit
-    }
-
-    private void keywordChat(String line) {
-        String msg = line.substring(line.indexOf(' ') + 1);
-        //TODO: send to all players in Game
     }
 }
