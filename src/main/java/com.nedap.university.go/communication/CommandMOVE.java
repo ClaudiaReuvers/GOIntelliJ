@@ -37,6 +37,7 @@ public class CommandMOVE implements Command {
             game.addStoneToBoard(x, y, white);
             String msg = "VALID " + booleanToColor(white) + " " + x + " " + y;
             server.broadcastToGame(game, msg);
+            game.resetPass();
             game.alternateTurn();
         } else {
             String msg = "INVALID " + booleanToColor(white) + " not a valid move";

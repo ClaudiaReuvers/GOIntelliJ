@@ -104,7 +104,8 @@ public class ClientHandler extends Thread {
                         move.execute(server, this);
                         break;
                     case PASS :
-                        keywordPass();
+                        Command pass = new CommandPASS(line);
+                        pass.execute(server, this);
                         break;
                     case TABLEFLIP :
                         keywordTableflip();

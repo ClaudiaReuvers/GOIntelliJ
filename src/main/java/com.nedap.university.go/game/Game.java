@@ -13,6 +13,7 @@ public class Game {
 	private List<ClientHandler> listClients = new LinkedList<>();
 	private Board board;
 	private boolean turn; //true: turn of white; false; turn of black
+    private boolean pass;
 	
 	public Game(ClientHandler client1, ClientHandler client2, int dimension) {
 		this.client1 = client1;
@@ -21,6 +22,7 @@ public class Game {
 		listClients.add(client2);
 		board = new Board(dimension);
 		this.turn = false;
+		this.pass = false;
 	}
 	
 //	public String[] getClientNames() {
@@ -57,5 +59,21 @@ public class Game {
 
     public boolean isTurn(boolean white) {
 	    return (turn == white);
+    }
+
+    public void setPass() {
+	    pass = true;
+    }
+
+    public void resetPass() {
+	    pass = false;
+    }
+
+    public boolean isPassed() {
+	    return pass;
+    }
+
+    public void endGame() {
+	    //TODO
     }
 }
