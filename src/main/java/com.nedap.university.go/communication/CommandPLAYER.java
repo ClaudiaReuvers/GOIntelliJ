@@ -8,21 +8,24 @@ import java.util.List;
  */
 public class CommandPLAYER implements Command {
 
-    //private Server server;
     private String incomming;
     private String name;
 
     public CommandPLAYER(String line) {
-//        this.server = server;
         incomming = line;
     }
 
     @Override
     public void execute(Server server, ClientHandler client) {
+        //Check if already in clientHandler list
+        if (server.checkClientHandlerInList(client)) {
+            client.sendMessage("WARNING You are already logged in with the name " + client.getClientName());
+            //TODO: throw AlreadySetException
+        }
+        //Check arguments: are the arguments valid, is the name within requirements, is the name not already used
         if (!checkArguments(server)) {
             client.sendMessage("WARNING The name does not meet the requirements, must use a maximum of 20 lowercase letters");
-            //TODO: adapt checkName: s.t. checks if already in list (now only checks if length <= 20 & lowercase)
-            //TODO: sendMessage(WARNING there already is a player with this username, please try another name)
+            client.sendMessage("WARNING there already is a player with this username, please try another name");
             return;
         }
         client.setClientName(name);
@@ -40,9 +43,20 @@ public class CommandPLAYER implements Command {
 //        }
         String args[] = incomming.split(" ");
        if (checkArgumentsLength(args)) {
-           name = args[1];
-           return (server.checkName(name));
+           if (server.checkName(args[1])) {
+               if (!server.checkNameInList(args[1])) {
+                   //TODO: throw NameAlreadyUsedException
+                   return false;
+               } else {
+                   name = args[1];
+                   return true;
+               }
+           } else {
+               //TODO: throw NonValidNameException
+               return false;
+           }
        } else {
+           //TODO: throw WrongNrOfArgumentsException
            return false;
        }
     }

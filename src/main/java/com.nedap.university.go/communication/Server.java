@@ -165,7 +165,16 @@ public class Server {
         return true;
     }
 
-//    public boolean checkRules(Stone[] fields, int x, int y) {
-//        //TODO: implement checking of rules: 1) is (x,y) on the board?; 2) is there not already a Stone at that location; 3) does it result in KO?
-//    }
+    public boolean checkClientHandlerInList(ClientHandler client) {
+        return (listClientHandlers.contains(client));
+    }
+
+    public boolean checkNameInList(String name) {
+        for (ClientHandler clients : listClientHandlers) {
+            if (clients.getClientName().equals(name)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
