@@ -49,6 +49,23 @@ public class Client extends Thread {
 	private BufferedReader in;
 	private BufferedWriter out;
 
+	private static final String PLAYER = "PLAYER";
+	private static final String GO = "GO";
+	private static final String WAITING = "WAITING";
+	private static final String READY = "READY";
+	private static final String CANCEL = "CANCEL";
+	private static final String MOVE = "MOVE";
+	private static final String VALID = "VALID";
+	private static final String INVALID = "INVALID";
+	private static final String TABLEFLIP = "TABLEFLIP";
+	private static final String TABLEFLIPPED = "TABLEFLIPPED";
+	private static final String PASS = "PASS";
+	private static final String PASSED = "PASSED";
+	private static final String EXIT = "EXIT";
+	private static final String CHAT = "CHAT";
+	private static final String WARNING = "WARNING";
+	private static final String END = "END";
+
 	public Client(InetAddress host, int port) throws IOException {
 		this.sock = new Socket(host, port);
 		this.in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
@@ -59,7 +76,37 @@ public class Client extends Thread {
 		String txt;
 		try {
 			while ((txt = in.readLine()) != null) {
-				System.out.println(txt);
+				String[] words = txt.split(" ");
+				String keyword = words[0];
+				switch (keyword) {
+					case WAITING :
+						//TODO: add WAITING command
+						break;
+					case READY :
+						//TODO: add READY method
+						break;
+					case VALID :
+						//TODO: add VALID command
+						break;
+					case INVALID :
+						//TODO: add INVALID command
+						break;
+					case PASSED :
+						//TODO: add PASSED command
+						break;
+					case TABLEFLIPPED :
+						//TODO: add TABLEFLIPPED command
+						break;
+					case WARNING :
+						//TODO: add WARNING command
+						break;
+					case END :
+						//TODO: add END command
+						break;
+					default :
+						//TODO?
+				}
+//				System.out.println(txt);
 			}
 		} catch (IOException e) {
 			//TODO

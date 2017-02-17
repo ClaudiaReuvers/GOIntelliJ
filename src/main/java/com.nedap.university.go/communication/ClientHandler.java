@@ -19,7 +19,6 @@ public class ClientHandler extends Thread {
     private ClientHandler opponent;
     private boolean color;
 
-
     private static final String PLAYER = "PLAYER";
     private static final String GO = "GO";
     private static final String WAITING = "WAITING";
@@ -63,7 +62,7 @@ public class ClientHandler extends Thread {
                             Command player = new CommandPLAYER(line);
                             player.execute(server, this);
                         } else {
-                            sendMessage(WARNING + " Player name already set");
+                            sendMessage(WARNING + " Player name already set to " + name);
                         }
                         break;
                     case GO :
