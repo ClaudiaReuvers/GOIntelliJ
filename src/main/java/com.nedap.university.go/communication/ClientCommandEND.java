@@ -21,7 +21,7 @@ public class ClientCommandEND implements ClientCommand {
         if (client.getColor()) {
             ownScore = Integer.parseInt(args[2]);
             opponentScore = Integer.parseInt(args[1]);
-        } else if (!client.getColor()){
+        } else {
             ownScore = Integer.parseInt(args[1]);
             opponentScore = Integer.parseInt(args[2]);
         }
