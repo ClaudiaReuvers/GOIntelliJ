@@ -26,10 +26,9 @@ public class CommandGO implements Command{
             return;
         }
         if (server.isMatch(size)) {
-            server.removeFromWaitingList(size);
             ClientHandler opponent = server.getMatch(size);
-            client.sendMessage("READY black " + opponent.getClientName() + " " + size);
-            opponent.sendMessage("READY white " + client.getClientName() + " " + size);
+//            client.sendMessage("READY black " + opponent.getClientName() + " " + size);
+//            opponent.sendMessage("READY white " + client.getClientName() + " " + size);
             server.setGame(client, opponent, size);
         } else {
             server.addToWaitingList(size, client);
@@ -46,12 +45,12 @@ public class CommandGO implements Command{
             try {
                 size = Integer.parseInt(args[1]);
             } catch (NumberFormatException e) {
-                client.sendMessage("Not an integer");
+                client.sendMessage("WARNING Not an integer");
                 return false;
             }
             return server.checkSize(size);
         } else {
-            client.sendMessage("Wrong length");
+            client.sendMessage("WARNING Wrong length");
             return false;
         }
     }

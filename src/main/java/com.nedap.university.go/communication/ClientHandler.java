@@ -96,7 +96,7 @@ public class ClientHandler extends Thread {
                         chat.execute(server, this);
                         break;
                     default :
-                        sendMessage("Not a valid commando");
+                        sendMessage(WARNING + " Not a valid commando");
                         //TODO: invalid commando; show help menu?
                 }
             }

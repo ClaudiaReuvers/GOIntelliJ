@@ -139,11 +139,13 @@ public class Server {
         CH2.setOpponent(CH1);
         CH1.setColor(false);
         CH2.setColor(true);
-        CH1.sendMessage(CHAT + " You start a game with " + CH1.getClientName());
-        CH2.sendMessage(CHAT + " You start a game with " + CH2.getClientName());
+//        CH1.sendMessage(CHAT + " You start a game with " + CH1.getClientName());
+//        CH2.sendMessage(CHAT + " You start a game with " + CH2.getClientName());
         CH1.sendMessage(READY + " black " + CH2.getClientName() + " " + size);
         CH2.sendMessage(READY + " white " + CH1.getClientName() + " " + size);
         Game game = new Game(CH1, CH2, size);
+        CH1.setGame(game);
+        CH2.setGame(game);
         addToGamesList(game);
 //        game.start();
     }
