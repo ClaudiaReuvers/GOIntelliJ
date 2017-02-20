@@ -28,6 +28,8 @@ public class CommandGO implements Command{
         if (server.isMatch(size)) {
             server.removeFromWaitingList(size);
             ClientHandler opponent = server.getMatch(size);
+            client.sendMessage("READY black " + opponent.getClientName() + " " + size);
+            opponent.sendMessage("READY white " + client.getClientName() + " " + size);
             server.setGame(client, opponent, size);
         } else {
             server.addToWaitingList(size, client);

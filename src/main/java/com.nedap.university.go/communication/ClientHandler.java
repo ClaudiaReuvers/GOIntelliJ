@@ -4,7 +4,6 @@ import com.nedap.university.go.game.Game;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.List;
 
 /**
  * Created by claudia.reuvers on 07/02/2017.
@@ -93,7 +92,7 @@ public class ClientHandler extends Thread {
                         keywordExit();
                         break;
                     case CHAT :
-                        Command chat = new CommandCHAT(line);
+                        Command chat = new CommandCHATServer(line);
                         chat.execute(server, this);
                         break;
                     default :

@@ -1,5 +1,7 @@
 package com.nedap.university.go.communication;
 
+import com.nedap.university.go.game.Board;
+
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -66,6 +68,10 @@ public class Client extends Thread {
 	private static final String WARNING = "WARNING";
 	private static final String END = "END";
 
+	private boolean color;
+	private String opponentName;
+	private Board board;
+
 	public Client(InetAddress host, int port) throws IOException {
 		this.sock = new Socket(host, port);
 		this.in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
@@ -80,10 +86,12 @@ public class Client extends Thread {
 				String keyword = words[0];
 				switch (keyword) {
 					case WAITING :
-						//TODO: add WAITING command
+						ClientCommand waiting = new ClientCommandWAITING();
+						waiting.execute(this);
 						break;
 					case READY :
-						//TODO: add READY method
+						ClientCommand ready = new ClientCommandREADY(txt);
+						ready.execute(this);
 						break;
 					case VALID :
 						//TODO: add VALID command
@@ -92,10 +100,15 @@ public class Client extends Thread {
 						//TODO: add INVALID command
 						break;
 					case PASSED :
-						//TODO: add PASSED command
+						ClientCommand passed = new ClientCommandPASSED(txt);
+						passed.execute(this);
 						break;
 					case TABLEFLIPPED :
 						//TODO: add TABLEFLIPPED command
+						break;
+					case CHAT :
+						ClientCommand chat = new ClientCommandCHAT(txt);
+						chat.execute(this);
 						break;
 					case WARNING :
 						//TODO: add WARNING command
@@ -113,6 +126,22 @@ public class Client extends Thread {
 		}
 	}
 
+	public void setColor(boolean white) {
+		this.color = white;
+	}
+
+	public boolean getColor() {
+		return color;
+	}
+
+	public void setOpponent(String name) {
+		this.opponentName = name;
+	}
+
+	public String getOpponentName() {
+		return opponentName;
+	}
+
 	public void sendMessage(String msg) {
 		try {
 			out.write(msg);
@@ -123,6 +152,10 @@ public class Client extends Thread {
 		}
 	}
 
+	public void print(String msg) {
+		System.out.println(msg);
+
+	}
 	public static String readString() {
 		String antw = null;
 		try {
@@ -132,5 +165,13 @@ public class Client extends Thread {
 			//TODO
 		}
 		return (antw == null) ? "" : antw;
+	}
+
+	public void setBoard(Board board) {
+		this.board = board;
+	}
+
+	public Board getBoard() {
+		return board;
 	}
 }
