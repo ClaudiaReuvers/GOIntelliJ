@@ -40,9 +40,18 @@ public class CommandMOVE implements Command {
             game.resetPass();
             game.alternateTurn();
         } else {
-            String msg = "INVALID " + booleanToColor(white) + " not a valid move";
+            String reason;
+            if (!server.isOnBoard(game, x, y)) {
+                reason = "This field is not on the board.";
+            } else if (!server.isEmptyField(game, x, y)) {
+                reason = "There is already a stone placed at this field.";
+            } else {
+                reason = "This move results in KO.";
+            }
+            String msg = "INVALID " + booleanToColor(white) + " " + reason;
             server.broadcastToGame(game, msg);
-            //TODO: add why invalid move
+            game.endGame();
+            server.broadcastToGame(game, "END 4 2");
         }
     }
 

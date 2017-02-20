@@ -150,20 +150,31 @@ public class Server {
 //        game.start();
     }
 
-    public boolean isValidMove(Game game, int x, int y) {
+    public boolean isOnBoard(Game game, int x, int y) {
         Board board = game.getBoard();
         int size = board.getDimension();
         //Check if this field exists
-        if (x >= size || x < 0 || y >= size || y < 0 ) {
+        if (x >= size || x < 0 || y >= size || y < 0) {
             return false;
         }
-        //Check if field is not already taken
+        return true;
+    }
+
+    public boolean isEmptyField(Game game, int x, int y) {
+        Board board = game.getBoard();
         if (!board.getField(x, y).isEmpty()) {
             return false;
         }
-        //Check for KO
-        //TODO: check for KO
         return true;
+    }
+
+    public boolean isKo(Game game, int x, int y) {
+        //TODO
+        return true;
+    }
+
+    public boolean isValidMove(Game game, int x, int y) {
+        return (isOnBoard(game, x, y) && isEmptyField(game, x, y) && isKo(game, x, y));
     }
 
     public boolean checkClientHandlerInList(ClientHandler client) {

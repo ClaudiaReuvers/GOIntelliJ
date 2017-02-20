@@ -24,6 +24,8 @@ public class ClientCommandVALID implements ClientCommand {
         int y = Integer.parseInt(args[3]);
         Board board = client.getBoard();
         board.addStone(x, y, color);
+        client.print(args[1] + " stone placed at (" + x + "," + y + ")");
+        client.print("Current state:\n" + board.toString());
     }
 
     private boolean colorToBoolean(String color) {

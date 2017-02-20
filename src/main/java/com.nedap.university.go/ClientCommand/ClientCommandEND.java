@@ -34,9 +34,9 @@ public class ClientCommandEND implements ClientCommand {
                 client.print("There is a tie: " + ownScore + " vs " + opponentScore);
             }
         } else if (ownScore > opponentScore) {
-            client.print("You have won!! (" + ownScore + " vs " + opponentScore + ").");
+            client.print("You have won!! (" + ownScore + " vs " + opponentScore + ")");
         } else {
-            client.print("You have lost. (" + ownScore + " vs " + opponentScore + ").");
+            client.print("You have lost. (" + ownScore + " vs " + opponentScore + ")");
         }
         //TODO: end game
     }
