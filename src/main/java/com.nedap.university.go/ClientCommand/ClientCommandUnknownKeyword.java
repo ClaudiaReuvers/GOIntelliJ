@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by claudia.reuvers on 20/02/2017.
  */
-public class ClientCommandInvalidCommand implements ClientCommand {
+public class ClientCommandUnknownKeyword implements ClientCommand {
 
 
     @Override
