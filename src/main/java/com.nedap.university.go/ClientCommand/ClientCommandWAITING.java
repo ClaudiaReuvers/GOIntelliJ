@@ -1,4 +1,6 @@
-package com.nedap.university.go.communication;
+package com.nedap.university.go.ClientCommand;
+
+import com.nedap.university.go.communication.Client;
 
 import java.util.List;
 

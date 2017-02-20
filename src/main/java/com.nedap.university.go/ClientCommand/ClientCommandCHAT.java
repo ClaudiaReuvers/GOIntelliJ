@@ -1,22 +1,24 @@
-package com.nedap.university.go.communication;
+package com.nedap.university.go.ClientCommand;
+
+import com.nedap.university.go.communication.Client;
 
 import java.util.List;
 
 /**
  * Created by claudia.reuvers on 20/02/2017.
  */
-public class ClientCommandWARNING implements ClientCommand {
+public class ClientCommandCHAT implements ClientCommand {
 
     String incomming;
 
-    public ClientCommandWARNING(String line) {
+    public ClientCommandCHAT(String line) {
         incomming = line;
     }
 
     @Override
     public void execute(Client client) {
-        String args[] = incomming.split(" ", 2);
-        client.print("WARNING: " + args[1]);
+        String[] args = incomming.split(" ", 2);
+        client.print(args[1]);
     }
 
     @Override

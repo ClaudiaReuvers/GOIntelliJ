@@ -1,28 +1,29 @@
-package com.nedap.university.go.communication;
+package com.nedap.university.go.ClientCommand;
+
+import com.nedap.university.go.communication.Client;
 
 import java.util.List;
 
 /**
  * Created by claudia.reuvers on 20/02/2017.
  */
-public class ClientCommandINVALID implements ClientCommand {
+public class ClientCommandTABLEFLIPPED implements ClientCommand {
 
     String incomming;
 
-    public ClientCommandINVALID(String line) {
+    public ClientCommandTABLEFLIPPED(String line) {
         incomming = line;
     }
 
     @Override
     public void execute(Client client) {
-        String args[] = incomming.split(" ", 3);
-        boolean color = colorToBoolean(args[1]);
+        String[] args = incomming.split(" ");
+        boolean color  = colorToBoolean(args[1]);
         if (color == client.getColor()) {
-            client.print("You have made an invalid move.");
+            client.print("You gave up.");
         } else {
-            client.print("Your opponent has made an invalid move.");
+            client.print("Your opponent gave up.\nYOU WON!!");
         }
-        client.print("Reason: " + args[2]);
     }
 
     private boolean colorToBoolean(String color) {

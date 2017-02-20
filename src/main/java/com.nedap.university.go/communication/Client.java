@@ -1,5 +1,6 @@
 package com.nedap.university.go.communication;
 
+import com.nedap.university.go.ClientCommand.*;
 import com.nedap.university.go.game.Board;
 
 import java.io.*;
@@ -84,42 +85,39 @@ public class Client extends Thread {
 			while ((txt = in.readLine()) != null) {
 				String[] words = txt.split(" ");
 				String keyword = words[0];
+				ClientCommand command;
 				switch (keyword) {
 					case WAITING :
-						ClientCommand waiting = new ClientCommandWAITING();
-						waiting.execute(this);
+						command = new ClientCommandWAITING();
 						break;
 					case READY :
-						ClientCommand ready = new ClientCommandREADY(txt);
-						ready.execute(this);
+						command = new ClientCommandREADY(txt);
 						break;
 					case VALID :
-						//TODO: add VALID command
+						command = new ClientCommandVALID(txt);
 						break;
 					case INVALID :
-						//TODO: add INVALID command
+						command = new ClientCommandINVALID(txt);
 						break;
 					case PASSED :
-						ClientCommand passed = new ClientCommandPASSED(txt);
-						passed.execute(this);
+						command = new ClientCommandPASSED(txt);
 						break;
 					case TABLEFLIPPED :
-						//TODO: add TABLEFLIPPED command
+						command = new ClientCommandTABLEFLIPPED(txt);
 						break;
 					case CHAT :
-						ClientCommand chat = new ClientCommandCHAT(txt);
-						chat.execute(this);
+						command = new ClientCommandCHAT(txt);
 						break;
 					case WARNING :
-						//TODO: add WARNING command
+						command = new ClientCommandWARNING(txt);
 						break;
 					case END :
-						//TODO: add END command
+						command = new ClientCommandEND(txt);
 						break;
 					default :
-						//TODO?
+						command = new ClientCommandInvalidCommand();
 				}
-//				System.out.println(txt);
+				command.execute(this);
 			}
 		} catch (IOException e) {
 			//TODO

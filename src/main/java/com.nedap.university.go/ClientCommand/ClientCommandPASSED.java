@@ -1,28 +1,30 @@
-package com.nedap.university.go.communication;
+package com.nedap.university.go.ClientCommand;
 
-import com.nedap.university.go.game.Board;
+import com.nedap.university.go.communication.Client;
 
 import java.util.List;
 
 /**
  * Created by claudia.reuvers on 20/02/2017.
  */
-public class ClientCommandVALID implements ClientCommand {
+public class ClientCommandPASSED implements ClientCommand{
 
     String incomming;
 
-    public ClientCommandVALID(String line) {
+    public ClientCommandPASSED(String line) {
         incomming = line;
     }
 
     @Override
     public void execute(Client client) {
         String[] args = incomming.split(" ");
-        boolean color = colorToBoolean(args[1]);
-        int x = Integer.parseInt(args[2]);
-        int y = Integer.parseInt(args[3]);
-        Board board = client.getBoard();
-        board.addStone(x, y, color);
+        boolean color  = colorToBoolean(args[1]);
+        if (color == client.getColor()) {
+            client.print("You have passed.");
+        } else {
+            client.print("Your opponent has passed.");
+        }
+
     }
 
     private boolean colorToBoolean(String color) {
