@@ -27,11 +27,12 @@ public class CommandPASS implements Command {
         if (!checkArguments(server)) {
             client.sendMessage("WARNING Invalid command");
         }
+        server.broadcastToGame(game, "PASSED " + booleanToColor(white));
         if (game.isPassed()) {
             game.endGame();
+            server.broadcastToGame(game, "END 1 1");
         }
         game.setPass();
-        server.broadcastToGame(game, "PASSED " + booleanToColor(white));
     }
 
     @Override

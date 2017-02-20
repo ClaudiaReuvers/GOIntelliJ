@@ -22,6 +22,7 @@ public class CommandPLAYER implements Command {
             client.sendMessage("WARNING You are already logged in with the name " + client.getClientName());
             //TODO: throw AlreadySetException
         }
+        server.addToClientHandlerList(client);
         //Check arguments: are the arguments valid, is the name within requirements, is the name not already used
         if (!checkArguments(server)) {
             client.sendMessage("WARNING The name does not meet the requirements, must use a maximum of 20 lowercase letters");
@@ -30,7 +31,7 @@ public class CommandPLAYER implements Command {
         }
         client.setClientName(name);
         server.broadcastToAll("CHAT [Player " + name + " has entered]");
-        client.sendMessage("CHAT Current players:\n" + server.getClientList());
+        client.sendMessage("CHAT Current players:" + server.getClientList());
     }
 
     @Override

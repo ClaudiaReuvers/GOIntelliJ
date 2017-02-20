@@ -51,7 +51,7 @@ public class Server {
     public String getClientList() {
         String clientNames = "";
         for (ClientHandler clients : listClientHandlers) {
-            clientNames += "CHAT " + clients.getClientName() + "\n";
+            clientNames += "\nCHAT " + clients.getClientName();
         }
         return clientNames;
     }
@@ -98,7 +98,7 @@ public class Server {
             try {
                 Socket sock = ss.accept();
                 ClientHandler client = new ClientHandler(this, sock);
-                addToClientHandlerList(client);
+//                addToClientHandlerList(client);
                 client.start();
             } catch(IOException e) {
 

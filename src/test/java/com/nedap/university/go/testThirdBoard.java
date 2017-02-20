@@ -17,7 +17,7 @@ public class testThirdBoard {
 	
 	@Before
 	public void setUp() {
-		board = new Board(9);
+		board = new Board(9, false);
 	}
 	
 	@Test
@@ -30,7 +30,7 @@ public class testThirdBoard {
 		assertEquals(2, board.getField(0, 0).liberty());
 		assertEquals(3, board.getField(5, 0).liberty());
 		assertEquals(4, board.getField(1, 1).liberty());
-		Board board19 = new Board(19);
+		Board board19 = new Board(19, false);
 		assertEquals(19, board19.getDimension());
 		assertEquals(StoneState.EMPTY, board19.getField(0, 0).getState());
 		assertEquals(StoneState.EMPTY, board19.getField(18, 18).getState());

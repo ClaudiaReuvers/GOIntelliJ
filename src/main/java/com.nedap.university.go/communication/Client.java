@@ -115,7 +115,7 @@ public class Client extends Thread {
 						command = new ClientCommandEND(txt);
 						break;
 					default :
-						command = new ClientCommandUnknownKeyword();
+						command = new ClientCommandUnknownKeyword(txt);
 				}
 				command.execute(this);
 			}

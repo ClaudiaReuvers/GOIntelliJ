@@ -15,6 +15,7 @@ public class ClientCommandREADY implements ClientCommand {
     public ClientCommandREADY(String line) {
         incomming = line;
     }
+
     @Override
     public void execute(Client client) {
         String args[] = incomming.split(" ");
@@ -24,6 +25,7 @@ public class ClientCommandREADY implements ClientCommand {
         } else if (color.equals("black")){
             client.setColor(false);
         } else {
+            client.print("Does not recognize the color.");
             //TODO
         }
         String opponentName = args[2];
@@ -32,7 +34,7 @@ public class ClientCommandREADY implements ClientCommand {
         Board board = new Board(size, true);
         client.setBoard(board);
         //TODO: is making of a board sufficient?
-        client.print("You start a game with " + opponentName + " at boardsize " + size + ".");
+        client.print("You start a game with " + opponentName + " at boardsize " + size + " and play with color " + color + ".");
     }
 
     @Override
