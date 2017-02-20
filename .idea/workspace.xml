@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3856beec-f887-44f1-9277-2f05dfbcd602" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandUnknownKeyword.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommand.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientCommandCHAT.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandCHAT.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientCommandEND.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandEND.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientCommandINVALID.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandINVALID.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientCommandPASSED.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandPASSED.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientCommandREADY.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandREADY.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientCommandTABLEFLIPPED.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandTABLEFLIPPED.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientCommandVALID.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandVALID.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientCommandWAITING.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandWAITING.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientCommandWARNING.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandWARNING.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Client.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Client.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandREADY.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandREADY.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandUnknownKeyword.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandUnknownKeyword.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Board.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Board.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Game.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Game.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Stone.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Stone.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,19 +35,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientCommandUnknownKeyword.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ClientHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#ClientHandler#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientCommandUnknownKeyword.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandUnknownKeyword.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="360">
+              <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#302#303#0" expanded="true" />
-                <element signature="e#360#361#0" expanded="true" />
-                <element signature="e#413#414#0" expanded="true" />
-                <element signature="e#441#442#0" expanded="true" />
-                <element signature="e#497#498#0" expanded="true" />
-                <element signature="e#524#525#0" expanded="true" />
+                <element signature="e#301#302#0" expanded="true" />
+                <element signature="e#359#360#0" expanded="true" />
+                <element signature="e#412#413#0" expanded="true" />
+                <element signature="e#440#441#0" expanded="true" />
+                <element signature="e#496#497#0" expanded="true" />
+                <element signature="e#523#524#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,58 +90,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientCommandTABLEFLIPPED.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandTABLEFLIPPED.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding>
-                <element signature="e#319#320#0" expanded="true" />
-                <element signature="e#351#352#0" expanded="true" />
-                <element signature="e#998#999#0" expanded="true" />
-                <element signature="e#1026#1027#0" expanded="true" />
-                <element signature="e#1082#1083#0" expanded="true" />
-                <element signature="e#1109#1110#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientCommandVALID.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandVALID.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#348#349#0" expanded="true" />
-                <element signature="e#380#381#0" expanded="true" />
-                <element signature="e#1016#1017#0" expanded="true" />
-                <element signature="e#1044#1045#0" expanded="true" />
-                <element signature="e#1100#1101#0" expanded="true" />
-                <element signature="e#1127#1128#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientCommandINVALID.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandINVALID.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding>
-                <element signature="e#309#310#0" expanded="true" />
-                <element signature="e#341#342#0" expanded="true" />
-                <element signature="e#1058#1059#0" expanded="true" />
-                <element signature="e#1086#1087#0" expanded="true" />
-                <element signature="e#1142#1143#0" expanded="true" />
-                <element signature="e#1169#1170#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ClientCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommand.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -148,12 +100,39 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientCommandPASSED.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandPASSED.java">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="270">
+              <caret line="22" column="44" lean-forward="true" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="20" column="39" lean-forward="true" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+              <folding>
+                <element signature="e#1761#1806#0" expanded="false" />
+                <element signature="method#clearBoard#0;class#Board#0" expanded="false" />
+                <element signature="method#toString#0;class#Board#0" expanded="false" />
+                <element signature="e#3039#3082#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Stone.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Stone.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="886">
+              <caret line="73" column="33" lean-forward="false" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -161,16 +140,10 @@
       <file leaf-file-name="ClientCommandREADY.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandREADY.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state relative-caret-position="435">
+              <caret line="31" column="44" lean-forward="true" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#348#349#0" expanded="true" />
-                <element signature="e#380#381#0" expanded="true" />
-                <element signature="e#1111#1112#0" expanded="true" />
-                <element signature="e#1139#1140#0" expanded="true" />
-                <element signature="e#1195#1196#0" expanded="true" />
-                <element signature="e#1222#1223#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -197,7 +170,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Stone.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/GUI/GOGUIImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/com.nedap.university.go/test/testThirdChain.java" />
         <option value="$PROJECT_DIR$/GO.iml" />
@@ -212,10 +184,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandPLAYER.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/nedap/university/go/testThirdBoard.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Server.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Board.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandMOVE.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandPASS.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Game.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandCHAT.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandCHATServer.java" />
@@ -238,6 +208,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientCommandInvalidCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandInvalidCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandUnknownKeyword.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandREADY.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Game.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Stone.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Board.java" />
       </list>
     </option>
   </component>
@@ -1041,6 +1015,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="161" column="59" lean-forward="false" selection-start-line="161" selection-start-column="59" selection-end-line="161" selection-end-column="59" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1093,14 +1068,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="234" column="18" lean-forward="false" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Stone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1172,29 +1139,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="76" column="14" lean-forward="false" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Command.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="39" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="13" selection-end-column="39" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#ClientHandler#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1221,20 +1170,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1361#1408#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="11" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-          <folding>
-            <element signature="method#addStone#0;class#Board#0" expanded="false" />
-            <element signature="e#1529#1574#0" expanded="false" />
-            <element signature="method#clearBoard#0;class#Board#0" expanded="false" />
-            <element signature="method#toString#0;class#Board#0" expanded="false" />
-            <element signature="e#2807#2850#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1337,22 +1272,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandREADY.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#348#349#0" expanded="true" />
-            <element signature="e#380#381#0" expanded="true" />
-            <element signature="e#1111#1112#0" expanded="true" />
-            <element signature="e#1139#1140#0" expanded="true" />
-            <element signature="e#1195#1196#0" expanded="true" />
-            <element signature="e#1222#1223#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandTABLEFLIPPED.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1426,16 +1345,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandUnknownKeyword.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="360">
+          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#302#303#0" expanded="true" />
-            <element signature="e#360#361#0" expanded="true" />
-            <element signature="e#413#414#0" expanded="true" />
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#497#498#0" expanded="true" />
-            <element signature="e#524#525#0" expanded="true" />
+            <element signature="e#301#302#0" expanded="true" />
+            <element signature="e#359#360#0" expanded="true" />
+            <element signature="e#412#413#0" expanded="true" />
+            <element signature="e#440#441#0" expanded="true" />
+            <element signature="e#496#497#0" expanded="true" />
+            <element signature="e#523#524#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#ClientHandler#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandREADY.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="31" column="44" lean-forward="true" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="20" column="39" lean-forward="true" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+          <folding>
+            <element signature="e#1761#1806#0" expanded="false" />
+            <element signature="method#clearBoard#0;class#Board#0" expanded="false" />
+            <element signature="method#toString#0;class#Board#0" expanded="false" />
+            <element signature="e#3039#3082#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="22" column="44" lean-forward="true" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/game/Stone.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="886">
+          <caret line="73" column="33" lean-forward="false" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

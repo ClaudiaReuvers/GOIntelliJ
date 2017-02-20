@@ -1,5 +1,7 @@
 package com.nedap.university.go.game;
 
+import com.nedap.university.go.GUI.GoGUIIntegrator;
+
 import java.util.ArrayList;
 
 public class Stone {
@@ -8,6 +10,8 @@ public class Stone {
 	private Chain chain;
 	private ArrayList<Stone> neighbour;
 	private int max = 4;
+	private int x;
+	private int y;
 	
 	//Constructor
 	public Stone() {
@@ -45,7 +49,14 @@ public class Stone {
 			stones.setEmpty();
 		}
 	}
-	
+
+	public void remove(GoGUIIntegrator GUI) {
+		for (Stone stones : chain.getChain()) {
+			stones.setEmpty();
+			GUI.removeStone(x, y);
+		}
+	}
+
 	public void setColor(boolean white) {
 		if (white) {
 			this.color = StoneState.WHITE;
@@ -53,7 +64,12 @@ public class Stone {
 			this.color = StoneState.BLACK;
 		}
 	}
-	
+
+	public void setCoordinates(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
 	public void join(Stone stone) {
 		chain.join(stone.getChain());
 		stone.addChain(chain);

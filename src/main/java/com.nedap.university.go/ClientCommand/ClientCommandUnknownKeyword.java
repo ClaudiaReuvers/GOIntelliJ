@@ -9,7 +9,6 @@ import java.util.List;
  */
 public class ClientCommandUnknownKeyword implements ClientCommand {
 
-
     @Override
     public void execute(Client client) {
         client.print("Keyword is not recognized.");

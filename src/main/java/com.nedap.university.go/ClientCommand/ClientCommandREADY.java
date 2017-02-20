@@ -29,7 +29,7 @@ public class ClientCommandREADY implements ClientCommand {
         String opponentName = args[2];
         client.setOpponent(opponentName);
         int size = Integer.parseInt(args[3]);
-        Board board = new Board(size);
+        Board board = new Board(size, true);
         client.setBoard(board);
         //TODO: is making of a board sufficient?
         client.print("You start a game with " + opponentName + " at boardsize " + size + ".");

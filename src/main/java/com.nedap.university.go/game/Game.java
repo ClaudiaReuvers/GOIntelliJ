@@ -20,7 +20,7 @@ public class Game {
 		this.client2 = client2;
 		listClients.add(client1);
 		listClients.add(client2);
-		board = new Board(dimension);
+		board = new Board(dimension, false);
 		this.turn = false;
 		this.pass = false;
 	}

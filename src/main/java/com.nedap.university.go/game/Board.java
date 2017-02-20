@@ -3,22 +3,25 @@ package com.nedap.university.go.game;
 //import GUI.*;
 //TODO: also insert GUI?
 
+import com.nedap.university.go.GUI.GoGUIIntegrator;
+
 public class Board {
 
 	private int DIM;
 	private Stone[] fields;
-//	private GoGUIIntegrator GUI;
+	private boolean useGUI;
+	private GoGUIIntegrator GUI;
 	
-	public Board(int boardSize) {
+	public Board(int boardSize, boolean GUI) {
 		DIM = boardSize;
 		fields = new Stone[DIM * DIM];
 		for (int i = 0; i < DIM * DIM; i++) {
 			fields[i] = new Stone();
-			
 		}
 		for (int x = 0; x < DIM; x++) {
 			for (int y = 0; y < DIM; y++) {
 				Stone stone = getField(x, y);
+				stone.setCoordinates(x, y);
 				if (!isOnTopBorder(x, y)) {
 					stone.addNeighbour(getField(x, y -1));
 				}
@@ -34,8 +37,11 @@ public class Board {
 				stone.addThisToChain();
 			}
 		}
-//		GUI = new GoGUIIntegrator(true, true, DIM);
-//		GUI.startGUI();
+		useGUI = GUI;
+		if (useGUI) {
+			this.GUI = new GoGUIIntegrator(true, true, DIM);
+			this.GUI.startGUI();
+		}
 	}
 	
 	public void addStone(int x, int y, boolean white) {
@@ -44,7 +50,6 @@ public class Board {
 		for (Stone surrounding : stone.getNeighbour()) {
 			if (surrounding.getState() == stone.getState()) {
 				stone.join(surrounding);
-				
 			}
 			if (surrounding.getState() == stone.otherColor()) {
 				if (surrounding.liberty() == 0) {
@@ -53,11 +58,17 @@ public class Board {
 			}
 		}
 		if (stone.liberty() == 0) {
-			stone.remove();
+			if (useGUI) {
+				stone.remove(GUI);
+			} else {
+				stone.remove();
+			}
 		}
-//		GUI.addStone(x, y, white);
+		if (useGUI) {
+			GUI.addStone(x, y, white);
+		}
 	}
-	
+
 	public Stone getField(int x, int y) {
 		return fields[coordinatesToIndex(x, y)];
 	}
