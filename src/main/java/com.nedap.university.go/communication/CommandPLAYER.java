@@ -32,6 +32,7 @@ public class CommandPLAYER implements Command {
         client.setClientName(name);
         server.broadcastToAll("CHAT [Player " + name + " has entered]");
         client.sendMessage("CHAT Current players:" + server.getClientList());
+        System.out.println("[Player " + name + " has entered]");
     }
 
     @Override

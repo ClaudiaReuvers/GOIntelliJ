@@ -58,15 +58,24 @@ public class Board {
 			}
 		}
 		if (stone.liberty() == 0) {
-			if (useGUI) {
-				stone.remove(GUI);
-			} else {
 				stone.remove();
-			}
 		}
 		if (useGUI) {
-			GUI.addStone(x, y, white);
+			buildGUI();
 		}
+	}
+
+	private void buildGUI() {
+		GUI.clearBoard();
+		for (int yGUI = 0; yGUI < DIM; yGUI++) {
+            for (int xGUI = 0; xGUI < DIM; xGUI++) {
+                if (getField(xGUI, yGUI).getState() == StoneState.BLACK) {
+                    GUI.addStone(xGUI, yGUI, false);
+                } else if (getField(xGUI, yGUI).getState() == StoneState.WHITE) {
+                    GUI.addStone(xGUI, yGUI, true);
+                }
+            }
+        }
 	}
 
 	public Stone getField(int x, int y) {
@@ -127,9 +136,9 @@ public class Board {
 		for (int i = 0; i < DIM; i++) {
 			for (int j = 0; j < DIM; j++) {
 				String stone = " ";
-				if (getField(i, j).getState() == StoneState.BLACK) {
+				if (getField(j, i).getState() == StoneState.BLACK) {
 					stone = "B";
-				} else if (getField(i, j).getState() == StoneState.WHITE){
+				} else if (getField(j, i).getState() == StoneState.WHITE){
 					stone = "W";
 				} else {
 					stone = ".";
