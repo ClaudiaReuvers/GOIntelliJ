@@ -25,14 +25,17 @@ public class CommandGO implements Command{
             client.sendMessage("WARNING Wrong arguments"); //TODO: adapt
             return;
         }
+        client.setSize(size);
         if (server.isMatch(size)) {
             ClientHandler opponent = server.getMatch(size);
 //            client.sendMessage("READY black " + opponent.getClientName() + " " + size);
 //            opponent.sendMessage("READY white " + client.getClientName() + " " + size);
-            server.setGame(client, opponent, size);
+            server.setGame(opponent, client, size);
+            server.log("Player " + opponent.getClientName() + " and " + client.getClientName() + " start a game at boardsize " + size + ".");
         } else {
             server.addToWaitingList(size, client);
             client.sendMessage("WAITING");
+            server.log("Player " + client.getClientName() + " is put on a waitinglist for a game on boardize " + size + ".");
         }
 
     }

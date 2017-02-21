@@ -10,10 +10,11 @@ import java.net.Socket;
  */
 public class ClientHandler extends Thread {
     private Server server;
+    private Socket sock;
     private BufferedReader in;
     private BufferedWriter out;
     private String name = "";
-    private int size;
+    private int size = -1;
     private Game game;
     private ClientHandler opponent;
     private boolean color;
@@ -35,6 +36,7 @@ public class ClientHandler extends Thread {
 
     public ClientHandler(Server server, Socket sock) throws IOException {
         this.server = server;
+        this.sock = sock;
         this.in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
         this.out = new BufferedWriter(new OutputStreamWriter(sock.getOutputStream()));
     }
@@ -45,11 +47,19 @@ public class ClientHandler extends Thread {
             out.newLine();
             out.flush();
         } catch (IOException e) {
+            System.out.println("IOException at sendMessage");
             //TODO
         }
     }
 
     public void run() {
+//        while(sock.isConnected()) {
+            readCommand();
+//        }
+//        server.log("Client " + name + " logged out");
+    }
+
+    private void readCommand() {
         try {
             String line;
             while ((line = in.readLine()) != null) {
@@ -65,7 +75,7 @@ public class ClientHandler extends Thread {
                         }
                         break;
                     case GO :
-                        if (size == 0) {
+                        if (size == -1) {
                             Command GO = new CommandGO(line);
                             GO.execute(server, this);
                         } else {
@@ -100,11 +110,30 @@ public class ClientHandler extends Thread {
                         //TODO: invalid commando; show help menu?
                 }
             }
+            shutdown();
+
         } catch (IOException e) {
             System.out.println("IOException at run of CH");
                 //TODO
         }
     }
+
+    private void shutdown() {
+        server.log("Client " + name + ": connection lost...");
+        server.removeFromClientHandlerList(this);
+        server.removeFromPreGameList(this);
+        server.removeFromWaitingList(size);
+        try {
+            out.flush();
+            out.close();
+            in.close();
+            sock.close();
+        } catch (IOException e) {
+        }
+        server.log("Client " + name + " removed.");
+    }
+
+
 
     public void setSize(int size) {
         this.size = size;

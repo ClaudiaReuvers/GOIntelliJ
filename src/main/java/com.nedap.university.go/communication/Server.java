@@ -31,11 +31,13 @@ public class Server {
     private int port;
     private List<ClientHandler> listClientHandlers;
     private List<Game> listGames;
+    private List<ClientHandler> listPreGame;
     private Map<Integer, ClientHandler> listWaiting;
 
     public Server(int port) {
         this.port = port;
         listClientHandlers = new LinkedList<>();
+        listPreGame = new LinkedList<>();
         listGames = new LinkedList<>();
         listWaiting = new HashMap<>();
     }
@@ -48,6 +50,7 @@ public class Server {
     public List<ClientHandler> getCHList() {
         return listClientHandlers;
     }
+
     public String getClientList() {
         String clientNames = "";
         for (ClientHandler clients : listClientHandlers) {
@@ -56,8 +59,20 @@ public class Server {
         return clientNames;
     }
 
+    public String getPreGameList() {
+        String clientNames= "";
+        for (ClientHandler clients : listPreGame) {
+            clientNames += "\nCHAT " + clients.getClientName();
+            if (clients.getClientSize() != -1) {
+                clientNames += " (" + clients.getClientSize() + ")";
+            }
+        }
+        return clientNames;
+    }
+
     public void removeFromClientHandlerList(ClientHandler client) {
         listClientHandlers.remove(client);
+        log(client.getClientName() + " removed from CH list");
     }
 
     public void addToWaitingList(int size, ClientHandler client) {
@@ -66,6 +81,14 @@ public class Server {
 
     public void removeFromWaitingList(int size) {
         listWaiting.remove(size);
+    }
+
+    public void addToPreGameList(ClientHandler client) {
+        listPreGame.add(client);
+    }
+
+    public void removeFromPreGameList(ClientHandler client) {
+        listPreGame.remove(client);
     }
 
     public boolean isMatch(int size) {
@@ -94,16 +117,24 @@ public class Server {
             System.out.println("Could not create a ServerSocket");
         }
 
-        while(true) {
+        while(!ss.isClosed()) {
             try {
                 Socket sock = ss.accept();
                 ClientHandler client = new ClientHandler(this, sock);
 //                addToClientHandlerList(client);
                 client.start();
+                log("A client has logged in.");
             } catch(IOException e) {
+                System.out.println("IOException at run from server");
 
             }
         }
+        broadcastToAll("Server is down.");
+        log("Server stopped...=(");
+    }
+
+    public void log(String msg) {
+        System.out.println(msg);
     }
 
     public boolean checkName(String name) {
@@ -147,6 +178,13 @@ public class Server {
         CH1.setGame(game);
         CH2.setGame(game);
         addToGamesList(game);
+        removeFromPreGameList(CH1);
+        removeFromPreGameList(CH2);
+        String logmsg = "Current people wating for a game: ";
+        for (ClientHandler clients : listPreGame) {
+            logmsg += "\n" + clients.getClientName() + "(" + clients.getClientSize() + ")";
+        }
+        log(logmsg);
 //        game.start();
     }
 

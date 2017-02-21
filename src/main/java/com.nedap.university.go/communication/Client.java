@@ -80,6 +80,15 @@ public class Client extends Thread {
 	}
 	
 	public void run() {
+		while (sock.isConnected()) {
+			readSocketInput();
+		}
+		print("Socket no longer connected");
+		sendMessage("Socket of client no longer connected");
+		//TODO
+	}
+
+	private void readSocketInput() {
 		String txt;
 		try {
 			while ((txt = in.readLine()) != null) {
@@ -119,10 +128,21 @@ public class Client extends Thread {
 				}
 				command.execute(this);
 			}
+			shutdown();
 		} catch (IOException e) {
-			print("IOException at run");
-			//TODO
 		}
+	}
+
+	private void shutdown() {
+		print("Server is down.\nClosing the connection.");
+		try {
+			out.flush();
+			out.close();
+			in.close();
+			sock.close();
+		} catch (IOException e) {
+		}
+		print("Connection closed.");
 	}
 
 	public void setColor(boolean white) {
