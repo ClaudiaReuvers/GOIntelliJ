@@ -274,11 +274,8 @@ public class testThirdBoard {
 		board.addStone(0, 1, true);
 		board.addStone(1, 1, false);
 		board.addStone(4, 4, true);
-//		board.addStone(1, 2, false);
 		board.addStone(4, 0, true);
 		board.addStone(0, 2, false);
-
-//		assertEquals(7, board.getField(1, 1).getChain().getChainNeighbours().size());
 		List<Integer> score = board.getScore();
 		assertEquals(5, score.get(0).intValue());
 		assertEquals(2, score.get(1).intValue());

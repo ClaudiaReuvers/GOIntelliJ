@@ -14,6 +14,7 @@ public class Game {
 	private Board board;
 	private boolean turn; //true: turn of white; false; turn of black
     private boolean pass;
+    private List<String> previousBoards;
 	
 	public Game(ClientHandler client1, ClientHandler client2, int dimension) {
 		this.client1 = client1;
@@ -23,6 +24,7 @@ public class Game {
 		board = new Board(dimension, false);
 		this.turn = false;
 		this.pass = false;
+		previousBoards = new LinkedList<>();
 	}
 	
 //	public String[] getClientNames() {
@@ -75,7 +77,20 @@ public class Game {
 
     public List<Integer> endGame() {
 		return board.getScore();
-
 	    //TODO
     }
+
+    public boolean testNextMove(int x, int y, boolean white) {
+		Board boardCopy = board.deepCopy();
+		boardCopy.addStone(x, y, white);
+		if (previousBoards.isEmpty()) {
+			return true;
+		} else {
+			return !previousBoards.contains(boardCopy.toString());
+		}
+	}
+
+	public boolean saveGameState() {
+		return previousBoards.add(toString());
+	}
 }

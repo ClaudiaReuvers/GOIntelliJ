@@ -168,13 +168,13 @@ public class Server {
         return true;
     }
 
-    public boolean isKo(Game game, int x, int y) {
+    public boolean isKo(Game game, int x, int y, boolean white) {
         //TODO
-        return true;
+        return game.testNextMove(x, y, white);
     }
 
-    public boolean isValidMove(Game game, int x, int y) {
-        return (isOnBoard(game, x, y) && isEmptyField(game, x, y) && isKo(game, x, y));
+    public boolean isValidMove(Game game, int x, int y, boolean white) {
+        return (isOnBoard(game, x, y) && isEmptyField(game, x, y) && isKo(game, x, y, white));
     }
 
     public boolean checkClientHandlerInList(ClientHandler client) {

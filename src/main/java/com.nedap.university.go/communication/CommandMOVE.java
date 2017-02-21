@@ -33,12 +33,13 @@ public class CommandMOVE implements Command {
         }
         //Check if the move is valid
         boolean white = client.getColor();
-        if (server.isValidMove(game, x, y)) {
+        if (server.isValidMove(game, x, y, white)) {
             game.addStoneToBoard(x, y, white);
             String msg = "VALID " + booleanToColor(white) + " " + x + " " + y;
             server.broadcastToGame(game, msg);
             game.resetPass();
             game.alternateTurn();
+            game.saveGameState();
         } else {
             String reason;
             if (!server.isOnBoard(game, x, y)) {

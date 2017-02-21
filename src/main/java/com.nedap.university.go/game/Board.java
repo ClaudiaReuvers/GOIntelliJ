@@ -222,6 +222,21 @@ public class Board {
 		return score;
 	}
 
+	public Board deepCopy() {
+		Board boardCopy = new Board(DIM, useGUI);
+		for (int x = 0; x < DIM; x++) {
+			for (int y = 0; y < DIM; y++) {
+				StoneState state = getField(x, y).getState();
+				if (state == StoneState.BLACK) {
+					boardCopy.addStone(x, y, false);
+				} else if (state == StoneState.WHITE) {
+					boardCopy.addStone(x, y, true);
+				}
+			}
+		}
+		return boardCopy;
+	}
+
 //	public static void main(String[] args) {
 //		Board board = new Board(9);
 //		board.addStone(1, 1, true);
