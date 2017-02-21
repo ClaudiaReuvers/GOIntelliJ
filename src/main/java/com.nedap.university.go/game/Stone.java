@@ -8,6 +8,7 @@ public class Stone {
 
 	private StoneState color;
 	private Chain chain;
+	private Chain emptyChain;
 	private ArrayList<Stone> neighbour;
 	private int max = 4;
 	private int x;
@@ -17,22 +18,33 @@ public class Stone {
 	public Stone() {
 		this.color = StoneState.EMPTY;
 		this.chain = new Chain();
+		this.emptyChain = new Chain();
 		this.neighbour = new ArrayList<>();
 	}
 	
 	public void setEmpty() {
 		this.color = StoneState.EMPTY;
 		this.chain = new Chain();
+		this.emptyChain = new Chain();
 		addThisToChain();
+		addThisToEmptyChain();
 	}
 	
 	//Methods
 	public void addThisToChain() {
 		chain.addStone(this);
 	}
+
+	public void addThisToEmptyChain() {
+		emptyChain.addStone(this);
+	}
 	
 	public void addChain(Chain chain) {
 		this.chain = chain;
+	}
+
+	public void addEmptyChain(Chain emptyChain) {
+		this.emptyChain = emptyChain;
 	}
 	
 	public void addNeighbour(Stone stone) {
@@ -47,13 +59,6 @@ public class Stone {
 	public void remove() {
 		for (Stone stones : chain.getChain()) {
 			stones.setEmpty();
-		}
-	}
-
-	public void remove(GoGUIIntegrator GUI) {
-		for (Stone stones : chain.getChain()) {
-			stones.setEmpty();
-			GUI.removeStone(x, y);
 		}
 	}
 
@@ -74,6 +79,11 @@ public class Stone {
 		chain.join(stone.getChain());
 		stone.addChain(chain);
 	}
+
+	public void joinEmptyChain(Stone stone) {
+		emptyChain.join(stone.getEmptyChain());
+		stone.addEmptyChain(emptyChain);
+	}
 	
 	//Queries
 	public StoneState getState() {
@@ -93,6 +103,10 @@ public class Stone {
 	public Chain getChain() {
 		return chain;
 	}
+
+	public Chain getEmptyChain() {
+		return emptyChain;
+	}
 	
 	public ArrayList<Stone> getNeighbour() {
 		return neighbour;
@@ -105,4 +119,13 @@ public class Stone {
 	public int liberty() {
 		return chain.calculateLibertyChain();
 	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
 }

@@ -3,9 +3,12 @@ package com.nedap.university.go;
 //import game.thirdStone;
 
 import com.nedap.university.go.game.Board;
+import com.nedap.university.go.game.Stone;
 import com.nedap.university.go.game.StoneState;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -17,7 +20,7 @@ public class testThirdBoard {
 	
 	@Before
 	public void setUp() {
-		board = new Board(9, false);
+		board = new Board(9, true);
 	}
 	
 	@Test
@@ -262,5 +265,26 @@ public class testThirdBoard {
 		board.addStone(4, 3, false);
 		board.addStone(4, 4, false);
 		assertTrue(board.getField(3, 3).isEmpty());
+	}
+
+	@Test
+	public void testScore() {
+		board.addStone(0, 0, true);
+		board.addStone(1, 0, false);
+		board.addStone(0, 1, true);
+		board.addStone(1, 1, false);
+		board.addStone(4, 4, true);
+//		board.addStone(1, 2, false);
+		board.addStone(4, 0, true);
+		board.addStone(0, 2, false);
+
+//		assertEquals(7, board.getField(1, 1).getChain().getChainNeighbours().size());
+		List<Integer> score = board.getScore();
+		assertEquals(5, score.get(0).intValue());
+		assertEquals(2, score.get(1).intValue());
+		board.addStone(1, 2, false);
+		List<Integer> score2 = board.getScore();
+		assertEquals(6, score2.get(0).intValue());
+		assertEquals(2, score2.get(1).intValue());
 	}
 }

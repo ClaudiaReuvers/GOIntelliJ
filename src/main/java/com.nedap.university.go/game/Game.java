@@ -73,7 +73,8 @@ public class Game {
 	    return pass;
     }
 
-    public void endGame() {
+    public List<Integer> endGame() {
+		return board.getScore();
 
 	    //TODO
     }

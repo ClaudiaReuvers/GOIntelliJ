@@ -1,6 +1,6 @@
 package com.nedap.university.go.game;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Chain {
 
@@ -34,6 +34,12 @@ public class Chain {
 	
 	public int calculateLibertyChain() {
 		ArrayList<Stone> empty = new ArrayList<>();
+//		for (Stone neighbours : getNeighbours()) {
+//			if (neighbours.isEmpty()) {
+//				empty.add(neighbours);
+//			}
+//		}
+
 		for (Stone stones : chain) {
 			for (Stone emptyStones : stones.getNeighbour()) {
 				if (emptyStones.isEmpty() && !empty.contains(emptyStones)) {
@@ -42,17 +48,22 @@ public class Chain {
 			}
 		}
 		return empty.size();
-//		for (thirdStone emptyStone : stone.getNeighbour()) {
-//			if (!empty.contains(emptyStone)) {
-//				empty.add(emptyStone);
-//			}
-//		}
+	}
+
+	public Set<Stone> getChainNeighbours() {
+		Set<Stone> neighbours = new HashSet<>();
+		for (Stone stones : chain) {
+			for (Stone neighbour : stones.getNeighbour()) {
+				neighbours.add(neighbour);
+			}
+		}
+		neighbours.removeAll(chain);
+		return neighbours;
 	}
 	
 //	public int getLiberty() {
 //		return empty.size();
 //	}
-
 
 	public ArrayList<Stone> getChain() {
 		return chain;

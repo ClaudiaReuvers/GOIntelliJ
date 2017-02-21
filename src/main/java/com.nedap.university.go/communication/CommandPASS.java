@@ -29,10 +29,11 @@ public class CommandPASS implements Command {
         }
         server.broadcastToGame(game, "PASSED " + booleanToColor(white));
         if (game.isPassed()) {
-            game.endGame();
-            server.broadcastToGame(game, "END 1 1");
+            List<Integer> score = game.endGame();
+            server.broadcastToGame(game, "END " + score.get(0) + " " + score.get(1));
         }
         game.setPass();
+        game.alternateTurn();
     }
 
     @Override

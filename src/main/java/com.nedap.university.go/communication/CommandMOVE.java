@@ -50,8 +50,8 @@ public class CommandMOVE implements Command {
             }
             String msg = "INVALID " + booleanToColor(white) + " " + reason;
             server.broadcastToGame(game, msg);
-            game.endGame();
-            server.broadcastToGame(game, "END 4 2");
+            List<Integer> score = game.endGame();
+            server.broadcastToGame(game, "END " + score.get(0) + " " + score.get(1));
         }
     }
 

@@ -5,6 +5,11 @@ package com.nedap.university.go.game;
 
 import com.nedap.university.go.GUI.GoGUIIntegrator;
 
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
 public class Board {
 
 	private int DIM;
@@ -35,6 +40,7 @@ public class Board {
 					stone.addNeighbour(getField(x - 1, y));
 				}
 				stone.addThisToChain();
+				stone.addThisToEmptyChain();
 			}
 		}
 		useGUI = GUI;
@@ -150,6 +156,70 @@ public class Board {
 			}
 		}
 		return board;
+	}
+
+	public List<Integer> getScore() {
+		//Calculate score on taken fields and make chains of empty fields
+		int scoreBlack = 0;
+		int scoreWhite = 0;
+		Set<Chain> emptyChains = new HashSet<>();
+		for (int x = 0; x < DIM; x++) {
+			for (int y = 0; y < DIM; y++) {
+				Stone stone = getField(x, y);
+				StoneState state = stone.getState();
+				if (state == StoneState.BLACK) {
+					scoreBlack++;
+				} else if (state == StoneState.WHITE) {
+					scoreWhite++;
+				} else {
+					for (Stone neighbour : stone.getNeighbour()) {
+						if (neighbour.getState() == StoneState.EMPTY) {
+							stone.joinEmptyChain(neighbour);
+						}
+					}
+					emptyChains.add(stone.getEmptyChain());
+				}
+			}
+		}
+		//Calculate score on empty chains
+		List<Integer> scoreEmpty = getScoreEmptyChains(emptyChains);
+
+		//Create output
+		List<Integer> score = new LinkedList<>();
+		score.add(scoreBlack + scoreEmpty.get(0));
+		score.add(scoreWhite + scoreEmpty.get(1));
+		return score;
+	}
+
+	private List<Integer> getScoreEmptyChains(Set<Chain> emptyChains) {
+		int scoreBlack = 0;
+		int scoreWhite = 0;
+		for (Chain empty : emptyChains) {
+			boolean black = false;
+			boolean white = false;
+			for (Stone neighbours : empty.getChainNeighbours()) {
+				if (neighbours.getState() == StoneState.BLACK) {
+					black = true;
+				} else {
+					white = true;
+				}
+			}
+			System.out.println("Chain black: " + black + " (max. " + empty.getChainNeighbours().size() + ")");
+			System.out.println("Chain white: " + white + " (max. " + empty.getChainNeighbours().size() + ")");
+			if (!black) {
+				System.out.print(black + " added to blackscore " + scoreBlack);
+				scoreBlack += empty.getChain().size();
+				System.out.println(". Score is now " + scoreBlack);
+			} else if (!white) {
+				System.out.print(white + " added to whitescore " + scoreWhite);
+				scoreBlack += empty.getChain().size();
+				System.out.println(". Score is now " + scoreWhite);
+			}
+		}
+		List<Integer> score = new LinkedList<>();
+		score.add(scoreBlack);
+		score.add(scoreWhite);
+		return score;
 	}
 
 //	public static void main(String[] args) {

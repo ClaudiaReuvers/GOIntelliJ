@@ -24,7 +24,7 @@ public class CommandTABLEFLIP implements Command {
         }
         server.broadcastToGame(game, "TABLEFLIPPED " + booleanToColor(white));
         server.broadcastToGame(game, "END -1 -1");
-        game.endGame();
+//        game.endGame();
     }
 
     @Override
