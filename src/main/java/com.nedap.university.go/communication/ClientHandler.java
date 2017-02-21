@@ -101,6 +101,7 @@ public class ClientHandler extends Thread {
                 }
             }
         } catch (IOException e) {
+            System.out.println("IOException at run of CH");
                 //TODO
         }
     }

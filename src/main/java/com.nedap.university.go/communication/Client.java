@@ -120,6 +120,7 @@ public class Client extends Thread {
 				command.execute(this);
 			}
 		} catch (IOException e) {
+			print("IOException at run");
 			//TODO
 		}
 	}
@@ -146,6 +147,7 @@ public class Client extends Thread {
 			out.newLine();
 			out.flush();
 		} catch (IOException e) {
+			print("IOException at sendMessage");
 			//TODO
 		}
 	}
@@ -160,6 +162,7 @@ public class Client extends Thread {
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 			antw = in.readLine();
 		} catch (IOException e) {
+			System.out.println("IOException at readString");
 			//TODO
 		}
 		return (antw == null) ? "" : antw;
