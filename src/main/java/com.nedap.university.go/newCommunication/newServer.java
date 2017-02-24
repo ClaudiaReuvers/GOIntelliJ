@@ -32,7 +32,7 @@ public class newServer {
 
     private int port;
     private List<newClientHandler> listClientHandlers;
-    private List<tempGame> listGames;
+//    private List<tempGame> listGames;
     private List<newClientHandler> listPreGame;
     private Map<Integer, newClientHandler> listWaiting;
 
@@ -40,7 +40,7 @@ public class newServer {
         this.port = port;
         listClientHandlers = new LinkedList<>();
         listPreGame = new LinkedList<>();
-        listGames = new LinkedList<>();
+//        listGames = new LinkedList<>();
         listWaiting = new HashMap<>();
     }
 
@@ -112,13 +112,13 @@ public class newServer {
         CH2.setGame(CH1, true, game);
         CH1.sendMessage(READY + " black " + CH2.getClientName() + " " + size);
         CH2.sendMessage(READY + " white " + CH1.getClientName() + " " + size);
-        addToGamesList(game);
+//        addToGamesList(game);
         log(CH1.getClientName() + " and " + CH2.getClientName() + " start a game at boardsize " + size + ".");
     }
 
-    public void addToGamesList(tempGame game) {
-        listGames.add(game);
-    }
+//    public void addToGamesList(tempGame game) {
+//        listGames.add(game);
+//    }
 
     public void broadcastToWaiting(String msg) {
         for (newClientHandler clients : listClientHandlers) {

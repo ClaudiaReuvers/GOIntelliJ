@@ -46,6 +46,7 @@ public class Board {
 		useGUI = GUI;
 		if (useGUI) {
 			this.GUI = new GoGUIIntegrator(true, true, DIM);
+//			this.GUI.setBoardSize(DIM);
 			this.GUI.startGUI();
 		}
 	}
@@ -110,6 +111,9 @@ public class Board {
 			for (int y = 0; y < DIM; y++) {
 				this.getField(x, y).setEmpty();
 			}
+		}
+		if (useGUI) {
+			GUI.clearBoard();
 		}
 	}
 	

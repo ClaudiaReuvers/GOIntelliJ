@@ -23,8 +23,9 @@ public class CommandPASS implements Command {
         }
         client.getGame().broadcast("PASSED " + booleanToColor(client.getColor()));
         if (client.getGame().isPassed()) {
-            List<Integer> score = client.getGame().endGame();
+            List<Integer> score = client.getGame().getScore();
             client.getGame().broadcast("END " + score.get(0) + " " + score.get(1));
+            client.getGame().endGame();
         }
         client.getGame().setPass();
         client.getGame().alternateTurn();

@@ -92,15 +92,14 @@ public class newClientHandler extends Thread {
                         command = new CommandCHAT(line);
                         break;
                     default :
-                        command = new CommandGO(line);
-                        sendWARNING("Not a valid commando");
+                        command = new CommandUnknownKeyword();
                         break;
-                        //TODO: invalid commando; show help menu?
                 }
                 try {
                     command.execute(this);
                 } catch (InvalidCommandException e) {
                     sendWARNING(e.getMessage());
+                    //TODO: show help menu?
                 }
             }
             shutdown();

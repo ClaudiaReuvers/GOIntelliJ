@@ -40,10 +40,10 @@ public class CommandMOVE implements Command {
                 reason = "This move results in KO.";
             }
             game.broadcast("INVALID " + booleanToColor(client.getColor()) + " " + reason);
-            List<Integer> score = game.endGame();
+            List<Integer> score = game.getScore();
             game.broadcast("END " + score.get(0) + " " + score.get(1));
+            game.endGame();
         }
-
     }
 
     private void checkUse(newClientHandler client) throws InvalidCommandException {

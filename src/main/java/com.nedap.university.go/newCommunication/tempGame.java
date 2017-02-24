@@ -42,13 +42,13 @@ public class tempGame {
 //		return names;
 //	}
 
-    public int getNrClients() {
-        return listClients.size();
-    }
+//    public int getNrClients() {
+//        return listClients.size();
+//    }
 
-    public List<newClientHandler> getClients() {
-        return listClients;
-    }
+//    public List<newClientHandler> getClients() {
+//        return listClients;
+//    }
 
     public Board getBoard() {
         return board;
@@ -82,9 +82,15 @@ public class tempGame {
         return pass;
     }
 
-    public List<Integer> endGame() {
+    public List<Integer> getScore() {
         return board.getScore();
-        //TODO
+    }
+
+    public void endGame() {
+        board.clearBoard();
+        for (newClientHandler clients : listClients) {
+            clients.setStatus(CHState.GOTNAME);
+        }
     }
 
     public boolean testNextMove(int x, int y, boolean white) {

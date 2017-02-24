@@ -21,7 +21,7 @@ public class CommandTABLEFLIP implements Command {
         }
         client.getGame().broadcast("TABLEFLIPPED " + booleanToColor(client.getColor()));
         client.getGame().broadcast("END -1 -1");
-        //TODO: end the game
+        client.getGame().endGame();
     }
 
     private void checkUse(newClientHandler client) throws InvalidCommandException {
