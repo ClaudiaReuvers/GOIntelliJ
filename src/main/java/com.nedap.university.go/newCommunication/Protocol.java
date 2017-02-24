@@ -106,6 +106,8 @@ public class Protocol {
                     throw new InvalidCommandException("The third argument should be an integer.");
                 }
                 break;
+            case "PASS" :
+                checkArgumentLength(args, 1);
         }
     }
 

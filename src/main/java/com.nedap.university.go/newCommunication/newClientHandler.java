@@ -103,6 +103,7 @@ public class newClientHandler extends Thread {
 //                        move.execute(server, this);
                         break;
                     case PASS :
+                        command = new CommandPASS(line);
 //                        Command pass = new CommandPASS(line);
 //                        pass.execute(server, this);
                         break;
