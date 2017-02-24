@@ -15,14 +15,14 @@ public class CommandPLAYER implements Command {
     public void execute(newClientHandler client) throws InvalidCommandException{
         checkUse(client);
         checkArguments();
-
-        //TODO: check if valid command
+        //TODO: check if valid command (double name)
+        client.setClientName(args[1]);
         client.setStatus(CHState.GOTNAME);
     }
 
     private void checkUse(newClientHandler client) throws InvalidCommandException {
         if (client.getStatus() != CHState.LOGGEDIN) {
-            throw new InvalidCommandException("You may not use this command at this moment.");
+            throw new InvalidCommandException("You may not use the PLAYER command at this moment.");
         }
     }
 

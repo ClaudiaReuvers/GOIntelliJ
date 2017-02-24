@@ -8,14 +8,14 @@ import java.net.Socket;
 /**
  * Created by claudia.reuvers on 22/02/2017.
  */
-public class newClientHandler {
+public class newClientHandler extends Thread {
 
     private newServer server;
     private Socket sock;
     private BufferedReader in;
     private BufferedWriter out;
     private CHState status;
-    private String name = "";
+    private String clientName = "";
     private int size = -1;
     private Game game;
     private newClientHandler opponent;
@@ -131,6 +131,24 @@ public class newClientHandler {
         sendMessage(WARNING + " " + msg);
     }
 
+    private void shutdown() {
+        server.log("Client " + clientName + ": connection lost...");
+        server.removeFromClientHandlerList(this);
+        server.removeFromPreGameList(this);
+        server.removeFromWaitingList(size);
+        try {
+            out.flush();
+            out.close();
+            in.close();
+            sock.close();
+        } catch (IOException e) {
+        }
+        server.log("Client " + clientName + " removed.");
+    }
+
+    public newServer getServer() {
+        return server;
+    }
 
     public CHState getStatus() {
         return status;
@@ -138,5 +156,42 @@ public class newClientHandler {
 
     public void setStatus(CHState status) {
         this.status = status;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientSize(int size) {
+        this.size = size;
+    }
+
+    public int getClientSize() {
+        return size;
+    }
+
+    public void setOpponent(newClientHandler opponent) {
+        this.opponent = opponent;
+    }
+
+    public newClientHandler getOpponent() {
+        return opponent;
+    }
+
+    public void setColor(boolean color) {
+        this.color = color;
+    }
+
+    public boolean getColor() {
+        return color;
+    }
+
+    public void setGame(newClientHandler opponent, boolean white) {
+        setOpponent(opponent);
+        setColor(white);
     }
 }

@@ -32,8 +32,18 @@ public class Protocol {
         }
     }
 
-    public static boolean checkSize(int size) {
-        return (size >= 5 && size <= 131 && size % 2 == 1);
+    public static int checkSize(String arg) throws InvalidCommandException {
+        int size;
+        try {
+            size = Integer.parseInt(arg);
+        } catch (NumberFormatException e) {
+            throw new InvalidCommandException("The argument of the GO command should be an integer.");
+        }
+        String useSize = "The size should be an uneven number between 5 and 131.";
+        if (size < 5 || size > 131 || size % 2 != 1) {
+            throw new InvalidCommandException(useSize);
+        }
+        return size;
     }
 
     public static boolean isOnBoard(Game game, int x, int y) {
@@ -70,7 +80,7 @@ public class Protocol {
 
     public static void checkArguments(String[] args, int length) throws InvalidCommandException{
         if (args.length != length) {
-            throw new InvalidCommandException("Invalid argument length, command should have " + length + " arguments.");
+            throw new InvalidCommandException("Invalid argument length, command should have " + (length - 1) + " argument(s).");
         }
     }
 }
