@@ -1,6 +1,5 @@
 package com.nedap.university.go.game;
 
-import com.nedap.university.go.communication.Client;
 import com.nedap.university.go.communication.ClientHandler;
 
 import java.util.LinkedList;
