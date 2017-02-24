@@ -14,7 +14,7 @@ public class CommandPLAYER implements Command {
     @Override
     public void execute(newClientHandler client) throws InvalidCommandException{
         checkUse(client);
-        checkArguments();
+        Protocol.checkArguments(args, "PLAYER");
         //TODO: check if valid command (double name)
         client.setClientName(args[1]);
         client.setStatus(CHState.GOTNAME);
@@ -26,8 +26,4 @@ public class CommandPLAYER implements Command {
         }
     }
 
-    private void checkArguments() throws InvalidCommandException {
-        Protocol.checkArgumentLength(args, 2);
-        Protocol.checkName(args[1]);
-    }
 }

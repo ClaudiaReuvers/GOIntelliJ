@@ -31,7 +31,7 @@ public class Protocol {
         }
     }
 
-    public static int checkSize(String arg) throws InvalidCommandException {
+    public static void checkSize(String arg) throws InvalidCommandException {
         int size;
         try {
             size = Integer.parseInt(arg);
@@ -42,7 +42,6 @@ public class Protocol {
         if (size < 5 || size > 131 || size % 2 != 1) {
             throw new InvalidCommandException(useSize);
         }
-        return size;
     }
 
     public static boolean isOnBoard(tempGame game, int x, int y) {
@@ -87,9 +86,11 @@ public class Protocol {
         switch (keyword) {
             case "PLAYER" :
                 checkArgumentLength(args, 2);
+                checkName(args[1]);
                 break;
             case "GO" :
                 checkArgumentLength(args, 2);
+                checkSize(args[1]);
                 break;
             case "CANCEL" :
                 checkArgumentLength(args, 1);

@@ -16,10 +16,9 @@ public class CommandMOVE implements Command {
     @Override
     public void execute(newClientHandler client) throws InvalidCommandException {
         checkUse(client);
-        checkArguments();
-        int x; int y;
-            x = Integer.parseInt(args[1]);
-            y = Integer.parseInt(args[2]);
+        Protocol.checkArguments(args, "MOVE");
+        int x = Integer.parseInt(args[1]); // should work since it is checked in checkArguments
+        int y = Integer.parseInt(args[2]);
         tempGame game = client.getGame();
         if (!game.isTurn(client.getColor())) {
             client.sendWARNING("It is not your turn.");
@@ -51,11 +50,6 @@ public class CommandMOVE implements Command {
         if (client.getStatus() != CHState.INGAME) {
             throw new InvalidCommandException("You may not use the MOVE command at this moment.");
         }
-    }
-
-    private void checkArguments() throws InvalidCommandException {
-        Protocol.checkArguments(args, "MOVE");
-
     }
 
     private String booleanToColor(boolean white) {

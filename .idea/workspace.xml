@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3856beec-f887-44f1-9277-2f05dfbcd602" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandCHAT.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/ClientCommand/ClientCommandCHAT.class" afterPath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/ClientCommand/ClientCommandCHAT.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/newCommunication/CommandCANCEL.class" afterPath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/newCommunication/CommandCANCEL.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/newCommunication/CommandGO.class" afterPath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/newCommunication/CommandGO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/newCommunication/CommandMOVE.class" afterPath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/newCommunication/CommandMOVE.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/newCommunication/CommandPLAYER.class" afterPath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/newCommunication/CommandPLAYER.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/newCommunication/Protocol.class" afterPath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/newCommunication/Protocol.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/newCommunication/newClientHandler.class" afterPath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/newCommunication/newClientHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/newCommunication/newServer.class" afterPath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/newCommunication/newServer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandGO.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandGO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandMOVE.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandMOVE.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandPLAYER.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandPLAYER.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/Protocol.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/Protocol.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/newClientHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/newClientHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/newServer.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/newServer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,112 +26,12 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="newServer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/newServer.java">
+      <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/Command.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="968">
-              <caret line="126" column="13" lean-forward="false" selection-start-line="126" selection-start-column="13" selection-end-line="126" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1388#1389#0" expanded="true" />
-                <element signature="e#1434#1435#0" expanded="true" />
-                <element signature="e#1874#1875#0" expanded="true" />
-                <element signature="e#1914#1915#0" expanded="true" />
-                <element signature="method#run#0;class#newServer#0" expanded="false" />
-                <element signature="e#2928#2929#0" expanded="true" />
-                <element signature="e#2980#2981#0" expanded="true" />
-                <element signature="e#3719#3720#0" expanded="true" />
-                <element signature="e#3754#3755#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommandPASS.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandPASS.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="48" column="5" lean-forward="false" selection-start-line="42" selection-start-column="4" selection-end-line="48" selection-end-column="5" />
-              <folding>
-                <element signature="e#231#232#0" expanded="true" />
-                <element signature="e#269#270#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommandPASS.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandPASS.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+            <state relative-caret-position="75">
+              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommandPLAYER.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandPLAYER.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="23" column="48" lean-forward="false" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommandGO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandGO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Protocol.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/Protocol.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1043">
-              <caret line="119" column="22" lean-forward="false" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="newClientHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/newClientHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="563">
-              <caret line="91" column="43" lean-forward="true" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3833#3834#0" expanded="true" />
-                <element signature="e#3881#3882#0" expanded="true" />
-                <element signature="e#4379#4380#0" expanded="true" />
-                <element signature="e#4408#4409#0" expanded="true" />
-                <element signature="e#4516#4517#0" expanded="true" />
-                <element signature="e#4552#4553#0" expanded="true" />
-                <element signature="e#4604#4605#0" expanded="true" />
-                <element signature="e#4648#4649#0" expanded="true" />
-                <element signature="e#4685#4686#0" expanded="true" />
-                <element signature="e#4718#4719#0" expanded="true" />
-                <element signature="e#4761#4762#0" expanded="true" />
-                <element signature="e#4793#4794#0" expanded="true" />
-                <element signature="e#4827#4828#0" expanded="true" />
-                <element signature="e#4854#4855#0" expanded="true" />
-                <element signature="e#4912#4913#0" expanded="true" />
-                <element signature="e#4952#4953#0" expanded="true" />
-                <element signature="e#4997#4998#0" expanded="true" />
-                <element signature="e#5028#5029#0" expanded="true" />
-                <element signature="e#5071#5072#0" expanded="true" />
-                <element signature="e#5105#5106#0" expanded="true" />
-                <element signature="e#5138#5139#0" expanded="true" />
-                <element signature="e#5166#5167#0" expanded="true" />
-                <element signature="e#5409#5410#0" expanded="true" />
-                <element signature="e#5436#5437#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -140,8 +39,8 @@
       <file leaf-file-name="CommandCANCEL.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandCANCEL.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="95" lean-forward="false" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="95" />
+            <state relative-caret-position="75">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding>
                 <element signature="e#219#220#0" expanded="true" />
                 <element signature="e#256#257#0" expanded="true" />
@@ -153,8 +52,8 @@
       <file leaf-file-name="CommandCHAT.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandCHAT.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="153" lean-forward="false" selection-start-line="20" selection-start-column="153" selection-end-line="20" selection-end-column="153" />
+            <state relative-caret-position="75">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding>
                 <element signature="e#215#216#0" expanded="true" />
                 <element signature="e#256#257#0" expanded="true" />
@@ -163,12 +62,65 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientCommandCHAT.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandCHAT.java">
+      <file leaf-file-name="CommandPLAYER.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandPLAYER.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="18" column="40" lean-forward="true" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+            <state relative-caret-position="360">
+              <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandTABLEFLIP.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandTABLEFLIP.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="26" column="37" lean-forward="true" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandGO.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandGO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandMOVE.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandMOVE.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Protocol.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/Protocol.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="43" column="9" lean-forward="false" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandPASS.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandPASS.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding>
+                <element signature="e#231#232#0" expanded="true" />
+                <element signature="e#269#270#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -237,20 +189,20 @@
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/Command.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/InvalidCommandException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Server.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandPLAYER.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/tempGame.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandGO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandMOVE.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandVALID.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandPASS.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandTABLEFLIP.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandCANCEL.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandEXIT.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/Protocol.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/newClientHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/newServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandCHAT.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandCHAT.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandPLAYER.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandMOVE.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/Protocol.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandGO.java" />
       </list>
     </option>
   </component>
@@ -940,13 +892,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28978103" sideWeight="0.5138999" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16788322" sideWeight="0.4753773" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16788322" sideWeight="0.4753773" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34014598" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31824818" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32565528" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32565528" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12603438" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1233,14 +1185,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/Command.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/InvalidCommandException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1356,63 +1300,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandMOVE.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="773">
-          <caret line="53" column="5" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="53" selection-end-column="5" />
-          <folding>
-            <element signature="e#239#240#0" expanded="true" />
-            <element signature="e#277#278#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandTABLEFLIP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="5" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="30" selection-end-column="5" />
-          <folding>
-            <element signature="e#225#226#0" expanded="true" />
-            <element signature="e#263#264#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandPLAYER.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="23" column="48" lean-forward="false" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandGO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandPASS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="5" lean-forward="false" selection-start-line="42" selection-start-column="4" selection-end-line="48" selection-end-column="5" />
-          <folding>
-            <element signature="e#231#232#0" expanded="true" />
-            <element signature="e#269#270#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandPASS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandEXIT.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -1474,18 +1361,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/Protocol.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandCHAT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1043">
-          <caret line="119" column="22" lean-forward="false" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
+        <state relative-caret-position="375">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandPASS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandCANCEL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="95" lean-forward="false" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="95" />
+        <state relative-caret-position="75">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="e#219#220#0" expanded="true" />
             <element signature="e#256#257#0" expanded="true" />
@@ -1495,8 +1398,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandCHAT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="153" lean-forward="false" selection-start-line="20" selection-start-column="153" selection-end-line="20" selection-end-column="153" />
+        <state relative-caret-position="75">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="e#215#216#0" expanded="true" />
             <element signature="e#256#257#0" expanded="true" />
@@ -1504,10 +1407,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandCHAT.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandPASS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="18" column="40" lean-forward="true" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+        <state relative-caret-position="105">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="e#231#232#0" expanded="true" />
+            <element signature="e#269#270#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandTABLEFLIP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="26" column="37" lean-forward="true" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandPLAYER.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandMOVE.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/Protocol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="43" column="9" lean-forward="false" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/CommandGO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
       </provider>
