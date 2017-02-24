@@ -19,20 +19,20 @@ public class ClientHandler extends Thread {
 //    private ClientHandler opponent;
     private boolean color;
 
-    private static final String PLAYER = "PLAYER";
-    private static final String GO = "GO";
-    private static final String WAITING = "WAITING";
-    private static final String READY = "READY";
-    private static final String CANCEL = "CANCEL";
-    private static final String MOVE = "MOVE";
-    private static final String INVALID = "INVALID";
-    private static final String TABLEFLIP = "TABLEFLIP";
-    private static final String TABLEFLIPPED = "TABLEFLIPPED";
-    private static final String PASS = "PASS";
-    private static final String PASSED = "PASSED";
-    private static final String EXIT = "EXIT";
-    private static final String CHAT = "CHAT";
-    private static final String WARNING = "WARNING";
+//    private static final String PLAYER = "PLAYER";
+//    private static final String GO = "GO";
+//    private static final String WAITING = "WAITING";
+//    private static final String READY = "READY";
+//    private static final String CANCEL = "CANCEL";
+//    private static final String MOVE = "MOVE";
+//    private static final String INVALID = "INVALID";
+//    private static final String TABLEFLIP = "TABLEFLIP";
+//    private static final String TABLEFLIPPED = "TABLEFLIPPED";
+//    private static final String PASS = "PASS";
+//    private static final String PASSED = "PASSED";
+//    private static final String EXIT = "EXIT";
+//    private static final String CHAT = "CHAT";
+//    private static final String WARNING = "WARNING";
 
     public ClientHandler(Server server, Socket sock) throws IOException {
         this.server = server;
@@ -68,25 +68,25 @@ public class ClientHandler extends Thread {
                 String keyword = words[0];
                 Command command = null;
                 switch(keyword) {
-                    case PLAYER :
+                    case Protocol.PLAYER :
                         command = new CommandPLAYER(line);
                         break;
-                    case GO :
+                    case Protocol.GO :
                         command = new CommandGO(line);
                         break;
-                    case CANCEL :
+                    case Protocol.CANCEL :
                         command = new CommandCANCEL(line);
                         break;
-                    case MOVE :
+                    case Protocol.MOVE :
                         command = new CommandMOVE(line);
                         break;
-                    case PASS :
+                    case Protocol.PASS :
                         command = new CommandPASS(line);
                         break;
-                    case TABLEFLIP :
+                    case Protocol.TABLEFLIP :
                         command = new CommandTABLEFLIP(line);
                         break;
-                    case CHAT :
+                    case Protocol.CHAT :
                         command = new CommandCHAT(line);
                         break;
                     default :
@@ -109,7 +109,7 @@ public class ClientHandler extends Thread {
     }
 
     public void sendWARNING(String msg) {
-        sendMessage(WARNING + " " + msg);
+        sendMessage(Protocol.WARNING + " " + msg);
     }
 
     private void shutdown() {

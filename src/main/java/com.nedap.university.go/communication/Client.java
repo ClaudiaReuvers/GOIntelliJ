@@ -52,22 +52,22 @@ public class Client extends Thread {
 	private BufferedReader in;
 	private BufferedWriter out;
 
-	private static final String PLAYER = "PLAYER";
-	private static final String GO = "GO";
-	private static final String WAITING = "WAITING";
-	private static final String READY = "READY";
-	private static final String CANCEL = "CANCEL";
-	private static final String MOVE = "MOVE";
-	private static final String VALID = "VALID";
-	private static final String INVALID = "INVALID";
-	private static final String TABLEFLIP = "TABLEFLIP";
-	private static final String TABLEFLIPPED = "TABLEFLIPPED";
-	private static final String PASS = "PASS";
-	private static final String PASSED = "PASSED";
-	private static final String EXIT = "EXIT";
-	private static final String CHAT = "CHAT";
-	private static final String WARNING = "WARNING";
-	private static final String END = "END";
+//	private static final String PLAYER = "PLAYER";
+//	private static final String GO = "GO";
+//	private static final String WAITING = "WAITING";
+//	private static final String READY = "READY";
+//	private static final String CANCEL = "CANCEL";
+//	private static final String MOVE = "MOVE";
+//	private static final String VALID = "VALID";
+//	private static final String INVALID = "INVALID";
+//	private static final String TABLEFLIP = "TABLEFLIP";
+//	private static final String TABLEFLIPPED = "TABLEFLIPPED";
+//	private static final String PASS = "PASS";
+//	private static final String PASSED = "PASSED";
+//	private static final String EXIT = "EXIT";
+//	private static final String CHAT = "CHAT";
+//	private static final String WARNING = "WARNING";
+//	private static final String END = "END";
 
 	private boolean color;
 	private String opponentName;
@@ -96,31 +96,31 @@ public class Client extends Thread {
 				String keyword = words[0];
 				ClientCommand command;
 				switch (keyword) {
-					case WAITING :
+					case Protocol.WAITING :
 						command = new ClientCommandWAITING();
 						break;
-					case READY :
+					case Protocol.READY :
 						command = new ClientCommandREADY(txt);
 						break;
-					case VALID :
+					case Protocol.VALID :
 						command = new ClientCommandVALID(txt);
 						break;
-					case INVALID :
+					case Protocol.INVALID :
 						command = new ClientCommandINVALID(txt);
 						break;
-					case PASSED :
+					case Protocol.PASSED :
 						command = new ClientCommandPASSED(txt);
 						break;
-					case TABLEFLIPPED :
+					case Protocol.TABLEFLIPPED :
 						command = new ClientCommandTABLEFLIPPED(txt);
 						break;
-					case CHAT :
+					case Protocol.CHAT :
 						command = new ClientCommandCHAT(txt);
 						break;
-					case WARNING :
+					case Protocol.WARNING :
 						command = new ClientCommandWARNING(txt);
 						break;
-					case END :
+					case Protocol.END :
 						command = new ClientCommandEND(txt);
 						break;
 					default :

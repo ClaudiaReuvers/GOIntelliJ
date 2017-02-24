@@ -7,17 +7,21 @@ import com.nedap.university.go.game.Board;
  */
 public class Protocol {
 
-    public static boolean checkName1(String name) {
-        if (name.length() >= 20) {
-            return false;
-        }
-        for(char c : name.toCharArray()) {
-            if (!(Character.isLetter(c) && Character.isLowerCase(c))) {
-                return false;
-            }
-        }
-        return true;
-    }
+    public static final String PLAYER = "PLAYER";
+    public static final String GO = "GO";
+    public static final String WAITING = "WAITING";
+    public static final String READY = "READY";
+    public static final String CANCEL = "CANCEL";
+    public static final String MOVE = "MOVE";
+    public static final String VALID = "VALID";
+    public static final String INVALID = "INVALID";
+    public static final String TABLEFLIP = "TABLEFLIP";
+    public static final String TABLEFLIPPED = "TABLEFLIPPED";
+    public static final String PASS = "PASS";
+    public static final String PASSED = "PASSED";
+    public static final String END = "END";
+    public static final String CHAT = "CHAT";
+    public static final String WARNING = "WARNING";
 
     public static void checkName(String name) throws InvalidCommandException {
         String useName = "The name should consist of 20 lowercase letters.";
@@ -64,17 +68,12 @@ public class Protocol {
     }
 
     public static boolean isKo(Game game, int x, int y, boolean white) {
-        //TODO
         return game.testNextMove(x, y, white);
     }
 
     public static boolean isValidMove(Game game, int x, int y, boolean white) {
         return (isOnBoard(game, x, y) && isEmptyField(game, x, y) && isKo(game, x, y, white));
     }
-
-//    public static boolean checkArgumentsLength(String[] args, int length) {
-//        return (args.length == length);
-//    }
 
     public static void checkArgumentLength(String[] args, int length) throws InvalidCommandException{
         if (args.length != length) {
@@ -84,18 +83,18 @@ public class Protocol {
 
     public static void checkArguments(String[] args, String keyword) throws InvalidCommandException {
         switch (keyword) {
-            case "PLAYER" :
+            case PLAYER :
                 checkArgumentLength(args, 2);
                 checkName(args[1]);
                 break;
-            case "GO" :
+            case GO :
                 checkArgumentLength(args, 2);
                 checkSize(args[1]);
                 break;
-            case "CANCEL" :
+            case CANCEL :
                 checkArgumentLength(args, 1);
                 break;
-            case "MOVE" :
+            case MOVE :
                 checkArgumentLength(args, 3);
                 int x;
                 int y;
@@ -110,18 +109,16 @@ public class Protocol {
                     throw new InvalidCommandException("The third argument should be an integer.");
                 }
                 break;
-            case "PASS" :
+            case PASS :
                 checkArgumentLength(args, 1);
                 break;
-            case "TABLEFLIP" :
+            case TABLEFLIP :
                 checkArgumentLength(args, 1);
                 break;
-            case "CHAT" :
+            case CHAT :
                 checkArgumentLength(args, 2);
                 break;
         }
     }
-
-
 
 }
