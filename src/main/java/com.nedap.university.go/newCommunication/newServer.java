@@ -1,5 +1,6 @@
 package com.nedap.university.go.newCommunication;
 
+import com.nedap.university.go.communication.ClientHandler;
 import com.nedap.university.go.game.Game;
 
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class newServer {
 
     private int port;
     private List<newClientHandler> listClientHandlers;
-    private List<Game> listGames;
+    private List<tempGame> listGames;
     private List<newClientHandler> listPreGame;
     private Map<Integer, newClientHandler> listWaiting;
 
@@ -45,12 +46,20 @@ public class newServer {
 
     public void addToClientHandlerList(newClientHandler client) {
         listClientHandlers.add(client);
-        //TODO: add check for double names
     }
 
     public void removeFromClientHandlerList(newClientHandler client) {
         listClientHandlers.remove(client);
         log(client.getClientName() + " removed from CH list");
+    }
+
+    public void addToWaitingList(int size, newClientHandler client) {
+        listWaiting.put(size, client);
+        log(client.getClientName() + " add to the waiting list for size " + size + ".");
+    }
+
+    public void removeFromWaitingList(int size) {
+        listWaiting.remove(size);
     }
 
     public void run() {
@@ -65,7 +74,7 @@ public class newServer {
             try {
                 Socket sock = ss.accept();
                 newClientHandler client = new newClientHandler(this, sock);
-//                addToClientHandlerList(client);
+                addToClientHandlerList(client);
                 client.start();
                 log("A client has logged in.");
             } catch(IOException e) {
@@ -80,4 +89,37 @@ public class newServer {
     public void log(String msg) {
         System.out.println(msg);
     }
+
+    public void broadcastToAll(String msg) {
+        for (newClientHandler clients : listClientHandlers) {
+            clients.sendMessage(msg);
+        }
+    }
+
+    public boolean isMatch(int size) {
+        return listWaiting.containsKey(size);
+    }
+
+    public newClientHandler getMatch(int size) {
+        newClientHandler client = listWaiting.get(size);
+        removeFromWaitingList(size);
+        return client;
+    }
+
+    public void setGame(newClientHandler CH1, newClientHandler CH2, int size) {
+        CH1.setGame(CH2, false);
+        CH2.setGame(CH1, true);
+        CH1.sendMessage(READY + " black " + CH2.getClientName() + " " + size);
+        CH2.sendMessage(READY + " white " + CH1.getClientName() + " " + size);
+        tempGame game = new tempGame(CH1, CH2, size);
+        addToGamesList(game);
+        log(CH1.getClientName() + " and " + CH2.getClientName() + " start a game at boardsize " + size + ".");
+    }
+
+    public void addToGamesList(tempGame game) {
+        listGames.add(game);
+    }
+
+
+
 }
