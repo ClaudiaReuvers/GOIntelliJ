@@ -108,6 +108,8 @@ public class Protocol {
                 break;
             case "PASS" :
                 checkArgumentLength(args, 1);
+            case "TABLEFLIP" :
+                checkArgumentLength(args, 1);
         }
     }
 

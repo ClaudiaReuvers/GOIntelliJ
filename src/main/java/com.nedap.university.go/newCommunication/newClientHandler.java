@@ -108,6 +108,7 @@ public class newClientHandler extends Thread {
 //                        pass.execute(server, this);
                         break;
                     case TABLEFLIP :
+                        command = new CommandTABLEFLIP(line);
 //                        Command tableflip = new CommandTABLEFLIP(line);
 //                        tableflip.execute(server, this);
                         break;
