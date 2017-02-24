@@ -1,4 +1,4 @@
-package com.nedap.university.go.newCommunication;
+package com.nedap.university.go.communication;
 
 import com.nedap.university.go.ClientCommand.*;
 import com.nedap.university.go.game.Board;

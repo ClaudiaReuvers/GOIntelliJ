@@ -1,4 +1,4 @@
-package com.nedap.university.go.newCommunication;
+package com.nedap.university.go.communication;
 
 import com.nedap.university.go.game.Board;
 
@@ -44,7 +44,7 @@ public class Protocol {
         }
     }
 
-    public static boolean isOnBoard(tempGame game, int x, int y) {
+    public static boolean isOnBoard(Game game, int x, int y) {
         Board board = game.getBoard();
         int size = board.getDimension();
         //Check if this field exists
@@ -54,7 +54,7 @@ public class Protocol {
         return true;
     }
 
-    public static boolean isEmptyField(tempGame game, int x, int y) {
+    public static boolean isEmptyField(Game game, int x, int y) {
         Board board = game.getBoard();
         if (!board.getField(x, y).isEmpty()) {
             return false;
@@ -63,12 +63,12 @@ public class Protocol {
         //TODO: could be return (!board.getField(x,y).isEmpty())??
     }
 
-    public static boolean isKo(tempGame game, int x, int y, boolean white) {
+    public static boolean isKo(Game game, int x, int y, boolean white) {
         //TODO
         return game.testNextMove(x, y, white);
     }
 
-    public static boolean isValidMove(tempGame game, int x, int y, boolean white) {
+    public static boolean isValidMove(Game game, int x, int y, boolean white) {
         return (isOnBoard(game, x, y) && isEmptyField(game, x, y) && isKo(game, x, y, white));
     }
 

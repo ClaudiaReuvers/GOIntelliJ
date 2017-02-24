@@ -1,7 +1,4 @@
-package com.nedap.university.go.newCommunication;
-
-import com.nedap.university.go.communication.ClientHandler;
-import com.nedap.university.go.game.Game;
+package com.nedap.university.go.communication;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -14,10 +11,10 @@ import java.util.Map;
 /**
  * Created by claudia.reuvers on 22/02/2017.
  */
-public class newServer {
+public class Server {
 
     private static final String USAGE
-            = "usage: " + newServer.class.getName() + " <port>";
+            = "usage: " + Server.class.getName() + " <port>";
     private static final String CHAT = "CHAT";
     private static final String READY = "READY";
 
@@ -26,17 +23,17 @@ public class newServer {
             System.out.println(USAGE);
             System.exit(0);
         }
-        newServer server = new newServer(Integer.parseInt(args[0]));
+        Server server = new Server(Integer.parseInt(args[0]));
         server.run();
     }
 
     private int port;
-    private List<newClientHandler> listClientHandlers;
-//    private List<tempGame> listGames;
-    private List<newClientHandler> listPreGame;
-    private Map<Integer, newClientHandler> listWaiting;
+    private List<ClientHandler> listClientHandlers;
+//    private List<Game> listGames;
+    private List<ClientHandler> listPreGame;
+    private Map<Integer, ClientHandler> listWaiting;
 
-    public newServer(int port) {
+    public Server(int port) {
         this.port = port;
         listClientHandlers = new LinkedList<>();
         listPreGame = new LinkedList<>();
@@ -44,16 +41,16 @@ public class newServer {
         listWaiting = new HashMap<>();
     }
 
-    public void addToClientHandlerList(newClientHandler client) {
+    public void addToClientHandlerList(ClientHandler client) {
         listClientHandlers.add(client);
     }
 
-    public void removeFromClientHandlerList(newClientHandler client) {
+    public void removeFromClientHandlerList(ClientHandler client) {
         listClientHandlers.remove(client);
         log(client.getClientName() + " removed from CH list");
     }
 
-    public void addToWaitingList(int size, newClientHandler client) {
+    public void addToWaitingList(int size, ClientHandler client) {
         listWaiting.put(size, client);
         log(client.getClientName() + " add to the waiting list for size " + size + ".");
     }
@@ -73,7 +70,7 @@ public class newServer {
         while(!ss.isClosed()) {
             try {
                 Socket sock = ss.accept();
-                newClientHandler client = new newClientHandler(this, sock);
+                ClientHandler client = new ClientHandler(this, sock);
                 addToClientHandlerList(client);
                 client.start();
                 log("A client has logged in.");
@@ -91,7 +88,7 @@ public class newServer {
     }
 
     public void broadcastToAll(String msg) {
-        for (newClientHandler clients : listClientHandlers) {
+        for (ClientHandler clients : listClientHandlers) {
             clients.sendMessage(msg);
         }
     }
@@ -100,14 +97,14 @@ public class newServer {
         return listWaiting.containsKey(size);
     }
 
-    public newClientHandler getMatch(int size) {
-        newClientHandler client = listWaiting.get(size);
+    public ClientHandler getMatch(int size) {
+        ClientHandler client = listWaiting.get(size);
         removeFromWaitingList(size);
         return client;
     }
 
-    public void setGame(newClientHandler CH1, newClientHandler CH2, int size) {
-        tempGame game = new tempGame(CH1, CH2, size);
+    public void setGame(ClientHandler CH1, ClientHandler CH2, int size) {
+        Game game = new Game(CH1, CH2, size);
         CH1.setGame(CH2, false, game);
         CH2.setGame(CH1, true, game);
         CH1.sendMessage(READY + " black " + CH2.getClientName() + " " + size);
@@ -116,12 +113,12 @@ public class newServer {
         log(CH1.getClientName() + " and " + CH2.getClientName() + " start a game at boardsize " + size + ".");
     }
 
-//    public void addToGamesList(tempGame game) {
+//    public void addToGamesList(Game game) {
 //        listGames.add(game);
 //    }
 
     public void broadcastToWaiting(String msg) {
-        for (newClientHandler clients : listClientHandlers) {
+        for (ClientHandler clients : listClientHandlers) {
             if (clients.getStatus() != CHState.INGAME) {
                 clients.sendMessage(msg);
             }

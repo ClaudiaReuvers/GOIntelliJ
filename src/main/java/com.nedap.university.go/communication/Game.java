@@ -1,4 +1,4 @@
-package com.nedap.university.go.newCommunication;
+package com.nedap.university.go.communication;
 
 import com.nedap.university.go.game.Board;
 
@@ -8,17 +8,17 @@ import java.util.List;
 /**
  * Created by claudia.reuvers on 24/02/2017.
  */
-public class tempGame {
+public class Game {
 
-    private newClientHandler client1;
-    private newClientHandler client2;
-    private List<newClientHandler> listClients = new LinkedList<>();
+    private ClientHandler client1;
+    private ClientHandler client2;
+    private List<ClientHandler> listClients = new LinkedList<>();
     private Board board;
     private boolean turn; //true: turn of white; false; turn of black
     private boolean pass;
     private List<String> previousBoards;
 
-    public tempGame(newClientHandler client1, newClientHandler client2, int dimension) {
+    public Game(ClientHandler client1, ClientHandler client2, int dimension) {
         this.client1 = client1;
         this.client2 = client2;
         listClients.add(client1);
@@ -30,7 +30,7 @@ public class tempGame {
     }
 
     public void broadcast(String msg) {
-        for (newClientHandler clients : listClients) {
+        for (ClientHandler clients : listClients) {
             clients.sendMessage(msg);
         }
     }
@@ -46,7 +46,7 @@ public class tempGame {
 //        return listClients.size();
 //    }
 
-//    public List<newClientHandler> getClients() {
+//    public List<ClientHandler> getClients() {
 //        return listClients;
 //    }
 
@@ -88,7 +88,7 @@ public class tempGame {
 
     public void endGame() {
         board.clearBoard();
-        for (newClientHandler clients : listClients) {
+        for (ClientHandler clients : listClients) {
             clients.setStatus(CHState.GOTNAME);
         }
         broadcast("CHAT You can be put back on the waitinglist by using the command GO <size>.");

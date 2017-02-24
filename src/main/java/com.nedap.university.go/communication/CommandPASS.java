@@ -1,4 +1,4 @@
-package com.nedap.university.go.newCommunication;
+package com.nedap.university.go.communication;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class CommandPASS implements Command {
     }
 
     @Override
-    public void execute(newClientHandler client) throws InvalidCommandException {
+    public void execute(ClientHandler client) throws InvalidCommandException {
         checkUse(client);
         checkArguments();
         if (!client.getGame().isTurn(client.getColor())) {
@@ -31,7 +31,7 @@ public class CommandPASS implements Command {
         client.getGame().alternateTurn();
     }
 
-    private void checkUse(newClientHandler client) throws InvalidCommandException {
+    private void checkUse(ClientHandler client) throws InvalidCommandException {
         if (client.getStatus() != CHState.INGAME) {
             throw new InvalidCommandException("You may not use the PASS command at this moment.");
         }

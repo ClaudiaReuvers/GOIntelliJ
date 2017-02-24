@@ -1,4 +1,4 @@
-package com.nedap.university.go.newCommunication;
+package com.nedap.university.go.communication;
 
 /**
  * Created by claudia.reuvers on 24/02/2017.
@@ -12,7 +12,7 @@ public class CommandCHAT implements Command {
     }
 
     @Override
-    public void execute(newClientHandler client) throws InvalidCommandException {
+    public void execute(ClientHandler client) throws InvalidCommandException {
         Protocol.checkArguments(args, "CHAT");
         String msg = "CHAT " + client.getClientName() + ": " + args[1];
         if (client.getStatus() == CHState.INGAME) {

@@ -1,6 +1,4 @@
-package com.nedap.university.go.newCommunication;
-
-import com.nedap.university.go.game.Game;
+package com.nedap.university.go.communication;
 
 import java.io.*;
 import java.net.Socket;
@@ -8,17 +6,17 @@ import java.net.Socket;
 /**
  * Created by claudia.reuvers on 22/02/2017.
  */
-public class newClientHandler extends Thread {
+public class ClientHandler extends Thread {
 
-    private newServer server;
+    private Server server;
     private Socket sock;
     private BufferedReader in;
     private BufferedWriter out;
     private CHState status;
     private String clientName = "";
     private int size = -1;
-    private tempGame game;
-//    private newClientHandler opponent;
+    private Game game;
+//    private ClientHandler opponent;
     private boolean color;
 
     private static final String PLAYER = "PLAYER";
@@ -36,7 +34,7 @@ public class newClientHandler extends Thread {
     private static final String CHAT = "CHAT";
     private static final String WARNING = "WARNING";
 
-    public newClientHandler(newServer server, Socket sock) throws IOException {
+    public ClientHandler(Server server, Socket sock) throws IOException {
         this.server = server;
         this.sock = sock;
         this.in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
@@ -129,7 +127,7 @@ public class newClientHandler extends Thread {
         server.log("Client " + clientName + " removed.");
     }
 
-    public newServer getServer() {
+    public Server getServer() {
         return server;
     }
 
@@ -173,14 +171,14 @@ public class newClientHandler extends Thread {
         return color;
     }
 
-    public void setGame(newClientHandler opponent, boolean white, tempGame game) {
+    public void setGame(ClientHandler opponent, boolean white, Game game) {
 //        setOpponent(opponent);
         setColor(white);
         this.game = game;
         this.status = CHState.INGAME;
     }
 
-    public tempGame getGame() {
+    public Game getGame() {
         return game;
     }
 

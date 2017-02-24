@@ -1,4 +1,4 @@
-package com.nedap.university.go.newCommunication;
+package com.nedap.university.go.communication;
 
 /**
  * Created by claudia.reuvers on 24/02/2017.
@@ -12,7 +12,7 @@ public class CommandTABLEFLIP implements Command {
     }
 
     @Override
-    public void execute(newClientHandler client) throws InvalidCommandException {
+    public void execute(ClientHandler client) throws InvalidCommandException {
         checkUse(client);
         checkArguments();
         if (!client.getGame().isTurn(client.getColor())) {
@@ -24,7 +24,7 @@ public class CommandTABLEFLIP implements Command {
         client.getGame().endGame();
     }
 
-    private void checkUse(newClientHandler client) throws InvalidCommandException {
+    private void checkUse(ClientHandler client) throws InvalidCommandException {
         if (client.getStatus() != CHState.INGAME) {
             throw new InvalidCommandException("You may not use the MOVE command at this moment.");
         }

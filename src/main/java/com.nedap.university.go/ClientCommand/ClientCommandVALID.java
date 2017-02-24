@@ -1,6 +1,6 @@
 package com.nedap.university.go.ClientCommand;
 
-import com.nedap.university.go.newCommunication.Client;
+import com.nedap.university.go.communication.Client;
 import com.nedap.university.go.game.Board;
 
 import java.util.List;

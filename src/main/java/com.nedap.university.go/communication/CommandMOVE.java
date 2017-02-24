@@ -1,4 +1,4 @@
-package com.nedap.university.go.newCommunication;
+package com.nedap.university.go.communication;
 
 import java.util.List;
 
@@ -14,12 +14,12 @@ public class CommandMOVE implements Command {
     }
 
     @Override
-    public void execute(newClientHandler client) throws InvalidCommandException {
+    public void execute(ClientHandler client) throws InvalidCommandException {
         checkUse(client);
         Protocol.checkArguments(args, "MOVE");
         int x = Integer.parseInt(args[1]); // should work since it is checked in checkArguments
         int y = Integer.parseInt(args[2]);
-        tempGame game = client.getGame();
+        Game game = client.getGame();
         if (!game.isTurn(client.getColor())) {
             client.sendWARNING("It is not your turn.");
             return;
@@ -46,7 +46,7 @@ public class CommandMOVE implements Command {
         }
     }
 
-    private void checkUse(newClientHandler client) throws InvalidCommandException {
+    private void checkUse(ClientHandler client) throws InvalidCommandException {
         if (client.getStatus() != CHState.INGAME) {
             throw new InvalidCommandException("You may not use the MOVE command at this moment.");
         }

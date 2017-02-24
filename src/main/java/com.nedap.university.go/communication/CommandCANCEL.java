@@ -1,4 +1,4 @@
-package com.nedap.university.go.newCommunication;
+package com.nedap.university.go.communication;
 
 /**
  * Created by claudia.reuvers on 24/02/2017.
@@ -13,7 +13,7 @@ public class CommandCANCEL implements Command {
 
 
     @Override
-    public void execute(newClientHandler client) throws InvalidCommandException {
+    public void execute(ClientHandler client) throws InvalidCommandException {
         checkUse(client);
         checkArguments();
         client.getServer().removeFromWaitingList(client.getClientSize());
@@ -26,7 +26,7 @@ public class CommandCANCEL implements Command {
         Protocol.checkArguments(args, "CANCEL");
     }
 
-    private void checkUse(newClientHandler client) throws InvalidCommandException {
+    private void checkUse(ClientHandler client) throws InvalidCommandException {
         if (client.getStatus() == CHState.INGAME) {
             throw new InvalidCommandException("You may not use the MOVE command at this moment.");
         }
