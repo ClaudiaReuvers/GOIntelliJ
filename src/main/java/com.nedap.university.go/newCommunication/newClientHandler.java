@@ -72,45 +72,21 @@ public class newClientHandler extends Thread {
                 switch(keyword) {
                     case PLAYER :
                         command = new CommandPLAYER(line);
-//                        if (name.equals("")) {
-//                            Command player = new CommandPLAYER(line);
-//                            player.execute(server, this);
-//                        } else {
-//                            sendMessage(WARNING + " Player name already set to " + name);
-//                        }
                         break;
                     case GO :
                         command = new CommandGO(line);
-//                        try {
-//                            commandgo.execute(this);
-//                        } catch (InvalidCommandException e) {
-//                            sendWARNING(e.getMessage());
-//                        }
-//                        if (size == -1) {
-//                            Command GO = new CommandGO(line);
-//                            GO.execute(server, this);
-//                        } else {
-//                            sendMessage(WARNING + " Already put in a waiting list for a game of GO on boardsize " + size);
-//                        }
                         break;
                     case CANCEL :
-//                        Command cancel = new CommandCANCEL(line);
-//                        cancel.execute(server, this);
+                        command = new CommandCANCEL(line);
                         break;
                     case MOVE :
                         command = new CommandMOVE(line);
-//                        Command move = new CommandMOVE(line);
-//                        move.execute(server, this);
                         break;
                     case PASS :
                         command = new CommandPASS(line);
-//                        Command pass = new CommandPASS(line);
-//                        pass.execute(server, this);
                         break;
                     case TABLEFLIP :
                         command = new CommandTABLEFLIP(line);
-//                        Command tableflip = new CommandTABLEFLIP(line);
-//                        tableflip.execute(server, this);
                         break;
                     case EXIT :
 //                        keywordExit();

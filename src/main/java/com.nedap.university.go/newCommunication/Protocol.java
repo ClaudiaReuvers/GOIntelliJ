@@ -91,6 +91,9 @@ public class Protocol {
             case "GO" :
                 checkArgumentLength(args, 2);
                 break;
+            case "CANCEL" :
+                checkArgumentLength(args, 1);
+                break;
             case "MOVE" :
                 checkArgumentLength(args, 3);
                 int x;
@@ -108,8 +111,10 @@ public class Protocol {
                 break;
             case "PASS" :
                 checkArgumentLength(args, 1);
+                break;
             case "TABLEFLIP" :
                 checkArgumentLength(args, 1);
+                break;
         }
     }
 
