@@ -115,6 +115,9 @@ public class Protocol {
             case "TABLEFLIP" :
                 checkArgumentLength(args, 1);
                 break;
+            case "CHAT" :
+                checkArgumentLength(args, 2);
+                break;
         }
     }
 

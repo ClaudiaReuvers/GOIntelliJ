@@ -88,12 +88,8 @@ public class newClientHandler extends Thread {
                     case TABLEFLIP :
                         command = new CommandTABLEFLIP(line);
                         break;
-                    case EXIT :
-//                        keywordExit();
-                        break;
                     case CHAT :
-//                        Command chat = new CommandCHATServer(line);
-//                        chat.execute(server, this);
+                        command = new CommandCHAT(line);
                         break;
                     default :
                         command = new CommandGO(line);

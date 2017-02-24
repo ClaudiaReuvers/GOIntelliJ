@@ -120,6 +120,11 @@ public class newServer {
         listGames.add(game);
     }
 
-
-
+    public void broadcastToWaiting(String msg) {
+        for (newClientHandler clients : listClientHandlers) {
+            if (clients.getStatus() != CHState.INGAME) {
+                clients.sendMessage(msg);
+            }
+        }
+    }
 }
