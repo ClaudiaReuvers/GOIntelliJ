@@ -1,7 +1,6 @@
 package com.nedap.university.go.newCommunication;
 
 import com.nedap.university.go.game.Board;
-import com.nedap.university.go.game.Game;
 
 /**
  * Created by claudia.reuvers on 22/02/2017.
@@ -46,7 +45,7 @@ public class Protocol {
         return size;
     }
 
-    public static boolean isOnBoard(Game game, int x, int y) {
+    public static boolean isOnBoard(tempGame game, int x, int y) {
         Board board = game.getBoard();
         int size = board.getDimension();
         //Check if this field exists
@@ -56,7 +55,7 @@ public class Protocol {
         return true;
     }
 
-    public static boolean isEmptyField(Game game, int x, int y) {
+    public static boolean isEmptyField(tempGame game, int x, int y) {
         Board board = game.getBoard();
         if (!board.getField(x, y).isEmpty()) {
             return false;
@@ -65,12 +64,12 @@ public class Protocol {
         //TODO: could be return (!board.getField(x,y).isEmpty())??
     }
 
-    public static boolean isKo(Game game, int x, int y, boolean white) {
+    public static boolean isKo(tempGame game, int x, int y, boolean white) {
         //TODO
         return game.testNextMove(x, y, white);
     }
 
-    public static boolean isValidMove(Game game, int x, int y, boolean white) {
+    public static boolean isValidMove(tempGame game, int x, int y, boolean white) {
         return (isOnBoard(game, x, y) && isEmptyField(game, x, y) && isKo(game, x, y, white));
     }
 
@@ -78,9 +77,38 @@ public class Protocol {
 //        return (args.length == length);
 //    }
 
-    public static void checkArguments(String[] args, int length) throws InvalidCommandException{
+    public static void checkArgumentLength(String[] args, int length) throws InvalidCommandException{
         if (args.length != length) {
             throw new InvalidCommandException("Invalid argument length, command should have " + (length - 1) + " argument(s).");
         }
     }
+
+    public static void checkArguments(String[] args, String keyword) throws InvalidCommandException {
+        switch (keyword) {
+            case "PLAYER" :
+                checkArgumentLength(args, 2);
+                break;
+            case "GO" :
+                checkArgumentLength(args, 2);
+                break;
+            case "MOVE" :
+                checkArgumentLength(args, 3);
+                int x;
+                int y;
+                try {
+                    x = Integer.parseInt(args[1]);
+                } catch (NumberFormatException e) {
+                    throw new InvalidCommandException("The second argument should be an integer.");
+                }
+                try {
+                    y = Integer.parseInt(args[2]);
+                } catch (NumberFormatException e) {
+                    throw new InvalidCommandException("The third argument should be an integer.");
+                }
+                break;
+        }
+    }
+
+
+
 }

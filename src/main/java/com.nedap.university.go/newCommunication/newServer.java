@@ -107,11 +107,11 @@ public class newServer {
     }
 
     public void setGame(newClientHandler CH1, newClientHandler CH2, int size) {
-        CH1.setGame(CH2, false);
-        CH2.setGame(CH1, true);
+        tempGame game = new tempGame(CH1, CH2, size);
+        CH1.setGame(CH2, false, game);
+        CH2.setGame(CH1, true, game);
         CH1.sendMessage(READY + " black " + CH2.getClientName() + " " + size);
         CH2.sendMessage(READY + " white " + CH1.getClientName() + " " + size);
-        tempGame game = new tempGame(CH1, CH2, size);
         addToGamesList(game);
         log(CH1.getClientName() + " and " + CH2.getClientName() + " start a game at boardsize " + size + ".");
     }

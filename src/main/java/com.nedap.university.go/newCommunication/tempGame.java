@@ -29,6 +29,11 @@ public class tempGame {
         previousBoards = new LinkedList<>();
     }
 
+    public void broadcast(String msg) {
+        for (newClientHandler clients : listClients) {
+            clients.sendMessage(msg);
+        }
+    }
 //	public String[] getClientNames() {
 //		String[] names = new String[listClients.size()];
 //		for (int i = 0; i < listClients.size(); i++) {

@@ -27,7 +27,7 @@ public class CommandPLAYER implements Command {
     }
 
     private void checkArguments() throws InvalidCommandException {
-        Protocol.checkArguments(args, 2);
+        Protocol.checkArgumentLength(args, 2);
         Protocol.checkName(args[1]);
     }
 }

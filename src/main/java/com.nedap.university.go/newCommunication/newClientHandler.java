@@ -17,7 +17,7 @@ public class newClientHandler extends Thread {
     private CHState status;
     private String clientName = "";
     private int size = -1;
-    private Game game;
+    private tempGame game;
     private newClientHandler opponent;
     private boolean color;
 
@@ -98,6 +98,7 @@ public class newClientHandler extends Thread {
 //                        cancel.execute(server, this);
                         break;
                     case MOVE :
+                        command = new CommandMOVE(line);
 //                        Command move = new CommandMOVE(line);
 //                        move.execute(server, this);
                         break;
@@ -136,7 +137,7 @@ public class newClientHandler extends Thread {
         }
     }
 
-    private void sendWARNING(String msg) {
+    public void sendWARNING(String msg) {
         sendMessage(WARNING + " " + msg);
     }
 
@@ -199,8 +200,15 @@ public class newClientHandler extends Thread {
         return color;
     }
 
-    public void setGame(newClientHandler opponent, boolean white) {
+    public void setGame(newClientHandler opponent, boolean white, tempGame game) {
         setOpponent(opponent);
         setColor(white);
+        this.game = game;
+        this.status = CHState.INGAME;
     }
+
+    public tempGame getGame() {
+        return game;
+    }
+
 }

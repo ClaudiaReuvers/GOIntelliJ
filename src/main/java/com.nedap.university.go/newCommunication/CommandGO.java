@@ -21,7 +21,6 @@ public class CommandGO implements Command {
         if (client.getServer().isMatch(size)) {
             newClientHandler opponent = client.getServer().getMatch(size);
             client.getServer().setGame(opponent, client, size);
-            client.setStatus(CHState.INGAME);
         } else {
             client.getServer().addToWaitingList(size, client);
         }
@@ -34,7 +33,7 @@ public class CommandGO implements Command {
     }
 
     private int checkArguments() throws  InvalidCommandException {
-        Protocol.checkArguments(args, 2);
+        Protocol.checkArgumentLength(args, 2);
         return Protocol.checkSize(args[1]);
     }
 
