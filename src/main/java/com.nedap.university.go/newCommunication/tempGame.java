@@ -91,6 +91,7 @@ public class tempGame {
         for (newClientHandler clients : listClients) {
             clients.setStatus(CHState.GOTNAME);
         }
+        broadcast("CHAT You can be put back on the waitinglist by using the command GO <size>.");
     }
 
     public boolean testNextMove(int x, int y, boolean white) {

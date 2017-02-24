@@ -163,6 +163,11 @@ public class Board {
 	}
 
 	public List<Integer> getScore() {
+		List<Integer> score = new LinkedList<>();
+		if (isEmpty()) {
+			score.add(0);
+			score.add(0);
+		}
 		//Calculate score on taken fields and make chains of empty fields
 		int scoreBlack = 0;
 		int scoreWhite = 0;
@@ -189,10 +194,20 @@ public class Board {
 		List<Integer> scoreEmpty = getScoreEmptyChains(emptyChains);
 
 		//Create output
-		List<Integer> score = new LinkedList<>();
 		score.add(scoreBlack + scoreEmpty.get(0));
 		score.add(scoreWhite + scoreEmpty.get(1));
 		return score;
+	}
+
+	private boolean isEmpty() {
+		for (int x = 0; x < DIM; x++) {
+			for (int y = 0; y < DIM; y++) {
+				if (!getField(x, y).isEmpty()) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	private List<Integer> getScoreEmptyChains(Set<Chain> emptyChains) {
@@ -208,16 +223,16 @@ public class Board {
 					white = true;
 				}
 			}
-			System.out.println("Chain black: " + black + " (max. " + empty.getChainNeighbours().size() + ")");
-			System.out.println("Chain white: " + white + " (max. " + empty.getChainNeighbours().size() + ")");
+//			System.out.println("Chain black: " + black + " (max. " + empty.getChainNeighbours().size() + ")");
+//			System.out.println("Chain white: " + white + " (max. " + empty.getChainNeighbours().size() + ")");
 			if (!black) {
-				System.out.print(black + " added to blackscore " + scoreBlack);
+//				System.out.print(black + " added to blackscore " + scoreBlack);
 				scoreBlack += empty.getChain().size();
-				System.out.println(". Score is now " + scoreBlack);
+//				System.out.println(". Score is now " + scoreBlack);
 			} else if (!white) {
-				System.out.print(white + " added to whitescore " + scoreWhite);
+//				System.out.print(white + " added to whitescore " + scoreWhite);
 				scoreBlack += empty.getChain().size();
-				System.out.println(". Score is now " + scoreWhite);
+//				System.out.println(". Score is now " + scoreWhite);
 			}
 		}
 		List<Integer> score = new LinkedList<>();

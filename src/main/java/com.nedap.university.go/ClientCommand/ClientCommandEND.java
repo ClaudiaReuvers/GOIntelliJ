@@ -31,7 +31,7 @@ public class ClientCommandEND implements ClientCommand {
             if (ownScore == -1) {
                 client.print("There is not a score (-1 vs -1) as a result of a tableflip.");
             } else {
-                client.print("There is a tie: " + ownScore + " vs " + opponentScore);
+                client.print("There is a tie: " + ownScore + " vs " + opponentScore + ".");
             }
         } else if (ownScore > opponentScore) {
             client.print("You have won!! (" + ownScore + " vs " + opponentScore + ")");

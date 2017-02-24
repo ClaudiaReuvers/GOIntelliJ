@@ -18,7 +18,7 @@ public class newClientHandler extends Thread {
     private String clientName = "";
     private int size = -1;
     private tempGame game;
-    private newClientHandler opponent;
+//    private newClientHandler opponent;
     private boolean color;
 
     private static final String PLAYER = "PLAYER";
@@ -157,13 +157,13 @@ public class newClientHandler extends Thread {
         return size;
     }
 
-    public void setOpponent(newClientHandler opponent) {
-        this.opponent = opponent;
-    }
+//    public void setOpponent(newClientHandler opponent) {
+//        this.opponent = opponent;
+//    }
 
-    public newClientHandler getOpponent() {
-        return opponent;
-    }
+//    public newClientHandler getOpponent() {
+//        return opponent;
+//    }
 
     public void setColor(boolean color) {
         this.color = color;
@@ -174,7 +174,7 @@ public class newClientHandler extends Thread {
     }
 
     public void setGame(newClientHandler opponent, boolean white, tempGame game) {
-        setOpponent(opponent);
+//        setOpponent(opponent);
         setColor(white);
         this.game = game;
         this.status = CHState.INGAME;
