@@ -35,7 +35,7 @@ public class CommandGO implements Command {
 
     private int checkArguments() throws  InvalidCommandException {
         Protocol.checkArguments(args, 2);
-        Protocol.checkSize(args[1]);
+        return Protocol.checkSize(args[1]);
     }
 
 }

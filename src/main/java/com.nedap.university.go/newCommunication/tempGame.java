@@ -18,7 +18,7 @@ public class tempGame {
     private boolean pass;
     private List<String> previousBoards;
 
-    public Game(newClientHandler client1, newClientHandler client2, int dimension) {
+    public tempGame(newClientHandler client1, newClientHandler client2, int dimension) {
         this.client1 = client1;
         this.client2 = client2;
         listClients.add(client1);

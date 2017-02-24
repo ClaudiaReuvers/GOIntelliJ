@@ -68,14 +68,10 @@ public class newClientHandler extends Thread {
             while ((line = in.readLine()) != null) {
                 String[] words = line.split(" ");
                 String keyword = words[0];
+                Command command = null;
                 switch(keyword) {
                     case PLAYER :
-                        Command command = new CommandPLAYER(line);
-                        try {
-                            command.execute(this);
-                        } catch (InvalidCommandException e) {
-                            sendWARNING(e.getMessage());
-                        }
+                        command = new CommandPLAYER(line);
 //                        if (name.equals("")) {
 //                            Command player = new CommandPLAYER(line);
 //                            player.execute(server, this);
@@ -84,39 +80,52 @@ public class newClientHandler extends Thread {
 //                        }
                         break;
                     case GO :
-                        if (size == -1) {
-                            Command GO = new CommandGO(line);
-                            GO.execute(server, this);
-                        } else {
-                            sendMessage(WARNING + " Already put in a waiting list for a game of GO on boardsize " + size);
-                        }
+                        command = new CommandGO(line);
+//                        try {
+//                            commandgo.execute(this);
+//                        } catch (InvalidCommandException e) {
+//                            sendWARNING(e.getMessage());
+//                        }
+//                        if (size == -1) {
+//                            Command GO = new CommandGO(line);
+//                            GO.execute(server, this);
+//                        } else {
+//                            sendMessage(WARNING + " Already put in a waiting list for a game of GO on boardsize " + size);
+//                        }
                         break;
                     case CANCEL :
-                        Command cancel = new CommandCANCEL(line);
-                        cancel.execute(server, this);
+//                        Command cancel = new CommandCANCEL(line);
+//                        cancel.execute(server, this);
                         break;
                     case MOVE :
-                        Command move = new CommandMOVE(line);
-                        move.execute(server, this);
+//                        Command move = new CommandMOVE(line);
+//                        move.execute(server, this);
                         break;
                     case PASS :
-                        Command pass = new CommandPASS(line);
-                        pass.execute(server, this);
+//                        Command pass = new CommandPASS(line);
+//                        pass.execute(server, this);
                         break;
                     case TABLEFLIP :
-                        Command tableflip = new CommandTABLEFLIP(line);
-                        tableflip.execute(server, this);
+//                        Command tableflip = new CommandTABLEFLIP(line);
+//                        tableflip.execute(server, this);
                         break;
                     case EXIT :
-                        keywordExit();
+//                        keywordExit();
                         break;
                     case CHAT :
-                        Command chat = new CommandCHATServer(line);
-                        chat.execute(server, this);
+//                        Command chat = new CommandCHATServer(line);
+//                        chat.execute(server, this);
                         break;
                     default :
-                        sendMessage(WARNING + " Not a valid commando");
+                        command = new CommandGO(line);
+                        sendWARNING("Not a valid commando");
+                        break;
                         //TODO: invalid commando; show help menu?
+                }
+                try {
+                    command.execute(this);
+                } catch (InvalidCommandException e) {
+                    sendWARNING(e.getMessage());
                 }
             }
             shutdown();
@@ -134,7 +143,7 @@ public class newClientHandler extends Thread {
     private void shutdown() {
         server.log("Client " + clientName + ": connection lost...");
         server.removeFromClientHandlerList(this);
-        server.removeFromPreGameList(this);
+//        server.removeFromPreGameList(this);
         server.removeFromWaitingList(size);
         try {
             out.flush();
