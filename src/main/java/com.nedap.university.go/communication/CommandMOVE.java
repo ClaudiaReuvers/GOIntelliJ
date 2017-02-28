@@ -24,7 +24,7 @@ public class CommandMOVE implements Command {
             client.sendWARNING("It is not your turn.");
             return;
         }
-        if (Protocol.isValidMove(game, x, y, client.getColor())) {
+        if (Protocol.isValidMove(game.getBoard(), x, y, client.getColor())) {
             game.addStoneToBoard(x, y, client.getColor());
             game.broadcast(Protocol.VALID + " " + booleanToColor(client.getColor()) + " " + x + " " + y);
             game.resetPass();
@@ -32,9 +32,9 @@ public class CommandMOVE implements Command {
             game.saveGameState();
         } else {
             String reason;
-            if (!Protocol.isOnBoard(game, x, y)) {
+            if (!Protocol.isOnBoard(game.getBoard(), x, y)) {
                 reason = "This field is not on the board.";
-            } else if (!Protocol.isEmptyField(game, x, y)) {
+            } else if (!Protocol.isEmptyField(game.getBoard(), x, y)) {
                 reason = "There is already a stone placed at this field.";
             } else {
                 reason = "This move results in KO.";

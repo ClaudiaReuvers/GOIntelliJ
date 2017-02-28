@@ -16,6 +16,7 @@ public class Board {
 	private Stone[] fields;
 //	private boolean useGUI;
 	private GoGUIIntegrator GUI;
+	private List<String> previousBoards;
 	
 	public Board(int boardSize, boolean GUI) {
 		DIM = boardSize;
@@ -47,6 +48,7 @@ public class Board {
 		this.GUI = new GoGUIIntegrator(true, true, DIM);
 //			this.GUI.setBoardSize(DIM);
 		this.GUI.startGUI();
+		previousBoards = new LinkedList<>();
 	}
 
 	public Board(int boardSize) {
@@ -75,6 +77,7 @@ public class Board {
 				stone.addThisToEmptyChain();
 			}
 		}
+		previousBoards = new LinkedList<>();
 	}
 
 	public void addStone(int x, int y, boolean white) {
@@ -288,6 +291,13 @@ public class Board {
 		this.DIM = dimension;
 	}
 
+	public void saveGameState() {
+		previousBoards.add(toString());
+	}
+
+	public List<String> getPreviousBoards() {
+		return previousBoards;
+	}
 //	public static void main(String[] args) {
 //		Board board = new Board(9);
 //		board.addStone(1, 1, true);

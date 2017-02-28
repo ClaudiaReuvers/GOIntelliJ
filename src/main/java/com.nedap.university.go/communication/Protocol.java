@@ -49,8 +49,8 @@ public class Protocol {
         }
     }
 
-    public static boolean isOnBoard(Game game, int x, int y) {
-        Board board = game.getBoard();
+    public static boolean isOnBoard(Board board, int x, int y) {
+//        Board board = game.getBoard();
         int size = board.getDimension();
         //Check if this field exists
         if (x >= size || x < 0 || y >= size || y < 0) {
@@ -59,16 +59,34 @@ public class Protocol {
         return true;
     }
 
-    public static boolean isEmptyField(Game game, int x, int y) {
-        return game.getBoard().getField(x, y).isEmpty();
+    public static boolean isEmptyField(Board board, int x, int y) {
+        return board.getField(x, y).isEmpty();
     }
 
-    public static boolean isKo(Game game, int x, int y, boolean white) {
-        return game.testNextMove(x, y, white);
+    public static boolean isKo(Board board, int x, int y, boolean white) {
+        Board boardCopy = board.deepCopy();
+        boardCopy.addStone(x, y, white);
+        if (board.getPreviousBoards().isEmpty()) {
+            return true;
+        } else {
+            return !board.getPreviousBoards().contains(boardCopy.toString());
+        }
+
+//        return game.testNextMove(x, y, white);
     }
 
-    public static boolean isValidMove(Game game, int x, int y, boolean white) {
-        return (isOnBoard(game, x, y) && isEmptyField(game, x, y) && isKo(game, x, y, white));
+//    public boolean testNextMove(int x, int y, boolean white) {
+//        Board boardCopy = board.deepCopy();
+//        boardCopy.addStone(x, y, white);
+//        if (previousBoards.isEmpty()) {
+//            return true;
+//        } else {
+//            return !previousBoards.contains(boardCopy.toString());
+//        }
+//    }
+//
+    public static boolean isValidMove(Board board, int x, int y, boolean white) {
+        return (isOnBoard(board, x, y) && isEmptyField(board, x, y) && isKo(board, x, y, white));
     }
 
     public static void checkArgumentLength(String[] args, int length) throws InvalidCommandException{

@@ -9,6 +9,9 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Client extends Thread {
 
@@ -76,11 +79,17 @@ public class Client extends Thread {
 	private String opponentName;
 	private Board board;
 	private GoGUIIntegrator GUI;
+	private boolean computer = false;
+	private AI AI;
+	private List<String> previousBoards;
 
 	public Client(InetAddress host, int port) throws IOException {
 		this.sock = new Socket(host, port);
 		this.in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 		this.out = new BufferedWriter(new OutputStreamWriter(sock.getOutputStream()));
+		computer = true;
+		this.AI = new RandomAI();
+
 	}
 	
 	public void run() {
@@ -225,5 +234,24 @@ public class Client extends Thread {
 				}
 			}
 		}
+	}
+
+	public boolean isComputer() {
+		return computer;
+	}
+
+	public String determineMove() {
+		return AI.determineMove(board, color);
+	}
+
+	public boolean saveGameState() {
+		return previousBoards.add(board.toString());
+	}
+
+	public void createNewGame(int size) {
+		Board board = new Board(size);
+		previousBoards = new LinkedList<>();
+		setBoard(board);
+		setGUI(size);
 	}
 }
