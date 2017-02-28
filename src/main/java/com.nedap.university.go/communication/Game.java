@@ -109,4 +109,13 @@ public class Game {
         return previousBoards.add(toString());
     }
 
+    public ClientHandler getOpponent(ClientHandler client) {
+        if (client1 == client) {
+            return client2;
+        } else if (client2 == client) {
+            return client1;
+        } else {
+            return null;
+        }
+    }
 }

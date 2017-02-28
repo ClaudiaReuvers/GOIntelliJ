@@ -2,6 +2,7 @@ package com.nedap.university.go.communication;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.List;
 
 /**
  * Created by claudia.reuvers on 22/02/2017.
@@ -117,6 +118,12 @@ public class ClientHandler extends Thread {
         server.removeFromClientHandlerList(this);
 //        server.removeFromPreGameList(this);
         server.removeFromWaitingList(size);
+        if (getGame() != null) {
+            game.getOpponent(this).sendMessage("CHAT The connection of your opponent was lost.");
+            List<Integer> score = getGame().getScore();
+            getGame().broadcast("END " + score.get(0) + " " + score.get(1));
+            game.endGame();
+        }
         try {
             out.flush();
             out.close();

@@ -28,7 +28,7 @@ public class CommandCANCEL implements Command {
 
     private void checkUse(ClientHandler client) throws InvalidCommandException {
         if (client.getStatus() == CHState.INGAME) {
-            throw new InvalidCommandException("You may not use the MOVE command at this moment.");
+            throw new InvalidCommandException("You may not use the CANCEL command at this moment.");
         }
     }
 }
