@@ -15,7 +15,9 @@ public class CommandPLAYER implements Command {
     public void execute(ClientHandler client) throws InvalidCommandException{
         checkUse(client);
         Protocol.checkArguments(args, Protocol.PLAYER);
-        //TODO: check if valid command (double name)
+        if (client.getServer().containsName(args[1])) {
+            throw new InvalidCommandException("There already is a player with this name. Try another name.");
+        }
         client.setClientName(args[1]);
         client.setStatus(CHState.GOTNAME);
         client.sendMessage(Protocol.CHAT + " Hi " + client.getClientName() + "!\n" + Protocol.CHAT + " Type " + Protocol.GO + " <size> to put yourself on a waiting list for a game of GO.");

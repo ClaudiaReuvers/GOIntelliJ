@@ -132,4 +132,13 @@ public class Server {
             }
         }
     }
+
+    public boolean containsName(String name) {
+        for (ClientHandler clients : listClientHandlers) {
+            if (clients.getClientName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

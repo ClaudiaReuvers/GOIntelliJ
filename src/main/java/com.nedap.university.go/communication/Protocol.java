@@ -60,12 +60,7 @@ public class Protocol {
     }
 
     public static boolean isEmptyField(Game game, int x, int y) {
-        Board board = game.getBoard();
-        if (!board.getField(x, y).isEmpty()) {
-            return false;
-        }
-        return true;
-        //TODO: could be return (!board.getField(x,y).isEmpty())??
+        return game.getBoard().getField(x, y).isEmpty();
     }
 
     public static boolean isKo(Game game, int x, int y, boolean white) {
