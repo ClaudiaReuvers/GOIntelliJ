@@ -90,6 +90,9 @@ public class ClientHandler extends Thread {
                     case Protocol.CHAT :
                         command = new CommandCHAT(line);
                         break;
+                    case Protocol.HINT :
+                        command = new CommandHINT(line);
+                        break;
                     default :
                         command = new CommandUnknownKeyword();
                         break;

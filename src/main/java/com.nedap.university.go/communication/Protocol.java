@@ -22,6 +22,7 @@ public class Protocol {
     public static final String END = "END";
     public static final String CHAT = "CHAT";
     public static final String WARNING = "WARNING";
+    public static final String HINT = "HINT";
 
     public static void checkName(String name) throws InvalidCommandException {
         String useName = "The name should consist of 20 lowercase letters.";
@@ -117,6 +118,9 @@ public class Protocol {
                 break;
             case CHAT :
                 checkArgumentLength(args, 2);
+                break;
+            case HINT :
+                checkArgumentLength(args, 1);
                 break;
         }
     }
