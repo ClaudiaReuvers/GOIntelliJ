@@ -25,7 +25,6 @@ public class ClientCommandPASSED implements ClientCommand{
             client.print("Your opponent has passed.");
         }
         if (client.isComputer() && color != client.getColor()) {
-            client.print("Computer and clients turn.");
             String move = client.determineMove();
             client.sendMessage(move);
         }

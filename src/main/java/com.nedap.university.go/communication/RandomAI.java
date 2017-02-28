@@ -2,8 +2,6 @@ package com.nedap.university.go.communication;
 
 import com.nedap.university.go.game.Board;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -13,8 +11,6 @@ import java.util.Random;
 public class RandomAI implements AI {
     @Override
     public String determineMove(Board board, boolean white) {
-        String move = "";
-        int min = 0;
         int max = board.getDimension();
         int x;
         int y;

@@ -241,11 +241,12 @@ public class Client extends Thread {
 	}
 
 	public String determineMove() {
+		try {
+			sleep(1000);
+		} catch (InterruptedException e) {
+			print(e.getMessage());
+		}
 		return AI.determineMove(board, color);
-	}
-
-	public boolean saveGameState() {
-		return previousBoards.add(board.toString());
 	}
 
 	public void createNewGame(int size) {
