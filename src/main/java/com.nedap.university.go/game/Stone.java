@@ -10,9 +10,6 @@ public class Stone {
 	private Chain chain;
 	private Chain emptyChain;
 	private ArrayList<Stone> neighbour;
-	private int max = 4;
-	private int x;
-	private int y;
 	
 	//Constructor
 	public Stone() {
@@ -21,45 +18,34 @@ public class Stone {
 		this.emptyChain = new Chain();
 		this.neighbour = new ArrayList<>();
 	}
-	
+
+	//Methods
+	public void addThisToChain() {
+		chain.addStone(this);
+	}
+
+	public void addChain(Chain chain) {
+		this.chain = chain;
+	}
+
+	public void addNeighbour(Stone stone) {
+		if (!neighbour.contains(stone)) {
+			neighbour.add(stone);
+		}
+	}
+
+	public void remove() {
+		for (Stone stones : chain.getChain()) {
+			stones.setEmpty();
+		}
+	}
+
 	public void setEmpty() {
 		this.color = StoneState.EMPTY;
 		this.chain = new Chain();
 		this.emptyChain = new Chain();
 		addThisToChain();
 		addThisToEmptyChain();
-	}
-	
-	//Methods
-	public void addThisToChain() {
-		chain.addStone(this);
-	}
-
-	public void addThisToEmptyChain() {
-		emptyChain.addStone(this);
-	}
-	
-	public void addChain(Chain chain) {
-		this.chain = chain;
-	}
-
-	public void addEmptyChain(Chain emptyChain) {
-		this.emptyChain = emptyChain;
-	}
-	
-	public void addNeighbour(Stone stone) {
-		if (neighbour.size() == max) {
-			System.out.println("Max nr. of neighbours is exceeded");
-		}
-		if (!neighbour.contains(stone)) {
-			neighbour.add(stone);
-		}
-	}
-	
-	public void remove() {
-		for (Stone stones : chain.getChain()) {
-			stones.setEmpty();
-		}
 	}
 
 	public void setColor(boolean white) {
@@ -70,21 +56,24 @@ public class Stone {
 		}
 	}
 
-	public void setCoordinates(int x, int y) {
-		this.x = x;
-		this.y = y;
-	}
-
 	public void join(Stone stone) {
 		chain.join(stone.getChain());
 		stone.addChain(chain);
+	}
+
+	public void addThisToEmptyChain() {
+		emptyChain.addStone(this);
+	}
+
+	public void addEmptyChain(Chain emptyChain) {
+		this.emptyChain = emptyChain;
 	}
 
 	public void joinEmptyChain(Stone stone) {
 		emptyChain.join(stone.getEmptyChain());
 		stone.addEmptyChain(emptyChain);
 	}
-	
+
 	//Queries
 	public StoneState getState() {
 		return color;
@@ -118,14 +107,6 @@ public class Stone {
 	
 	public int liberty() {
 		return chain.calculateLibertyChain();
-	}
-
-	public int getX() {
-		return x;
-	}
-
-	public int getY() {
-		return y;
 	}
 
 }
