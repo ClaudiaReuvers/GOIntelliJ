@@ -13,7 +13,7 @@ public class CommandGO implements Command {
 
     @Override
     public void execute(ClientHandler client) throws InvalidCommandException {
-        checkUse(client);
+        checkUse(client.getStatus());
         Protocol.checkArguments(args, Protocol.GO);
         int size = Integer.parseInt(args[1]);
         client.setClientSize(size);
@@ -27,8 +27,8 @@ public class CommandGO implements Command {
         }
     }
 
-    public void checkUse(ClientHandler client) throws InvalidCommandException {
-        if (client.getStatus() != CHState.GOTNAME) {
+    public void checkUse(CHState state) throws InvalidCommandException {
+        if (state != CHState.GOTNAME) {
             throw new InvalidCommandException("You may not use the " + Protocol.GO + " command at this moment.");
         }
     }

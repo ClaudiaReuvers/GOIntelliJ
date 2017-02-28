@@ -14,6 +14,7 @@ public class Client extends Thread {
 
 	private  static final String USAGE = "usage: Client <address> <port>";
 
+	//Main-method
 	public static void main(String[] args) {
 		if (args.length != 2) {
 			System.out.println(USAGE);
@@ -54,35 +55,18 @@ public class Client extends Thread {
 	private Socket sock;
 	private BufferedReader in;
 	private BufferedWriter out;
-
-//	private static final String PLAYER = "PLAYER";
-//	private static final String GO = "GO";
-//	private static final String WAITING = "WAITING";
-//	private static final String READY = "READY";
-//	private static final String CANCEL = "CANCEL";
-//	private static final String MOVE = "MOVE";
-//	private static final String VALID = "VALID";
-//	private static final String INVALID = "INVALID";
-//	private static final String TABLEFLIP = "TABLEFLIP";
-//	private static final String TABLEFLIPPED = "TABLEFLIPPED";
-//	private static final String PASS = "PASS";
-//	private static final String PASSED = "PASSED";
-//	private static final String EXIT = "EXIT";
-//	private static final String CHAT = "CHAT";
-//	private static final String WARNING = "WARNING";
-//	private static final String END = "END";
-
 	private boolean color;
-	private String opponentName;
 	private Board board;
 	private GoGUIIntegrator GUI;
 
+	//Constructor
 	public Client(InetAddress host, int port) throws IOException {
 		this.sock = new Socket(host, port);
 		this.in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 		this.out = new BufferedWriter(new OutputStreamWriter(sock.getOutputStream()));
 	}
-	
+
+	//Methods
 	public void run() {
 		while (sock.isConnected()) {
 			readSocketInput();
@@ -138,6 +122,22 @@ public class Client extends Thread {
 		}
 	}
 
+	public void print(String msg) {
+		System.out.println(msg);
+
+	}
+
+	public void sendMessage(String msg) {
+		try {
+			out.write(msg);
+			out.newLine();
+			out.flush();
+		} catch (IOException e) {
+			print("IOException at sendMessage");
+			//TODO: IOException at sendMessage in Client
+		}
+	}
+
 	private void shutdown() {
 		print("Server is down.\nClosing the connection.");
 		try {
@@ -154,58 +154,13 @@ public class Client extends Thread {
 		this.color = white;
 	}
 
-	public boolean getColor() {
-		return color;
-	}
-
-	public void setOpponent(String name) {
-		this.opponentName = name;
-	}
-
-	public String getOpponentName() {
-		return opponentName;
-	}
-
-	public void sendMessage(String msg) {
-		try {
-			out.write(msg);
-			out.newLine();
-			out.flush();
-		} catch (IOException e) {
-			print("IOException at sendMessage");
-			//TODO: IOException at sendMessage in Client
-		}
-	}
-
-	public void print(String msg) {
-		System.out.println(msg);
-
-	}
-	public static String readString() {
-		String antw = null;
-		try {
-			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-			antw = in.readLine();
-		} catch (IOException e) {
-			System.out.println("IOException at readString");
-			//TODO: IOException at readString in Client
-		}
-		return (antw == null) ? "" : antw;
-	}
-
 	public void setBoard(Board board) {
 		this.board = board;
-	}
-
-	public Board getBoard() {
-		return board;
 	}
 
 	public void setGUI(int size) {
 		if (GUI == null) {
 			this.GUI = new GoGUIIntegrator(true, true, size);
-//			this.GUI.setBoardSize(DIM);
-//			this.GUI.startGUI();
 		} else {
 			this.GUI.setBoardSize(size);
 			this.GUI.clearBoard();
@@ -225,5 +180,26 @@ public class Client extends Thread {
 				}
 			}
 		}
+	}
+
+	//Queries
+	public boolean getColor() {
+		return color;
+	}
+
+	public Board getBoard() {
+		return board;
+	}
+
+	public static String readString() {
+		String antw = null;
+		try {
+			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+			antw = in.readLine();
+		} catch (IOException e) {
+			System.out.println("IOException at readString");
+			//TODO: IOException at readString in Client
+		}
+		return (antw == null) ? "" : antw;
 	}
 }

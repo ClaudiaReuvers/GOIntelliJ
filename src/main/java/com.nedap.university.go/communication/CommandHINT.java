@@ -15,7 +15,7 @@ public class CommandHINT implements Command {
 
     @Override
     public void execute(ClientHandler client) throws InvalidCommandException {
-        checkUse(client);
+        checkUse(client.getStatus());
         checkArguments();
         if (!client.getGame().isTurn(client.getColor())) {
             client.sendWARNING("It is not your turn.");
@@ -33,8 +33,8 @@ public class CommandHINT implements Command {
         }
     }
 
-    private void checkUse(ClientHandler client) throws InvalidCommandException {
-        if (client.getStatus() != CHState.INGAME) {
+    private void checkUse(CHState state) throws InvalidCommandException {
+        if (state != CHState.INGAME) {
             throw new InvalidCommandException("You  may not use the " + Protocol.HINT + " command at this time.");
         }
     }

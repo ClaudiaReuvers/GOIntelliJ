@@ -17,24 +17,9 @@ public class ClientHandler extends Thread {
     private String clientName = "";
     private int size = -1;
     private Game game;
-//    private ClientHandler opponent;
     private boolean color;
 
-//    private static final String PLAYER = "PLAYER";
-//    private static final String GO = "GO";
-//    private static final String WAITING = "WAITING";
-//    private static final String READY = "READY";
-//    private static final String CANCEL = "CANCEL";
-//    private static final String MOVE = "MOVE";
-//    private static final String INVALID = "INVALID";
-//    private static final String TABLEFLIP = "TABLEFLIP";
-//    private static final String TABLEFLIPPED = "TABLEFLIPPED";
-//    private static final String PASS = "PASS";
-//    private static final String PASSED = "PASSED";
-//    private static final String EXIT = "EXIT";
-//    private static final String CHAT = "CHAT";
-//    private static final String WARNING = "WARNING";
-
+    //Constructor
     public ClientHandler(Server server, Socket sock) throws IOException {
         this.server = server;
         this.sock = sock;
@@ -43,6 +28,7 @@ public class ClientHandler extends Thread {
         status = CHState.LOGGEDIN;
     }
 
+    //Methods
     public void sendMessage(String msg) {
         try {
             out.write(msg);
@@ -67,7 +53,7 @@ public class ClientHandler extends Thread {
             while ((line = in.readLine()) != null) {
                 String[] words = line.split(" ");
                 String keyword = words[0];
-                Command command = null;
+                Command command;
                 switch(keyword) {
                     case Protocol.PLAYER :
                         command = new CommandPLAYER(line);
@@ -116,82 +102,6 @@ public class ClientHandler extends Thread {
         sendMessage(Protocol.WARNING + " " + msg);
     }
 
-    private void shutdown() {
-        server.log("Client " + clientName + ": connection lost...");
-        server.removeFromClientHandlerList(this);
-//        server.removeFromPreGameList(this);
-        server.removeFromWaitingList(size);
-        if (game != null) {
-            game.getOpponent(this).sendMessage(Protocol.CHAT + " The connection of your opponent was lost.");
-            List<Integer> score = game.getScore();
-            game.getOpponent(this).sendMessage(Protocol.END + " " + score.get(0) + " " + score.get(1));
-            game.endGame();
-        }
-        try {
-            out.flush();
-            out.close();
-            in.close();
-            sock.close();
-        } catch (IOException e) {
-        }
-        server.log("Client " + clientName + " removed.");
-    }
-
-    public Server getServer() {
-        return server;
-    }
-
-    public CHState getStatus() {
-        return status;
-    }
-
-    public void setStatus(CHState status) {
-        this.status = status;
-    }
-
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
-    }
-
-    public String getClientName() {
-        return clientName;
-    }
-
-    public void setClientSize(int size) {
-        this.size = size;
-    }
-
-    public int getClientSize() {
-        return size;
-    }
-
-//    public void setOpponent(newClientHandler opponent) {
-//        this.opponent = opponent;
-//    }
-
-//    public newClientHandler getOpponent() {
-//        return opponent;
-//    }
-
-    public void setColor(boolean color) {
-        this.color = color;
-    }
-
-    public boolean getColor() {
-        return color;
-    }
-
-    public void setGame(ClientHandler opponent, boolean white, Game game) {
-//        setOpponent(opponent);
-        setColor(white);
-        this.game = game;
-        this.status = CHState.INGAME;
-    }
-
-    public Game getGame() {
-        return game;
-    }
-
     private void sendHelpMenu() {
         String helpMenu = Protocol.CHAT + " Possible keywords at this moment:\n";
         String player    = String.format(Protocol.CHAT + " %-9s %-10s sets your name. name must be a String of less than 20 lowercase letters.", Protocol.PLAYER, "<name>");
@@ -212,5 +122,72 @@ public class ClientHandler extends Thread {
             helpMenu += move + "\n" + pass + "\n" + tableflip + "\n" + hint + "\n" + chat + "is sent to all players in the game.";
         }
         sendMessage(helpMenu);
+    }
+
+    private void shutdown() {
+        server.log("Client " + clientName + ": connection lost...");
+        server.removeFromClientHandlerList(this);
+        server.removeFromWaitingList(size);
+        if (game != null) {
+            game.getOpponent(this).sendMessage(Protocol.CHAT + " The connection of your opponent was lost.");
+            List<Integer> score = game.getScore();
+            game.getOpponent(this).sendMessage(Protocol.END + " " + score.get(0) + " " + score.get(1));
+            game.endGame();
+        }
+        try {
+            out.flush();
+            out.close();
+            in.close();
+            sock.close();
+        } catch (IOException e) {
+        }
+        server.log("Client " + clientName + " removed.");
+    }
+
+    public void setStatus(CHState status) {
+        this.status = status;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public void setClientSize(int size) {
+        this.size = size;
+    }
+
+    public void setColor(boolean color) {
+        this.color = color;
+    }
+
+    public void setGame(boolean white, Game game) {
+        setColor(white);
+        this.game = game;
+        this.status = CHState.INGAME;
+    }
+
+    //Queries
+    public Server getServer() {
+        return server;
+    }
+
+    public CHState getStatus() {
+        return status;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public int getClientSize() {
+        return size;
+    }
+
+    public boolean getColor() {
+        return color;
+    }
+
+    public Game getGame() {
+        return game;
     }
 }

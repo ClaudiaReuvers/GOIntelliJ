@@ -15,7 +15,7 @@ public class CommandPASS implements Command {
 
     @Override
     public void execute(ClientHandler client) throws InvalidCommandException {
-        checkUse(client);
+        checkUse(client.getStatus());
         checkArguments();
         if (!client.getGame().isTurn(client.getColor())) {
             client.sendWARNING("It is not you turn.");
@@ -31,8 +31,8 @@ public class CommandPASS implements Command {
         client.getGame().alternateTurn();
     }
 
-    private void checkUse(ClientHandler client) throws InvalidCommandException {
-        if (client.getStatus() != CHState.INGAME) {
+    private void checkUse(CHState state) throws InvalidCommandException {
+        if (state != CHState.INGAME) {
             throw new InvalidCommandException("You may not use the " + Protocol.PASS + " command at this moment.");
         }
     }

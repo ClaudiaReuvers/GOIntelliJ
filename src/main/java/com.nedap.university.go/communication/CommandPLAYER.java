@@ -14,7 +14,7 @@ public class CommandPLAYER implements Command {
     @Override
     public void execute(ClientHandler client) throws InvalidCommandException{
         checkUse(client);
-        Protocol.checkArguments(args, Protocol.PLAYER);
+        checkArguments();
         if (client.getServer().containsName(args[1])) {
             throw new InvalidCommandException("There already is a player with this name. Try another name.");
         }
@@ -28,6 +28,10 @@ public class CommandPLAYER implements Command {
         if (client.getStatus() != CHState.LOGGEDIN) {
             throw new InvalidCommandException("You may not use the " + Protocol.PLAYER + " command at this moment.");
         }
+    }
+
+    private void checkArguments() throws InvalidCommandException {
+        Protocol.checkArguments(args, Protocol.PLAYER);
     }
 
 }

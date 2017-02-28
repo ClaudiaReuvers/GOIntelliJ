@@ -15,8 +15,8 @@ public class CommandMOVE implements Command {
 
     @Override
     public void execute(ClientHandler client) throws InvalidCommandException {
-        checkUse(client);
-        Protocol.checkArguments(args, Protocol.MOVE);
+        checkUse(client.getStatus());
+        checkArguments();
         int x = Integer.parseInt(args[1]); // should work since it is checked in checkArguments
         int y = Integer.parseInt(args[2]);
         Game game = client.getGame();
@@ -46,10 +46,14 @@ public class CommandMOVE implements Command {
         }
     }
 
-    private void checkUse(ClientHandler client) throws InvalidCommandException {
-        if (client.getStatus() != CHState.INGAME) {
+    private void checkUse(CHState state) throws InvalidCommandException {
+        if (state != CHState.INGAME) {
             throw new InvalidCommandException("You may not use the " + Protocol.MOVE + " command at this moment.");
         }
+    }
+
+    private void checkArguments() throws InvalidCommandException {
+        Protocol.checkArguments(args, Protocol.MOVE);
     }
 
     private String booleanToColor(boolean white) {

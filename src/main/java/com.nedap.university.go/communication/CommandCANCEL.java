@@ -14,7 +14,7 @@ public class CommandCANCEL implements Command {
 
     @Override
     public void execute(ClientHandler client) throws InvalidCommandException {
-        checkUse(client);
+        checkUse(client.getStatus());
         checkArguments();
         client.getServer().removeFromWaitingList(client.getClientSize());
         client.getServer().removeFromClientHandlerList(client);
@@ -26,8 +26,8 @@ public class CommandCANCEL implements Command {
         Protocol.checkArguments(args, Protocol.CANCEL);
     }
 
-    private void checkUse(ClientHandler client) throws InvalidCommandException {
-        if (client.getStatus() == CHState.INGAME) {
+    private void checkUse(CHState state) throws InvalidCommandException {
+        if (state == CHState.INGAME) {
             throw new InvalidCommandException("You may not use the " + Protocol.CANCEL + " command at this moment.");
         }
     }

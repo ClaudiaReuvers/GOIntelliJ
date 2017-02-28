@@ -28,8 +28,8 @@ public class ClientCommandREADY implements ClientCommand {
             client.print("Does not recognize the color.");
             //TODO
         }
-        String opponentName = args[2];
-        client.setOpponent(opponentName);
+//        String opponentName = args[2];
+//        client.setOpponent(opponentName);
         int size = Integer.parseInt(args[3]);
 //        if (client.getBoard() != null) {
 //            client.getBoard().setDimension(size);
@@ -39,7 +39,7 @@ public class ClientCommandREADY implements ClientCommand {
             client.setBoard(board);
             client.setGUI(size);
 //        }
-        client.print("You start a game with " + opponentName + " at boardsize " + size + " and play with color " + color + ".");
+        client.print("You start a game with " + args[2] + " at boardsize " + size + " and play with color " + color + ".");
     }
 
     @Override
