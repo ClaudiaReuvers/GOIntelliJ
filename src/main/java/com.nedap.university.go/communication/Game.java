@@ -92,7 +92,7 @@ public class Game {
             clients.setStatus(CHState.GOTNAME);
         }
         client1.getServer().log("The game between " + client1.getClientName() + " and " + client2.getClientName() + " has ended.");
-        broadcast("CHAT You can be put back on the waitinglist by using the command GO <size>.");
+        broadcast(Protocol.CHAT + " You can be put back on the waitinglist by using the command GO <size>.");
     }
 
     public boolean testNextMove(int x, int y, boolean white) {

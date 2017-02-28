@@ -17,8 +17,6 @@ public class Server {
 
     private static final String USAGE
             = "usage: " + Server.class.getName() + " <port>";
-    private static final String CHAT = "CHAT";
-    private static final String READY = "READY";
 
     public static void main(String[] args) {
         if (args.length != 1) {
@@ -86,7 +84,7 @@ public class Server {
                 log("A client has logged in.");
             } catch(IOException e) {
                 System.out.println("IOException at run from server");
-
+                //TODO: IOException at run of the server
             }
         }
         broadcastToAll("Server is down.");
@@ -117,8 +115,8 @@ public class Server {
         Game game = new Game(CH1, CH2, size);
         CH1.setGame(CH2, false, game);
         CH2.setGame(CH1, true, game);
-        CH1.sendMessage(READY + " black " + CH2.getClientName() + " " + size);
-        CH2.sendMessage(READY + " white " + CH1.getClientName() + " " + size);
+        CH1.sendMessage(Protocol.READY + " black " + CH2.getClientName() + " " + size);
+        CH2.sendMessage(Protocol.READY + " white " + CH1.getClientName() + " " + size);
 //        addToGamesList(game);
         log(CH1.getClientName() + " and " + CH2.getClientName() + " start a game at boardsize " + size + ".");
     }

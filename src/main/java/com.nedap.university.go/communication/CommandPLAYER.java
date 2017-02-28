@@ -14,7 +14,7 @@ public class CommandPLAYER implements Command {
     @Override
     public void execute(ClientHandler client) throws InvalidCommandException{
         checkUse(client);
-        Protocol.checkArguments(args, "PLAYER");
+        Protocol.checkArguments(args, Protocol.PLAYER);
         //TODO: check if valid command (double name)
         client.setClientName(args[1]);
         client.setStatus(CHState.GOTNAME);
@@ -24,7 +24,7 @@ public class CommandPLAYER implements Command {
 
     private void checkUse(ClientHandler client) throws InvalidCommandException {
         if (client.getStatus() != CHState.LOGGEDIN) {
-            throw new InvalidCommandException("You may not use the PLAYER command at this moment.");
+            throw new InvalidCommandException("You may not use the " + Protocol.PLAYER + " command at this moment.");
         }
     }
 

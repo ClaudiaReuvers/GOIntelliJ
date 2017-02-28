@@ -13,12 +13,12 @@ public class CommandCHAT implements Command {
 
     @Override
     public void execute(ClientHandler client) throws InvalidCommandException {
-        Protocol.checkArguments(args, "CHAT");
-        String msg = "CHAT " + client.getClientName() + ": " + args[1];
+        Protocol.checkArguments(args, Protocol.CHAT);
+        String msg = Protocol.CHAT + " " + client.getClientName() + ": " + args[1];
         if (client.getStatus() == CHState.INGAME) {
             client.getGame().broadcast(msg);
         } else if (client.getStatus() == CHState.LOGGEDIN) {
-            throw new InvalidCommandException("You may not use the CHAT command at this moment. You first need to set your name using the PLAYER command.");
+            throw new InvalidCommandException("You may not use the " + Protocol.CHAT + " command at this moment. You first need to set your name using the " + Protocol.PLAYER + " command.");
         } else {
             client.getServer().broadcastToWaiting(msg);
         }

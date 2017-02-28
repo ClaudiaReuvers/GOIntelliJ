@@ -26,7 +26,7 @@ public class CommandHINT implements Command {
         for (int x = 0; x < client.getClientSize(); x++) {
             for (int y = 0; y < client.getClientSize(); y++) {
                 if (board.getField(x, y).isEmpty()) {
-                    client.sendMessage("CHAT Possible move: " + x + " " + y);
+                    client.sendMessage(Protocol.CHAT + " Possible move: " + x + " " + y);
                     return;
                 }
             }
@@ -35,11 +35,11 @@ public class CommandHINT implements Command {
 
     private void checkUse(ClientHandler client) throws InvalidCommandException {
         if (client.getStatus() != CHState.INGAME) {
-            throw new InvalidCommandException("You  may not use the HINT command at this time.");
+            throw new InvalidCommandException("You  may not use the " + Protocol.HINT + " command at this time.");
         }
     }
 
     private void checkArguments() throws InvalidCommandException {
-        Protocol.checkArguments(args, "HINT");
+        Protocol.checkArguments(args, Protocol.HINT);
     }
 }

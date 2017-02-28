@@ -21,10 +21,10 @@ public class CommandPASS implements Command {
             client.sendWARNING("It is not you turn.");
             return;
         }
-        client.getGame().broadcast("PASSED " + booleanToColor(client.getColor()));
+        client.getGame().broadcast(Protocol.PASSED + " " + booleanToColor(client.getColor()));
         if (client.getGame().isPassed()) {
             List<Integer> score = client.getGame().getScore();
-            client.getGame().broadcast("END " + score.get(0) + " " + score.get(1));
+            client.getGame().broadcast(Protocol.END + " " + score.get(0) + " " + score.get(1));
             client.getGame().endGame();
         }
         client.getGame().setPass();
@@ -33,12 +33,12 @@ public class CommandPASS implements Command {
 
     private void checkUse(ClientHandler client) throws InvalidCommandException {
         if (client.getStatus() != CHState.INGAME) {
-            throw new InvalidCommandException("You may not use the PASS command at this moment.");
+            throw new InvalidCommandException("You may not use the " + Protocol.PASS + " command at this moment.");
         }
     }
 
     private void checkArguments() throws InvalidCommandException {
-        Protocol.checkArguments(args, "PASS");
+        Protocol.checkArguments(args, Protocol.PASS);
     }
 
     private String booleanToColor(boolean white) {

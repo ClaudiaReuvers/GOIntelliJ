@@ -19,19 +19,19 @@ public class CommandTABLEFLIP implements Command {
             client.sendWARNING("It is not you turn.");
             return;
         }
-        client.getGame().broadcast("TABLEFLIPPED " + booleanToColor(client.getColor()));
-        client.getGame().broadcast("END -1 -1");
+        client.getGame().broadcast(Protocol.TABLEFLIPPED + " " + booleanToColor(client.getColor()));
+        client.getGame().broadcast(Protocol.END + " -1 -1");
         client.getGame().endGame();
     }
 
     private void checkUse(ClientHandler client) throws InvalidCommandException {
         if (client.getStatus() != CHState.INGAME) {
-            throw new InvalidCommandException("You may not use the MOVE command at this moment.");
+            throw new InvalidCommandException("You may not use the " + Protocol.TABLEFLIP + " command at this moment.");
         }
     }
 
     private void checkArguments() throws InvalidCommandException {
-        Protocol.checkArguments(args, "TABLEFLIP");
+        Protocol.checkArguments(args, Protocol.TABLEFLIP);
     }
 
     private String booleanToColor(boolean white) {

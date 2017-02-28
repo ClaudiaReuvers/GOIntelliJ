@@ -7,7 +7,6 @@ public class CommandUnknownKeyword implements Command {
 
     public CommandUnknownKeyword() {}
 
-
     @Override
     public void execute(ClientHandler client) throws InvalidCommandException {
         throw new InvalidCommandException("Unknown keyword.");

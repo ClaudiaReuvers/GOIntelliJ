@@ -41,7 +41,7 @@ public class Protocol {
         try {
             size = Integer.parseInt(arg);
         } catch (NumberFormatException e) {
-            throw new InvalidCommandException("The argument of the GO command should be an integer.");
+            throw new InvalidCommandException("The argument of the " + Protocol.GO + " command should be an integer.");
         }
         String useSize = "The size should be an uneven number between 5 and 131.";
         if (size < 5 || size > 131 || size % 2 != 1) {

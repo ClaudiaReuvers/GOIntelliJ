@@ -49,8 +49,8 @@ public class ClientHandler extends Thread {
             out.newLine();
             out.flush();
         } catch (IOException e) {
-            System.out.println("IOException at sendMessage");
-            //TODO
+            System.out.println("IOException at sendMessage of client " + getClientName());
+            //TODO: IOException at sendMessage of CH
         }
     }
 
@@ -108,7 +108,7 @@ public class ClientHandler extends Thread {
 
         } catch (IOException e) {
             System.out.println("IOException at run of CH");
-            //TODO
+            //TODO: IOException at run of CH
         }
     }
 
@@ -121,10 +121,10 @@ public class ClientHandler extends Thread {
         server.removeFromClientHandlerList(this);
 //        server.removeFromPreGameList(this);
         server.removeFromWaitingList(size);
-        if (getGame() != null) {
-            game.getOpponent(this).sendMessage("CHAT The connection of your opponent was lost.");
-            List<Integer> score = getGame().getScore();
-            getGame().broadcast("END " + score.get(0) + " " + score.get(1));
+        if (game != null) {
+            game.getOpponent(this).sendMessage(Protocol.CHAT + " The connection of your opponent was lost.");
+            List<Integer> score = game.getScore();
+            game.getOpponent(this).sendMessage(Protocol.END + " " + score.get(0) + " " + score.get(1));
             game.endGame();
         }
         try {
@@ -193,7 +193,7 @@ public class ClientHandler extends Thread {
     }
 
     private void sendHelpMenu() {
-        String helpMenu = "CHAT Possible keywords at this moment:\n";
+        String helpMenu = Protocol.CHAT + " Possible keywords at this moment:\n";
         String player    = String.format(Protocol.CHAT + " %-9s %-10s sets your name. name must be a String of less than 20 lowercase letters.", Protocol.PLAYER, "<name>");
         String go        = String.format(Protocol.CHAT + " %-9s %-10s sets the board size on which you want to play. size must be an uneven integer between 5 and 131.", Protocol.GO, "<size>");
         String cancel    = String.format(Protocol.CHAT + " %-9s %-10s log out of the server. If you are waiting for a game, you will be removed from the waiting list.", Protocol.CANCEL, "");

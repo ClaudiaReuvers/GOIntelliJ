@@ -16,7 +16,7 @@ public class CommandMOVE implements Command {
     @Override
     public void execute(ClientHandler client) throws InvalidCommandException {
         checkUse(client);
-        Protocol.checkArguments(args, "MOVE");
+        Protocol.checkArguments(args, Protocol.MOVE);
         int x = Integer.parseInt(args[1]); // should work since it is checked in checkArguments
         int y = Integer.parseInt(args[2]);
         Game game = client.getGame();
@@ -26,7 +26,7 @@ public class CommandMOVE implements Command {
         }
         if (Protocol.isValidMove(game, x, y, client.getColor())) {
             game.addStoneToBoard(x, y, client.getColor());
-            game.broadcast("VALID " + booleanToColor(client.getColor()) + " " + x + " " + y);
+            game.broadcast(Protocol.VALID + " " + booleanToColor(client.getColor()) + " " + x + " " + y);
             game.resetPass();
             game.alternateTurn();
             game.saveGameState();
@@ -39,16 +39,16 @@ public class CommandMOVE implements Command {
             } else {
                 reason = "This move results in KO.";
             }
-            game.broadcast("INVALID " + booleanToColor(client.getColor()) + " " + reason);
+            game.broadcast(Protocol.INVALID + " " + booleanToColor(client.getColor()) + " " + reason);
             List<Integer> score = game.getScore();
-            game.broadcast("END " + score.get(0) + " " + score.get(1));
+            game.broadcast(Protocol.END + " " + score.get(0) + " " + score.get(1));
             game.endGame();
         }
     }
 
     private void checkUse(ClientHandler client) throws InvalidCommandException {
         if (client.getStatus() != CHState.INGAME) {
-            throw new InvalidCommandException("You may not use the MOVE command at this moment.");
+            throw new InvalidCommandException("You may not use the " + Protocol.MOVE + " command at this moment.");
         }
     }
 

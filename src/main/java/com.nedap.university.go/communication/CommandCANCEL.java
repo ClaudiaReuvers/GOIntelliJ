@@ -18,17 +18,17 @@ public class CommandCANCEL implements Command {
         checkArguments();
         client.getServer().removeFromWaitingList(client.getClientSize());
         client.getServer().removeFromClientHandlerList(client);
-        client.sendMessage("CHAT Bye!");
+        client.sendMessage(Protocol.CHAT + " Bye!");
         client.getServer().log(client.getClientName() + " canceled his/her log in.");
     }
 
     private void checkArguments() throws InvalidCommandException {
-        Protocol.checkArguments(args, "CANCEL");
+        Protocol.checkArguments(args, Protocol.CANCEL);
     }
 
     private void checkUse(ClientHandler client) throws InvalidCommandException {
         if (client.getStatus() == CHState.INGAME) {
-            throw new InvalidCommandException("You may not use the CANCEL command at this moment.");
+            throw new InvalidCommandException("You may not use the " + Protocol.CANCEL + " command at this moment.");
         }
     }
 }

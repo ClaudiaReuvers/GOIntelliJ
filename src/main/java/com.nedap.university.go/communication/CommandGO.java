@@ -14,11 +14,11 @@ public class CommandGO implements Command {
     @Override
     public void execute(ClientHandler client) throws InvalidCommandException {
         checkUse(client);
-        Protocol.checkArguments(args, "GO");
+        Protocol.checkArguments(args, Protocol.GO);
         int size = Integer.parseInt(args[1]);
         client.setClientSize(size);
         client.setStatus(CHState.WAITING);
-        client.sendMessage("WAITING");
+        client.sendMessage(Protocol.WAITING);
         if (client.getServer().isMatch(size)) {
             ClientHandler opponent = client.getServer().getMatch(size);
             client.getServer().setGame(opponent, client, size);
@@ -29,7 +29,7 @@ public class CommandGO implements Command {
 
     public void checkUse(ClientHandler client) throws InvalidCommandException {
         if (client.getStatus() != CHState.GOTNAME) {
-            throw new InvalidCommandException("You may not use the GO command at this moment.");
+            throw new InvalidCommandException("You may not use the " + Protocol.GO + " command at this moment.");
         }
     }
 

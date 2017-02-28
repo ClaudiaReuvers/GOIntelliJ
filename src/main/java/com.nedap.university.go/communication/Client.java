@@ -89,7 +89,7 @@ public class Client extends Thread {
 		}
 		print("Socket no longer connected");
 		sendMessage("Socket of client no longer connected");
-		//TODO
+		//TODO: !sock.isConnected()
 	}
 
 	private void readSocketInput() {
@@ -134,6 +134,7 @@ public class Client extends Thread {
 			}
 			shutdown();
 		} catch (IOException e) {
+			//TODO: IOException at readSocketInput() at Client
 		}
 	}
 
@@ -172,7 +173,7 @@ public class Client extends Thread {
 			out.flush();
 		} catch (IOException e) {
 			print("IOException at sendMessage");
-			//TODO
+			//TODO: IOException at sendMessage in Client
 		}
 	}
 
@@ -187,7 +188,7 @@ public class Client extends Thread {
 			antw = in.readLine();
 		} catch (IOException e) {
 			System.out.println("IOException at readString");
-			//TODO
+			//TODO: IOException at readString in Client
 		}
 		return (antw == null) ? "" : antw;
 	}
