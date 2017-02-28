@@ -101,7 +101,7 @@ public class ClientHandler extends Thread {
                     command.execute(this);
                 } catch (InvalidCommandException e) {
                     sendWARNING(e.getMessage());
-                    //TODO: show help menu?
+                    sendHelpMenu();
                 }
             }
             shutdown();
@@ -192,4 +192,25 @@ public class ClientHandler extends Thread {
         return game;
     }
 
+    private void sendHelpMenu() {
+        String helpMenu = "CHAT Possible keywords at this moment:\n";
+        String player    = String.format(Protocol.CHAT + " %-9s %-10s sets your name. name must be a String of less than 20 lowercase letters.", Protocol.PLAYER, "<name>");
+        String go        = String.format(Protocol.CHAT + " %-9s %-10s sets the board size on which you want to play. size must be an uneven integer between 5 and 131.", Protocol.GO, "<size>");
+        String cancel    = String.format(Protocol.CHAT + " %-9s %-10s log out of the server. If you are waiting for a game, you will be removed from the waiting list.", Protocol.CANCEL, "");
+        String move      = String.format(Protocol.CHAT + " %-9s %-10s puts a stone on the board if the move is valid. x,y must be an integer.", Protocol.MOVE, "<x> <y>");
+        String tableflip = String.format(Protocol.CHAT + " %-9s %-10s give up. Your opponent wins.", Protocol.TABLEFLIP, "");
+        String pass      = String.format(Protocol.CHAT + " %-9s %-10s pass, no stone is placed on the board. If you pass after your opponent has passed, the game will be ended.", Protocol.PASS, "");
+        String chat      = String.format(Protocol.CHAT + " %-9s %-10s ", Protocol.CHAT, "<message>");
+        String hint      = String.format(Protocol.CHAT + " %-9s %-10s gives a suggestion for a next move. Does not yet check if this move results in a KO.", Protocol.HINT, "");
+        if (status == CHState.LOGGEDIN) {
+            helpMenu += player + "\n" + cancel;
+        } else if (status == CHState.GOTNAME) {
+            helpMenu += go + "\n" + cancel + "\n" + chat + "is sent to all player currently waiting to play a game.";
+        } else if (status == CHState.WAITING) {
+            helpMenu += cancel + "\n" + chat + "is sent to all player currently waiting to play a game.";
+        } else {
+            helpMenu += move + "\n" + pass + "\n" + tableflip + "\n" + hint + "\n" + chat + "is sent to all players in the game.";
+        }
+        sendMessage(helpMenu);
+    }
 }
