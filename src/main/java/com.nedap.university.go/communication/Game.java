@@ -23,7 +23,7 @@ public class Game {
         this.client2 = client2;
         listClients.add(client1);
         listClients.add(client2);
-        board = new Board(dimension, false);
+        board = new Board(dimension);
         this.turn = false;
         this.pass = false;
         previousBoards = new LinkedList<>();
@@ -91,6 +91,7 @@ public class Game {
         for (ClientHandler clients : listClients) {
             clients.setStatus(CHState.GOTNAME);
         }
+        client1.getServer().log("The game between " + client1.getClientName() + " and " + client2.getClientName() + " has ended.");
         broadcast("CHAT You can be put back on the waitinglist by using the command GO <size>.");
     }
 

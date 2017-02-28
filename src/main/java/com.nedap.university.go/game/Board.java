@@ -14,7 +14,7 @@ public class Board {
 
 	private int DIM;
 	private Stone[] fields;
-	private boolean useGUI;
+//	private boolean useGUI;
 	private GoGUIIntegrator GUI;
 	
 	public Board(int boardSize, boolean GUI) {
@@ -43,14 +43,40 @@ public class Board {
 				stone.addThisToEmptyChain();
 			}
 		}
-		useGUI = GUI;
-		if (useGUI) {
-			this.GUI = new GoGUIIntegrator(true, true, DIM);
+//		useGUI = GUI;
+		this.GUI = new GoGUIIntegrator(true, true, DIM);
 //			this.GUI.setBoardSize(DIM);
-			this.GUI.startGUI();
+		this.GUI.startGUI();
+	}
+
+	public Board(int boardSize) {
+		DIM = boardSize;
+		fields = new Stone[DIM * DIM];
+		for (int i = 0; i < DIM * DIM; i++) {
+			fields[i] = new Stone();
+		}
+		for (int x = 0; x < DIM; x++) {
+			for (int y = 0; y < DIM; y++) {
+				Stone stone = getField(x, y);
+				stone.setCoordinates(x, y);
+				if (!isOnTopBorder(x, y)) {
+					stone.addNeighbour(getField(x, y -1));
+				}
+				if (!isOnRightBorder(x, y)) {
+					stone.addNeighbour(getField(x + 1, y));
+				}
+				if (!isOnBottomBorder(x, y)) {
+					stone.addNeighbour(getField(x, y + 1));
+				}
+				if (!isOnLeftBorder(x, y)) {
+					stone.addNeighbour(getField(x - 1, y));
+				}
+				stone.addThisToChain();
+				stone.addThisToEmptyChain();
+			}
 		}
 	}
-	
+
 	public void addStone(int x, int y, boolean white) {
 		Stone stone = getField(x, y);
 		stone.setColor(white);
@@ -67,23 +93,23 @@ public class Board {
 		if (stone.liberty() == 0) {
 				stone.remove();
 		}
-		if (useGUI) {
-			buildGUI();
-		}
+//		if (useGUI) {
+//			buildGUI();
+//		}
 	}
 
-	private void buildGUI() {
-		GUI.clearBoard();
-		for (int yGUI = 0; yGUI < DIM; yGUI++) {
-            for (int xGUI = 0; xGUI < DIM; xGUI++) {
-                if (getField(xGUI, yGUI).getState() == StoneState.BLACK) {
-                    GUI.addStone(xGUI, yGUI, false);
-                } else if (getField(xGUI, yGUI).getState() == StoneState.WHITE) {
-                    GUI.addStone(xGUI, yGUI, true);
-                }
-            }
-        }
-	}
+//	private void buildGUI() {
+//		GUI.clearBoard();
+//		for (int yGUI = 0; yGUI < DIM; yGUI++) {
+//            for (int xGUI = 0; xGUI < DIM; xGUI++) {
+//                if (getField(xGUI, yGUI).getState() == StoneState.BLACK) {
+//                    GUI.addStone(xGUI, yGUI, false);
+//                } else if (getField(xGUI, yGUI).getState() == StoneState.WHITE) {
+//                    GUI.addStone(xGUI, yGUI, true);
+//                }
+//            }
+//        }
+//	}
 
 	public Stone getField(int x, int y) {
 		return fields[coordinatesToIndex(x, y)];
@@ -112,9 +138,9 @@ public class Board {
 				this.getField(x, y).setEmpty();
 			}
 		}
-		if (useGUI) {
-			GUI.clearBoard();
-		}
+//		if (useGUI) {
+//			GUI.clearBoard();
+//		}
 	}
 	
 	private boolean isOnTopBorder(int x, int y) {
@@ -242,7 +268,8 @@ public class Board {
 	}
 
 	public Board deepCopy() {
-		Board boardCopy = new Board(DIM, useGUI);
+//		Board boardCopy = new Board(DIM, useGUI);
+		Board boardCopy = new Board(DIM);
 		for (int x = 0; x < DIM; x++) {
 			for (int y = 0; y < DIM; y++) {
 				StoneState state = getField(x, y).getState();
@@ -254,6 +281,11 @@ public class Board {
 			}
 		}
 		return boardCopy;
+	}
+
+	public void setDimension(int dimension) {
+		clearBoard();
+		this.DIM = dimension;
 	}
 
 //	public static void main(String[] args) {

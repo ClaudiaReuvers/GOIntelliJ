@@ -3,6 +3,8 @@ package com.nedap.university.go.communication;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,6 +26,13 @@ public class Server {
             System.exit(0);
         }
         Server server = new Server(Integer.parseInt(args[0]));
+        InetAddress ip =  null;
+        try {
+            ip = InetAddress.getLocalHost();
+        } catch (UnknownHostException e) {
+            e.getMessage();
+        }
+        server.log("Server was successfully started at IP address " + ip.getHostAddress() + " on port " + args[0] + ".\nReady to accept clients.");
         server.run();
     }
 
@@ -73,6 +82,7 @@ public class Server {
                 ClientHandler client = new ClientHandler(this, sock);
                 addToClientHandlerList(client);
                 client.start();
+                client.sendMessage(Protocol.CHAT + " Welcome!\n" + Protocol.CHAT + " Type " + Protocol.PLAYER + " <name> to set your name.");
                 log("A client has logged in.");
             } catch(IOException e) {
                 System.out.println("IOException at run from server");

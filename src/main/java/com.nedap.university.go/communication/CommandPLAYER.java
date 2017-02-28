@@ -18,6 +18,8 @@ public class CommandPLAYER implements Command {
         //TODO: check if valid command (double name)
         client.setClientName(args[1]);
         client.setStatus(CHState.GOTNAME);
+        client.sendMessage(Protocol.CHAT + " Hi " + client.getClientName() + "!\n" + Protocol.CHAT + " Type " + Protocol.GO + " <size> to put yourself on a waiting list for a game of GO.");
+        client.getServer().log("Client's name set to " + client.getClientName() + ".");
     }
 
     private void checkUse(ClientHandler client) throws InvalidCommandException {

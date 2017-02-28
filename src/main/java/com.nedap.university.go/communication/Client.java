@@ -1,7 +1,9 @@
 package com.nedap.university.go.communication;
 
 import com.nedap.university.go.ClientCommand.*;
+import com.nedap.university.go.GUI.GoGUIIntegrator;
 import com.nedap.university.go.game.Board;
+import com.nedap.university.go.game.StoneState;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -37,6 +39,7 @@ public class Client extends Thread {
 		try {
 			Client client = new Client(host, port);
 			client.start();
+			client.print("You are successfully connected with the server.");
 
 			while(true) {
 				String input = readString();
@@ -72,6 +75,7 @@ public class Client extends Thread {
 	private boolean color;
 	private String opponentName;
 	private Board board;
+	private GoGUIIntegrator GUI;
 
 	public Client(InetAddress host, int port) throws IOException {
 		this.sock = new Socket(host, port);
@@ -194,5 +198,31 @@ public class Client extends Thread {
 
 	public Board getBoard() {
 		return board;
+	}
+
+	public void setGUI(int size) {
+		if (GUI == null) {
+			this.GUI = new GoGUIIntegrator(true, true, size);
+//			this.GUI.setBoardSize(DIM);
+//			this.GUI.startGUI();
+		} else {
+			this.GUI.setBoardSize(size);
+			this.GUI.clearBoard();
+
+		}
+		this.GUI.startGUI();
+	}
+
+	public void updateGUI() {
+		GUI.clearBoard();
+		for (int yGUI = 0; yGUI < board.getDimension(); yGUI++) {
+			for (int xGUI = 0; xGUI < board.getDimension(); xGUI++) {
+				if (board.getField(xGUI, yGUI).getState() == StoneState.BLACK) {
+					GUI.addStone(xGUI, yGUI, false);
+				} else if (board.getField(xGUI, yGUI).getState() == StoneState.WHITE) {
+					GUI.addStone(xGUI, yGUI, true);
+				}
+			}
+		}
 	}
 }
