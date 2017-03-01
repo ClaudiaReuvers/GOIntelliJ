@@ -33,7 +33,7 @@ public class ClientCommandREADY implements ClientCommand {
 //            client.setBoard(board);
 //            client.setGUI(size);
 //        }
-        client.print("You start a game with " + opponentName + " at boardsize " + size + " and play with color " + color + ".");
+        client.print("You start a game with " + opponentName + " at boardsize " + size + " and play with color " + args[1] + ".");
         if (client.isComputer() && color == client.getColor()) {
             client.print("Computer and clients turn.");
             String move = client.determineMove();

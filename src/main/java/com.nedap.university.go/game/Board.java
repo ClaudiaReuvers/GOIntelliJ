@@ -83,6 +83,16 @@ public class Board {
 	public void addStone(int x, int y, boolean white) {
 		Stone stone = getField(x, y);
 		stone.setColor(white);
+		makeChainWithNewStone(stone);
+		if (stone.liberty() == 0) {
+				stone.remove();
+		}
+//		if (useGUI) {
+//			buildGUI();
+//		}
+	}
+
+	public void makeChainWithNewStone(Stone stone) {
 		for (Stone surrounding : stone.getNeighbour()) {
 			if (surrounding.getState() == stone.getState()) {
 				stone.join(surrounding);
@@ -93,12 +103,6 @@ public class Board {
 				}
 			}
 		}
-		if (stone.liberty() == 0) {
-				stone.remove();
-		}
-//		if (useGUI) {
-//			buildGUI();
-//		}
 	}
 
 //	private void buildGUI() {
