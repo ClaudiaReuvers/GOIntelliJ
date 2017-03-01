@@ -23,6 +23,7 @@ public class Protocol {
     public static final String CHAT = "CHAT";
     public static final String WARNING = "WARNING";
     public static final String HINT = "HINT";
+    public static final String SCORE = "SCORE";
 
     public static void checkName(String name) throws InvalidCommandException {
         String useName = "The name should consist of 20 lowercase letters.";
@@ -67,9 +68,15 @@ public class Protocol {
         Board boardCopy = board.deepCopy();
         boardCopy.addStone(x, y, white);
         if (board.getPreviousBoards().isEmpty()) {
-            return true;
+            return false;
         } else {
-            return !board.getPreviousBoards().contains(boardCopy.toString());
+            for (String boards : board.getPreviousBoards()) {
+                if (boards.equals(boardCopy.toString())) {
+                    return true;
+                }
+            }
+            return false;
+//            return !board.getPreviousBoards().contains(boardCopy.toString());
         }
 
 //        return game.testNextMove(x, y, white);
@@ -86,7 +93,7 @@ public class Protocol {
 //    }
 //
     public static boolean isValidMove(Board board, int x, int y, boolean white) {
-        return (isOnBoard(board, x, y) && isEmptyField(board, x, y) && isKo(board, x, y, white));
+        return (isOnBoard(board, x, y) && isEmptyField(board, x, y) && !isKo(board, x, y, white));
     }
 
     public static void checkArgumentLength(String[] args, int length) throws InvalidCommandException{
@@ -133,6 +140,9 @@ public class Protocol {
                 checkArgumentLength(args, 2);
                 break;
             case HINT :
+                checkArgumentLength(args, 1);
+                break;
+            case SCORE :
                 checkArgumentLength(args, 1);
                 break;
         }

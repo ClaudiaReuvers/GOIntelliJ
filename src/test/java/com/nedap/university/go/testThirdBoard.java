@@ -2,6 +2,7 @@ package com.nedap.university.go;
 
 //import game.thirdStone;
 
+import com.nedap.university.go.communication.Protocol;
 import com.nedap.university.go.game.Board;
 import com.nedap.university.go.game.Stone;
 import com.nedap.university.go.game.StoneState;
@@ -186,11 +187,11 @@ public class testThirdBoard {
 	
 	@Test
 	public void testRemoveIfOneSurroundedByOtherColor() {
-		board.addStone(1, 1, false);
 		board.addStone(1, 2, true);
 		board.addStone(1, 0, true);
 		board.addStone(0, 1, true);
 		board.addStone(2, 1, true);
+		board.addStone(1, 1, false);
 		assertTrue(board.getField(1, 1).isEmpty());
 		assertEquals(4, board.getField(1, 2).liberty());
 	}
@@ -283,5 +284,36 @@ public class testThirdBoard {
 		List<Integer> score2 = board.getScore();
 		assertEquals(6, score2.get(0).intValue());
 		assertEquals(2, score2.get(1).intValue());
+	}
+
+	@Test
+	public void testRules() {
+		assertTrue(Protocol.isOnBoard(board, 0, 0));
+		assertTrue(Protocol.isEmptyField(board, 0, 0));
+		assertFalse(Protocol.isKo(board, 0, 0, true));
+		assertTrue(Protocol.isValidMove(board, 0, 0, true));
+		board.addStone(0, 0, true);
+		board.saveGameState();
+		assertEquals(1, board.getPreviousBoards().size());
+		assertFalse(Protocol.isEmptyField(board, 0, 0));
+		assertFalse(Protocol.isValidMove(board, 0, 0, true));
+		assertFalse(Protocol.isValidMove(board, 0, 0, false));
+		assertFalse(Protocol.isOnBoard(board, -1, 0));
+		assertFalse(Protocol.isOnBoard(board, 9, 0));
+		assertFalse(Protocol.isValidMove(board, -1, 0, true));
+		assertFalse(Protocol.isValidMove(board, 9, 0, true));
+		board.addStone(1, 2, true);
+		board.saveGameState();
+		assertEquals(2, board.getPreviousBoards().size());
+		board.addStone(1, 0, true);
+		board.saveGameState();
+		board.addStone(0, 1, true);
+		board.saveGameState();
+		board.addStone(2, 1, true);
+		board.saveGameState();
+		assertTrue(Protocol.isKo(board, 1, 1, false));
+		assertFalse(Protocol.isValidMove(board, 1, 1, false));
+		assertFalse(Protocol.isKo(board, 1, 1, true));
+		assertTrue(Protocol.isValidMove(board, 1, 1, true));
 	}
 }
