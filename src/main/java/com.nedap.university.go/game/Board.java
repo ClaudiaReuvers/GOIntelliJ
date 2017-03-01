@@ -196,6 +196,7 @@ public class Board {
 		if (isEmpty()) {
 			score.add(0);
 			score.add(0);
+			return score;
 		}
 		//Calculate score on taken fields and make chains of empty fields
 		int scoreBlack = 0;
@@ -221,6 +222,12 @@ public class Board {
 		}
 		//Calculate score on empty chains
 		List<Integer> scoreEmpty = getScoreEmptyChains(emptyChains);
+		//Set empty chain back to themselves
+		for (Chain empty : emptyChains) {
+			for (Stone stones : empty.getChain()) {
+				stones.resetEmptyChain();
+			}
+		}
 
 		//Create output
 		score.add(scoreBlack + scoreEmpty.get(0));
@@ -252,16 +259,10 @@ public class Board {
 					white = true;
 				}
 			}
-//			System.out.println("Chain black: " + black + " (max. " + empty.getChainNeighbours().size() + ")");
-//			System.out.println("Chain white: " + white + " (max. " + empty.getChainNeighbours().size() + ")");
 			if (!black) {
-//				System.out.print(black + " added to blackscore " + scoreBlack);
 				scoreBlack += empty.getChain().size();
-//				System.out.println(". Score is now " + scoreBlack);
 			} else if (!white) {
-//				System.out.print(white + " added to whitescore " + scoreWhite);
 				scoreBlack += empty.getChain().size();
-//				System.out.println(". Score is now " + scoreWhite);
 			}
 		}
 		List<Integer> score = new LinkedList<>();

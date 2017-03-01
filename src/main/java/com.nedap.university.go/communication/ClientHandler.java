@@ -93,6 +93,9 @@ public class ClientHandler extends Thread {
                     case Protocol.HINT :
                         command = new CommandHINT(line);
                         break;
+                    case Protocol.SCORE :
+                        command = new CommandSCORE(line);
+                        break;
                     default :
                         command = new CommandUnknownKeyword();
                         break;
@@ -202,6 +205,7 @@ public class ClientHandler extends Thread {
         String pass      = String.format(Protocol.CHAT + " %-9s %-10s pass, no stone is placed on the board. If you pass after your opponent has passed, the game will be ended.", Protocol.PASS, "");
         String chat      = String.format(Protocol.CHAT + " %-9s %-10s ", Protocol.CHAT, "<message>");
         String hint      = String.format(Protocol.CHAT + " %-9s %-10s gives a suggestion for a next move. Does not yet check if this move results in a KO.", Protocol.HINT, "");
+        String score     = String.format(Protocol.CHAT + " %-9s %-10s gives the current score.", Protocol.SCORE, "");
         if (status == CHState.LOGGEDIN) {
             helpMenu += player + "\n" + cancel;
         } else if (status == CHState.GOTNAME) {
@@ -209,7 +213,7 @@ public class ClientHandler extends Thread {
         } else if (status == CHState.WAITING) {
             helpMenu += cancel + "\n" + chat + "is sent to all player currently waiting to play a game.";
         } else {
-            helpMenu += move + "\n" + pass + "\n" + tableflip + "\n" + hint + "\n" + chat + "is sent to all players in the game.";
+            helpMenu += move + "\n" + pass + "\n" + tableflip + "\n" + score + "\n" + hint + "\n" + chat + "is sent to all players in the game.";
         }
         sendMessage(helpMenu);
     }

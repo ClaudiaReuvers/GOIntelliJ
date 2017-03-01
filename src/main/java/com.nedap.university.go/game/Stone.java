@@ -38,6 +38,11 @@ public class Stone {
 	public void addThisToEmptyChain() {
 		emptyChain.addStone(this);
 	}
+
+	public void resetEmptyChain() {
+		this.emptyChain = new Chain();
+		addThisToEmptyChain();
+	}
 	
 	public void addChain(Chain chain) {
 		this.chain = chain;
