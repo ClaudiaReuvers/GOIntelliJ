@@ -9,7 +9,7 @@ import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class testThirdStone {
+public class testStone {
 
 	private Stone stone1;
 	private Stone stone2;

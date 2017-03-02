@@ -1,7 +1,6 @@
 package com.nedap.university.go.communication;
 
 import com.nedap.university.go.game.Board;
-import com.sun.javaws.exceptions.InvalidArgumentException;
 
 /**
  * Created by claudia.reuvers on 22/02/2017.
@@ -52,7 +51,6 @@ public class Protocol {
     }
 
     public static boolean isOnBoard(Board board, int x, int y) {
-//        Board board = game.getBoard();
         int size = board.getDimension();
         //Check if this field exists
         if (x >= size || x < 0 || y >= size || y < 0) {
@@ -77,22 +75,9 @@ public class Protocol {
                 }
             }
             return false;
-//            return !board.getPreviousBoards().contains(boardCopy.toString());
         }
-
-//        return game.testNextMove(x, y, white);
     }
 
-//    public boolean testNextMove(int x, int y, boolean white) {
-//        Board boardCopy = board.deepCopy();
-//        boardCopy.addStone(x, y, white);
-//        if (previousBoards.isEmpty()) {
-//            return true;
-//        } else {
-//            return !previousBoards.contains(boardCopy.toString());
-//        }
-//    }
-//
     public static boolean isValidMove(Board board, int x, int y, boolean white) {
         return (isOnBoard(board, x, y) && isEmptyField(board, x, y) && !isKo(board, x, y, white));
     }

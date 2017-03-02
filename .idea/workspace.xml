@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3856beec-f887-44f1-9277-2f05dfbcd602" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/ClientCommand/ClientCommandREADY.class" afterPath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/ClientCommand/ClientCommandREADY.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/communication/Client.class" afterPath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/communication/Client.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/communication/ClientHandler.class" afterPath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/communication/ClientHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/communication/Server.class" afterPath="$PROJECT_DIR$/bin/production/GO/com/nedap/university/go/communication/Server.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandREADY.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandREADY.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Client.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Server.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Server.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/com/nedap/university/go/testThirdBoard.java" afterPath="$PROJECT_DIR$/src/test/java/com/nedap/university/go/testBoard.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/com/nedap/university/go/testThirdChain.java" afterPath="$PROJECT_DIR$/src/test/java/com/nedap/university/go/testChain.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/com/nedap/university/go/testThirdStone.java" afterPath="$PROJECT_DIR$/src/test/java/com/nedap/university/go/testStone.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Game.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Game.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Protocol.java" afterPath="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Protocol.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,7 +23,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Client.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Client.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
@@ -42,6 +40,70 @@
                 <element signature="method#createNewGame#0;class#Client#0" expanded="false" />
                 <element signature="method#readString#0;class#Client#0" expanded="false" />
                 <element signature="method#determineMove#0;class#Client#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Protocol.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Protocol.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="52" column="63" lean-forward="false" selection-start-line="52" selection-start-column="63" selection-end-line="52" selection-end-column="63" />
+              <folding>
+                <element signature="method#checkName#0;class#Protocol#0" expanded="false" />
+                <element signature="method#checkSize#0;class#Protocol#0" expanded="false" />
+                <element signature="method#isOnBoard#0;class#Protocol#0" expanded="false" />
+                <element signature="method#isKo#0;class#Protocol#0" expanded="false" />
+                <element signature="method#isValidMove#0;class#Protocol#0" expanded="false" />
+                <element signature="method#checkArgumentLength#0;class#Protocol#0" expanded="false" />
+                <element signature="method#checkArguments#0;class#Protocol#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RandomAI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/RandomAI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="23" column="47" lean-forward="false" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Server.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="484">
+              <caret line="118" column="4" lean-forward="false" selection-start-line="118" selection-start-column="4" selection-end-line="118" selection-end-column="4" />
+              <folding>
+                <element signature="method#main#0;class#Server#0" expanded="false" />
+                <element signature="method#Server#0;class#Server#0" expanded="false" />
+                <element signature="method#removeFromClientHandlerList#0;class#Server#0" expanded="false" />
+                <element signature="method#addToWaitingList#0;class#Server#0" expanded="false" />
+                <element signature="method#run#0;class#Server#0" expanded="false" />
+                <element signature="method#broadcastToAll#0;class#Server#0" expanded="false" />
+                <element signature="method#setGame#0;class#Server#0" expanded="false" />
+                <element signature="method#broadcastToWaiting#0;class#Server#0" expanded="false" />
+                <element signature="method#getMatch#0;class#Server#0" expanded="false" />
+                <element signature="method#containsName#0;class#Server#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Game.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="64" column="4" lean-forward="false" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
+              <folding>
+                <element signature="method#Game#0;class#Game#0" expanded="false" />
+                <element signature="method#broadcast#0;class#Game#0" expanded="false" />
+                <element signature="method#endGame#0;class#Game#0" expanded="false" />
+                <element signature="method#getOpponent#0;class#Game#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -105,7 +167,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/newCommunication/Client.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/newClientHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandTABLEFLIP.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Game.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandUnknownKeyword.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandCANCEL.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandCHAT.java" />
@@ -118,7 +179,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/CommandSCORE.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/RandomAI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/SimpleAI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Protocol.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandEND.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandPASSED.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/ClientCommand/ClientCommandINVALID.java" />
@@ -133,6 +193,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/ClientHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Server.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Client.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Protocol.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Game.java" />
       </list>
     </option>
   </component>
@@ -352,7 +414,7 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="testThirdBoard.testScore" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="testBoard.testScore" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.nedap.university.go.*" />
@@ -363,7 +425,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.nedap.university.go" />
-      <option name="MAIN_CLASS_NAME" value="com.nedap.university.go.testThirdBoard" />
+      <option name="MAIN_CLASS_NAME" value="com.nedap.university.go.testBoard" />
       <option name="METHOD_NAME" value="testScore" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -378,7 +440,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="testThirdBoard.testRemoveIfOneSurroundedByOtherColor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="testBoard.testRemoveIfOneSurroundedByOtherColor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.nedap.university.go.*" />
@@ -389,7 +451,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.nedap.university.go" />
-      <option name="MAIN_CLASS_NAME" value="com.nedap.university.go.testThirdBoard" />
+      <option name="MAIN_CLASS_NAME" value="com.nedap.university.go.testBoard" />
       <option name="METHOD_NAME" value="testRemoveIfOneSurroundedByOtherColor" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -404,7 +466,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="testThirdBoard.testRules" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="testBoard.testRules" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.nedap.university.go.*" />
@@ -415,7 +477,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.nedap.university.go" />
-      <option name="MAIN_CLASS_NAME" value="com.nedap.university.go.testThirdBoard" />
+      <option name="MAIN_CLASS_NAME" value="com.nedap.university.go.testBoard" />
       <option name="METHOD_NAME" value="testRules" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -430,7 +492,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="testThirdBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="testBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.nedap.university.go.*" />
@@ -441,7 +503,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.nedap.university.go" />
-      <option name="MAIN_CLASS_NAME" value="com.nedap.university.go.testThirdBoard" />
+      <option name="MAIN_CLASS_NAME" value="com.nedap.university.go.testBoard" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -683,18 +745,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Application.Server" />
       <item index="1" class="java.lang.String" itemvalue="Application.Client" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.testThirdBoard.testScore" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.testThirdBoard.testRemoveIfOneSurroundedByOtherColor" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.testThirdBoard.testRules" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.testThirdBoard" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.testBoard.testScore" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.testBoard.testRemoveIfOneSurroundedByOtherColor" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.testBoard.testRules" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.testBoard" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.Client" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.testThirdBoard.testScore" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.testThirdBoard" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.testThirdBoard.testRules" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.testThirdBoard.testRemoveIfOneSurroundedByOtherColor" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.testBoard.testScore" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.testBoard" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.testBoard.testRules" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.testBoard.testRemoveIfOneSurroundedByOtherColor" />
       </list>
     </recent_temporary>
   </component>
@@ -757,7 +819,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3234375" sideWeight="0.4952343" order="6" side_tool="false" content_ui="tabs" />
@@ -774,7 +836,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31824818" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.273021" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.273021" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.49331105" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24394184" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -922,24 +984,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/RandomAI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="23" column="47" lean-forward="false" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/Assert.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
           <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="88" column="26" lean-forward="false" selection-start-line="88" selection-start-column="26" selection-end-line="88" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -965,16 +1013,6 @@
             <element signature="imports" expanded="true" />
             <element signature="method#determineMove#0;class#SimpleAI#0" expanded="false" />
             <element signature="method#setOwnState#0;class#SimpleAI#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Protocol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="105" column="30" lean-forward="false" selection-start-line="105" selection-start-column="30" selection-end-line="105" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1087,14 +1125,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/nedap/university/go/testThirdBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="36" column="36" lean-forward="false" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/AI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1139,25 +1169,6 @@
         <state relative-caret-position="75">
           <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="118" column="4" lean-forward="false" selection-start-line="118" selection-start-column="4" selection-end-line="118" selection-end-column="4" />
-          <folding>
-            <element signature="method#main#0;class#Server#0" expanded="false" />
-            <element signature="method#Server#0;class#Server#0" expanded="false" />
-            <element signature="method#removeFromClientHandlerList#0;class#Server#0" expanded="false" />
-            <element signature="method#addToWaitingList#0;class#Server#0" expanded="false" />
-            <element signature="method#run#0;class#Server#0" expanded="false" />
-            <element signature="method#broadcastToAll#0;class#Server#0" expanded="false" />
-            <element signature="method#setGame#0;class#Server#0" expanded="false" />
-            <element signature="method#broadcastToWaiting#0;class#Server#0" expanded="false" />
-            <element signature="method#getMatch#0;class#Server#0" expanded="false" />
-            <element signature="method#containsName#0;class#Server#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1233,6 +1244,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/nedap/university/go/testBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="36" column="36" lean-forward="false" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -1249,6 +1268,62 @@
             <element signature="method#createNewGame#0;class#Client#0" expanded="false" />
             <element signature="method#readString#0;class#Client#0" expanded="false" />
             <element signature="method#determineMove#0;class#Client#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Protocol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="52" column="63" lean-forward="false" selection-start-line="52" selection-start-column="63" selection-end-line="52" selection-end-column="63" />
+          <folding>
+            <element signature="method#checkName#0;class#Protocol#0" expanded="false" />
+            <element signature="method#checkSize#0;class#Protocol#0" expanded="false" />
+            <element signature="method#isOnBoard#0;class#Protocol#0" expanded="false" />
+            <element signature="method#isKo#0;class#Protocol#0" expanded="false" />
+            <element signature="method#isValidMove#0;class#Protocol#0" expanded="false" />
+            <element signature="method#checkArgumentLength#0;class#Protocol#0" expanded="false" />
+            <element signature="method#checkArguments#0;class#Protocol#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/RandomAI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="23" column="47" lean-forward="false" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="118" column="4" lean-forward="false" selection-start-line="118" selection-start-column="4" selection-end-line="118" selection-end-column="4" />
+          <folding>
+            <element signature="method#main#0;class#Server#0" expanded="false" />
+            <element signature="method#Server#0;class#Server#0" expanded="false" />
+            <element signature="method#removeFromClientHandlerList#0;class#Server#0" expanded="false" />
+            <element signature="method#addToWaitingList#0;class#Server#0" expanded="false" />
+            <element signature="method#run#0;class#Server#0" expanded="false" />
+            <element signature="method#broadcastToAll#0;class#Server#0" expanded="false" />
+            <element signature="method#setGame#0;class#Server#0" expanded="false" />
+            <element signature="method#broadcastToWaiting#0;class#Server#0" expanded="false" />
+            <element signature="method#getMatch#0;class#Server#0" expanded="false" />
+            <element signature="method#containsName#0;class#Server#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.nedap.university.go/communication/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="64" column="4" lean-forward="false" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
+          <folding>
+            <element signature="method#Game#0;class#Game#0" expanded="false" />
+            <element signature="method#broadcast#0;class#Game#0" expanded="false" />
+            <element signature="method#endGame#0;class#Game#0" expanded="false" />
+            <element signature="method#getOpponent#0;class#Game#0" expanded="false" />
           </folding>
         </state>
       </provider>

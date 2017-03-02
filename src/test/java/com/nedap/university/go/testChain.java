@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class testThirdChain {
+public class testChain {
 
 	private Stone stone1;
 	private Stone stone2;
