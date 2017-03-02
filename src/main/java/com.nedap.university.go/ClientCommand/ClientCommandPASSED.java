@@ -1,6 +1,7 @@
 package com.nedap.university.go.ClientCommand;
 
 import com.nedap.university.go.communication.Client;
+import com.nedap.university.go.communication.InvalidCommandException;
 
 import java.util.List;
 
@@ -26,7 +27,11 @@ public class ClientCommandPASSED implements ClientCommand{
         }
         if (client.isComputer() && color != client.getColor()) {
             String move = client.determineMove();
-            client.sendMessage(move);
+            try {
+                client.sendMessage(move);
+            } catch (InvalidCommandException e) {
+                client.print("The computer failed. Choose your own move and beat the computer.");
+            }
         }
     }
 

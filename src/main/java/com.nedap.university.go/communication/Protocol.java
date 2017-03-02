@@ -1,6 +1,7 @@
 package com.nedap.university.go.communication;
 
 import com.nedap.university.go.game.Board;
+import com.sun.javaws.exceptions.InvalidArgumentException;
 
 /**
  * Created by claudia.reuvers on 22/02/2017.
@@ -145,6 +146,8 @@ public class Protocol {
             case SCORE :
                 checkArgumentLength(args, 1);
                 break;
+            default :
+                throw new InvalidCommandException("Keyword not recognized.");
         }
     }
 

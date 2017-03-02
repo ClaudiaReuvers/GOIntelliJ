@@ -1,6 +1,7 @@
 package com.nedap.university.go.ClientCommand;
 
 import com.nedap.university.go.communication.Client;
+import com.nedap.university.go.communication.InvalidCommandException;
 import com.nedap.university.go.communication.Protocol;
 import com.nedap.university.go.game.Board;
 
@@ -31,7 +32,11 @@ public class ClientCommandVALID implements ClientCommand {
         if (client.isComputer() && color != client.getColor()) {
             client.print("Computer and clients turn.");
             String move = client.determineMove();
-            client.sendMessage(move);
+            try {
+                client.sendMessage(move);
+            } catch (InvalidCommandException e) {
+                client.print("The computer failed. Choose your own move and beat the computer.");
+            }
         }
         board.saveGameState();
     }

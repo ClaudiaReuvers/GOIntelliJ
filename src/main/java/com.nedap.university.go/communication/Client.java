@@ -46,7 +46,11 @@ public class Client extends Thread {
 
 			while(true) {
 				String input = readString();
-				client.sendMessage(input);
+				try {
+					client.sendMessage(input);
+				} catch (InvalidCommandException e) {
+					client.print(e.getMessage());
+				}
 			}
 		} catch (IOException e) {
 			System.out.println("ERROR: couldn't construct a client object");
@@ -88,7 +92,7 @@ public class Client extends Thread {
 		this.in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 		this.out = new BufferedWriter(new OutputStreamWriter(sock.getOutputStream()));
 		computer = true;
-		this.AI = new RandomAI();
+		this.AI = new SimpleAI();
 
 	}
 	
@@ -97,7 +101,10 @@ public class Client extends Thread {
 			readSocketInput();
 		}
 		print("Socket no longer connected");
-		sendMessage("Socket of client no longer connected");
+		try {
+			sendMessage(Protocol.CHAT + " Socket of client no longer connected");
+		} catch (InvalidCommandException e) {
+		}
 		//TODO: !sock.isConnected()
 	}
 
@@ -175,11 +182,15 @@ public class Client extends Thread {
 		return opponentName;
 	}
 
-	public void sendMessage(String msg) {
+	public void sendMessage(String msg) throws InvalidCommandException {
+		String[] words = msg.split(" ");
 		try {
+			Protocol.checkArguments(words, words[0]);
 			out.write(msg);
 			out.newLine();
 			out.flush();
+//		} catch (InvalidCommandException e) {
+//			print(e.getMessage());
 		} catch (IOException e) {
 			print("IOException at sendMessage");
 			//TODO: IOException at sendMessage in Client
@@ -190,6 +201,7 @@ public class Client extends Thread {
 		System.out.println(msg);
 
 	}
+
 	public static String readString() {
 		String antw = null;
 		try {
