@@ -43,6 +43,7 @@ public class SimpleAI implements AI {
                             if (allFields[i] == stone) {
                                 int x = i % copy.getDimension();
                                 int y = i / copy.getDimension();
+                                System.out.println("Try " + x + "," + y);
                                 if (Protocol.isValidMove(board, x, y, white)) {
                                     return move(x, y);
                                 }
@@ -61,7 +62,7 @@ public class SimpleAI implements AI {
                 Stone stone = copy.getField(x, y);
                 if (stone.getState() == ownState) {
                     boolean added = ownChain.add(stone.getChain());
-                    System.out.println("Chain added: " + added);
+//                    System.out.println("Chain added: " + added);
                 }
             }
         }
@@ -77,6 +78,7 @@ public class SimpleAI implements AI {
             x = random.nextInt(max);
             y = random.nextInt(max);
             count++;
+            System.out.println("Try " + x + "," + y);
         } while (count < 5 && !Protocol.isValidMove(board, x, y, white));
         if (count == 5) {
             return Protocol.PASS;

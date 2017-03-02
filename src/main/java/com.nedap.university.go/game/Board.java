@@ -1,8 +1,5 @@
 package com.nedap.university.go.game;
 
-//import GUI.*;
-//TODO: also insert GUI?
-
 import com.nedap.university.go.GUI.GoGUIIntegrator;
 
 import java.util.HashSet;

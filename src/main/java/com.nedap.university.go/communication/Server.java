@@ -84,7 +84,6 @@ public class Server {
                 log("A client has logged in.");
             } catch(IOException e) {
                 System.out.println("IOException at run from server");
-                //TODO: IOException at run of the server
             }
         }
         broadcastToAll("Server is down.");

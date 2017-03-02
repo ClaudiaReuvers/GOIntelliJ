@@ -105,7 +105,6 @@ public class Client extends Thread {
 			sendMessage(Protocol.CHAT + " Socket of client no longer connected");
 		} catch (InvalidCommandException e) {
 		}
-		//TODO: !sock.isConnected()
 	}
 
 	private void readSocketInput() {
@@ -150,7 +149,7 @@ public class Client extends Thread {
 			}
 			shutdown();
 		} catch (IOException e) {
-			//TODO: IOException at readSocketInput() at Client
+			System.out.println("IOException at readSocketInput() from Client");
 		}
 	}
 
@@ -186,14 +185,18 @@ public class Client extends Thread {
 		String[] words = msg.split(" ");
 		try {
 			Protocol.checkArguments(words, words[0]);
+			if (words[0].equals(Protocol.MOVE)) {
+				if (!Protocol.isValidMove(getBoard(), Integer.parseInt(words[1]), Integer.parseInt(words[2]), getColor()) ){
+					throw new InvalidCommandException("Results in an invalid move.");
+				}
+			}
 			out.write(msg);
 			out.newLine();
 			out.flush();
-//		} catch (InvalidCommandException e) {
-//			print(e.getMessage());
+		} catch (InvalidCommandException e) {
+			print(e.getMessage() + " Please try again.");
 		} catch (IOException e) {
 			print("IOException at sendMessage");
-			//TODO: IOException at sendMessage in Client
 		}
 	}
 
@@ -208,8 +211,7 @@ public class Client extends Thread {
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 			antw = in.readLine();
 		} catch (IOException e) {
-			System.out.println("IOException at readString");
-			//TODO: IOException at readString in Client
+			System.out.println("IOException at readString in client.");
 		}
 		return (antw == null) ? "" : antw;
 	}

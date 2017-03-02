@@ -76,7 +76,6 @@ public class Game {
 
     public List<Integer> endGame() {
 		return board.getScore();
-	    //TODO
     }
 
     public boolean testNextMove(int x, int y, boolean white) {

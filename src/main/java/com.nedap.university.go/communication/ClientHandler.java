@@ -49,8 +49,7 @@ public class ClientHandler extends Thread {
             out.newLine();
             out.flush();
         } catch (IOException e) {
-            System.out.println("IOException at sendMessage of client " + getClientName());
-            //TODO: IOException at sendMessage of CH
+            System.out.println("IOException at sendMessage of CH " + getClientName());
         }
     }
 
@@ -110,8 +109,7 @@ public class ClientHandler extends Thread {
             shutdown();
 
         } catch (IOException e) {
-            System.out.println("IOException at run of CH");
-            //TODO: IOException at run of CH
+            System.out.println("IOException at run of CH " + getClientName());
         }
     }
 

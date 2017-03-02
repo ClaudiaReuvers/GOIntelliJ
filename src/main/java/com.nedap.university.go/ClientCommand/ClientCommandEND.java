@@ -38,7 +38,6 @@ public class ClientCommandEND implements ClientCommand {
         } else {
             client.print("You have lost. (" + ownScore + " vs " + opponentScore + ")");
         }
-        //TODO: end game
     }
 
     @Override

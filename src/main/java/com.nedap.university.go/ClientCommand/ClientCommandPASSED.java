@@ -38,10 +38,7 @@ public class ClientCommandPASSED implements ClientCommand{
     private boolean colorToBoolean(String color) {
         if (color.equals("white")) {
             return true;
-        } else if (color.equals("black")) {
-            return false;
         } else {
-            //TODO
             return false;
         }
     }
