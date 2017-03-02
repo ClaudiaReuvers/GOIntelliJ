@@ -5,13 +5,13 @@ import java.util.*;
 public class Chain {
 
 	private ArrayList<Stone> chain;
-//	private ArrayList<thirdStone> empty;
-	
+
+	//Constructor
 	public Chain() {
 		chain = new ArrayList<>();
-//		empty = new ArrayList<>();
 	}
-	
+
+	//Methods
 	public void addStone(Stone stone) {
 		if (!chain.contains(stone)) {
 			chain.add(stone);
@@ -20,9 +20,7 @@ public class Chain {
 	}
 	
 	public void join(Chain otherChain) {
-//		System.out.print("Join to stones: " + otherChain.getChain().get(0).getState());
 		for (Stone stones : otherChain.getChain()) {
-//			System.out.println("Join " + stones.getState());
 			if (!chain.contains(stones)) {
 				chain.add(stones);
 			}
@@ -31,14 +29,10 @@ public class Chain {
 			stones.addChain(this);
 		}
 	}
-	
+
+	//Queries
 	public int calculateLibertyChain() {
 		ArrayList<Stone> empty = new ArrayList<>();
-//		for (Stone neighbours : getNeighbours()) {
-//			if (neighbours.isEmpty()) {
-//				empty.add(neighbours);
-//			}
-//		}
 
 		for (Stone stones : chain) {
 			for (Stone emptyStones : stones.getNeighbour()) {
@@ -60,20 +54,8 @@ public class Chain {
 		neighbours.removeAll(chain);
 		return neighbours;
 	}
-	
-//	public int getLiberty() {
-//		return empty.size();
-//	}
 
 	public ArrayList<Stone> getChain() {
 		return chain;
 	}
-	
-	public boolean contains(Stone stone) {
-		return chain.contains(stone);
-	}
-	
-//	public ArrayList<thirdStone> getEmptyStones() {
-//		return empty;
-//	}
 }

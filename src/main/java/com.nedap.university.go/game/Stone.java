@@ -1,7 +1,5 @@
 package com.nedap.university.go.game;
 
-import com.nedap.university.go.GUI.GoGUIIntegrator;
-
 import java.util.ArrayList;
 
 public class Stone {
@@ -10,9 +8,6 @@ public class Stone {
 	private Chain chain;
 	private Chain emptyChain;
 	private ArrayList<Stone> neighbour;
-	private int max = 4;
-	private int x;
-	private int y;
 	
 	//Constructor
 	public Stone() {
@@ -53,9 +48,6 @@ public class Stone {
 	}
 	
 	public void addNeighbour(Stone stone) {
-		if (neighbour.size() == max) {
-			System.out.println("Max nr. of neighbours is exceeded");
-		}
 		if (!neighbour.contains(stone)) {
 			neighbour.add(stone);
 		}
@@ -73,11 +65,6 @@ public class Stone {
 		} else {
 			this.color = StoneState.BLACK;
 		}
-	}
-
-	public void setCoordinates(int x, int y) {
-		this.x = x;
-		this.y = y;
 	}
 
 	public void join(Stone stone) {
@@ -124,13 +111,4 @@ public class Stone {
 	public int liberty() {
 		return chain.calculateLibertyChain();
 	}
-
-	public int getX() {
-		return x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
 }

@@ -1,7 +1,5 @@
 package com.nedap.university.go.game;
 
-import com.nedap.university.go.GUI.GoGUIIntegrator;
-
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,43 +9,9 @@ public class Board {
 
 	private int DIM;
 	private Stone[] fields;
-//	private boolean useGUI;
-	private GoGUIIntegrator GUI;
 	private List<String> previousBoards;
-	
-	public Board(int boardSize, boolean GUI) {
-		DIM = boardSize;
-		fields = new Stone[DIM * DIM];
-		for (int i = 0; i < DIM * DIM; i++) {
-			fields[i] = new Stone();
-		}
-		for (int x = 0; x < DIM; x++) {
-			for (int y = 0; y < DIM; y++) {
-				Stone stone = getField(x, y);
-				stone.setCoordinates(x, y);
-				if (!isOnTopBorder(x, y)) {
-					stone.addNeighbour(getField(x, y -1));
-				}
-				if (!isOnRightBorder(x, y)) {
-					stone.addNeighbour(getField(x + 1, y));
-				}
-				if (!isOnBottomBorder(x, y)) {
-					stone.addNeighbour(getField(x, y + 1));
-				}
-				if (!isOnLeftBorder(x, y)) {
-					stone.addNeighbour(getField(x - 1, y));
-				}
-				stone.addThisToChain();
-				stone.addThisToEmptyChain();
-			}
-		}
-//		useGUI = GUI;
-		this.GUI = new GoGUIIntegrator(true, true, DIM);
-//			this.GUI.setBoardSize(DIM);
-		this.GUI.startGUI();
-		previousBoards = new LinkedList<>();
-	}
 
+	//Constructor
 	public Board(int boardSize) {
 		DIM = boardSize;
 		fields = new Stone[DIM * DIM];
@@ -57,7 +21,6 @@ public class Board {
 		for (int x = 0; x < DIM; x++) {
 			for (int y = 0; y < DIM; y++) {
 				Stone stone = getField(x, y);
-				stone.setCoordinates(x, y);
 				if (!isOnTopBorder(x, y)) {
 					stone.addNeighbour(getField(x, y -1));
 				}
@@ -77,6 +40,7 @@ public class Board {
 		previousBoards = new LinkedList<>();
 	}
 
+	//Methods
 	public void addStone(int x, int y, boolean white) {
 		Stone stone = getField(x, y);
 		stone.setColor(white);
@@ -84,9 +48,6 @@ public class Board {
 		if (stone.liberty() == 0) {
 				stone.remove();
 		}
-//		if (useGUI) {
-//			buildGUI();
-//		}
 	}
 
 	public void makeChainWithNewStone(Stone stone) {
@@ -102,94 +63,49 @@ public class Board {
 		}
 	}
 
-//	private void buildGUI() {
-//		GUI.clearBoard();
-//		for (int yGUI = 0; yGUI < DIM; yGUI++) {
-//            for (int xGUI = 0; xGUI < DIM; xGUI++) {
-//                if (getField(xGUI, yGUI).getState() == StoneState.BLACK) {
-//                    GUI.addStone(xGUI, yGUI, false);
-//                } else if (getField(xGUI, yGUI).getState() == StoneState.WHITE) {
-//                    GUI.addStone(xGUI, yGUI, true);
-//                }
-//            }
-//        }
-//	}
+	public void saveGameState() {
+		previousBoards.add(toString());
+	}
 
-	public Stone getField(int x, int y) {
-		return fields[coordinatesToIndex(x, y)];
-	}
-	
-	public int coordinatesToIndex(int x, int y) {
-		return (x + DIM * y);
-	}
-	
-//	private boolean isOnCorner(int x, int y) {
-//		if (x == 0 || x == DIM - 1) {
-//			if (y == 0 || y == DIM - 1) {
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
-	
-//	private boolean isOnBorder(int x, int y) {
-//		return (x == 0 || x == DIM - 1 || y == 0 || y == DIM - 1);
-//	}
-	
 	public void clearBoard() {
 		for (int x = 0; x < DIM; x++) {
 			for (int y = 0; y < DIM; y++) {
 				this.getField(x, y).setEmpty();
 			}
 		}
-//		if (useGUI) {
-//			GUI.clearBoard();
-//		}
 	}
-	
+
+	//Queries
+	public Stone getField(int x, int y) {
+		return fields[coordinatesToIndex(x, y)];
+	}
+
 	private boolean isOnTopBorder(int x, int y) {
 		return (y == 0);
 	}
-	
+
 	private boolean isOnLeftBorder(int x, int y) {
 		return (x == 0);
 	}
-	
+
 	private boolean isOnRightBorder(int x, int y) {
 		return (x == DIM - 1);
 	}
-	
+
 	private boolean isOnBottomBorder(int x, int y) {
 		return (y == DIM -1);
 	}
-	
+
+	public int coordinatesToIndex(int x, int y) {
+		return (x + DIM * y);
+	}
+
 	public int getDimension() {
 		return DIM;
 	}
 	
 	public Stone[] getAllFields(){
 		return fields;
-	}
-
-	public String toString() {
-		String board = "";
-		for (int i = 0; i < DIM; i++) {
-			for (int j = 0; j < DIM; j++) {
-				String stone = " ";
-				if (getField(j, i).getState() == StoneState.BLACK) {
-					stone = "B";
-				} else if (getField(j, i).getState() == StoneState.WHITE){
-					stone = "W";
-				} else {
-					stone = ".";
-				}
-				board += stone;// + " - ";
-			}
-			if (i != DIM -1) {
-				board += "\n";
-			}
-		}
-		return board;
 	}
 
 	public List<Integer> getScore() {
@@ -273,7 +189,6 @@ public class Board {
 	}
 
 	public Board deepCopy() {
-//		Board boardCopy = new Board(DIM, useGUI);
 		Board boardCopy = new Board(DIM);
 		for (int x = 0; x < DIM; x++) {
 			for (int y = 0; y < DIM; y++) {
@@ -288,25 +203,28 @@ public class Board {
 		return boardCopy;
 	}
 
-	public void setDimension(int dimension) {
-		clearBoard();
-		this.DIM = dimension;
-	}
-
-	public void saveGameState() {
-		previousBoards.add(toString());
-	}
-
 	public List<String> getPreviousBoards() {
 		return previousBoards;
 	}
-//	public static void main(String[] args) {
-//		Board board = new Board(9);
-//		board.addStone(1, 1, true);
-//		board.addStone(1, 2, true);
-//		board.addStone(1, 0, false);
-//		board.addStone(0, 1, true);
-//		board.addStone(2, 1, true);
-//		System.out.println(board.toString());
-//	}
+
+	public String toString() {
+		String board = "";
+		for (int i = 0; i < DIM; i++) {
+			for (int j = 0; j < DIM; j++) {
+				String stone = " ";
+				if (getField(j, i).getState() == StoneState.BLACK) {
+					stone = "B";
+				} else if (getField(j, i).getState() == StoneState.WHITE){
+					stone = "W";
+				} else {
+					stone = ".";
+				}
+				board += stone;// + " - ";
+			}
+			if (i != DIM -1) {
+				board += "\n";
+			}
+		}
+		return board;
+	}
 }

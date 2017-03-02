@@ -14,26 +14,37 @@ public class Game {
 	private boolean turn; //true: turn of white; false; turn of black
     private boolean pass;
     private List<String> previousBoards;
-	
+
+    //Constructor
 	public Game(ClientHandler client1, ClientHandler client2, int dimension) {
 		this.client1 = client1;
 		this.client2 = client2;
 		listClients.add(client1);
 		listClients.add(client2);
-		board = new Board(dimension, false);
+		board = new Board(dimension);
 		this.turn = false;
 		this.pass = false;
 		previousBoards = new LinkedList<>();
 	}
-	
-//	public String[] getClientNames() {
-//		String[] names = new String[listClients.size()];
-//		for (int i = 0; i < listClients.size(); i++) {
-//			names[i] = listClients[i].getName();
-//		}
-//		return names;
-//	}
-	
+
+	//Methods
+	public void alternateTurn() {
+		turn = !turn;
+	}
+
+	public void addStoneToBoard(int x, int y, boolean white) {
+		board.addStone(x, y ,white);
+	}
+
+	public void setPass() {
+		pass = true;
+	}
+
+	public void resetPass() {
+		pass = false;
+	}
+
+	//Queries
 	public int getNrClients() {
 		return listClients.size();
 	}
@@ -50,24 +61,8 @@ public class Game {
 		return board.toString();
 	}
 
-	public void alternateTurn() {
-		turn = !turn;
-	}
-
-    public void addStoneToBoard(int x, int y, boolean white) {
-	    board.addStone(x, y ,white);
-    }
-
-    public boolean isTurn(boolean white) {
+	public boolean isTurn(boolean white) {
 	    return (turn == white);
-    }
-
-    public void setPass() {
-	    pass = true;
-    }
-
-    public void resetPass() {
-	    pass = false;
     }
 
     public boolean isPassed() {
