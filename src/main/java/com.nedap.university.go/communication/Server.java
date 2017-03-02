@@ -18,6 +18,7 @@ public class Server {
     private static final String USAGE
             = "usage: " + Server.class.getName() + " <port>";
 
+    //Main-method
     public static void main(String[] args) {
         if (args.length != 1) {
             System.out.println(USAGE);
@@ -36,18 +37,16 @@ public class Server {
 
     private int port;
     private List<ClientHandler> listClientHandlers;
-//    private List<Game> listGames;
-    private List<ClientHandler> listPreGame;
     private Map<Integer, ClientHandler> listWaiting;
 
+    //Constructor
     public Server(int port) {
         this.port = port;
         listClientHandlers = new LinkedList<>();
-        listPreGame = new LinkedList<>();
-//        listGames = new LinkedList<>();
         listWaiting = new HashMap<>();
     }
 
+    //Methods
     public void addToClientHandlerList(ClientHandler client) {
         listClientHandlers.add(client);
     }
@@ -100,6 +99,24 @@ public class Server {
         }
     }
 
+    public void setGame(ClientHandler CH1, ClientHandler CH2, int size) {
+        Game game = new Game(CH1, CH2, size);
+        CH1.setGame(false, game);
+        CH2.setGame(true, game);
+        CH1.sendMessage(Protocol.READY + " black " + CH2.getClientName() + " " + size);
+        CH2.sendMessage(Protocol.READY + " white " + CH1.getClientName() + " " + size);
+        log(CH1.getClientName() + " and " + CH2.getClientName() + " start a game at boardsize " + size + ".");
+    }
+
+    public void broadcastToWaiting(String msg) {
+        for (ClientHandler clients : listClientHandlers) {
+            if (clients.getStatus() != CHState.INGAME) {
+                clients.sendMessage(msg);
+            }
+        }
+    }
+
+    //Queries
     public boolean isMatch(int size) {
         return listWaiting.containsKey(size);
     }
@@ -108,28 +125,6 @@ public class Server {
         ClientHandler client = listWaiting.get(size);
         removeFromWaitingList(size);
         return client;
-    }
-
-    public void setGame(ClientHandler CH1, ClientHandler CH2, int size) {
-        Game game = new Game(CH1, CH2, size);
-        CH1.setGame(CH2, false, game);
-        CH2.setGame(CH1, true, game);
-        CH1.sendMessage(Protocol.READY + " black " + CH2.getClientName() + " " + size);
-        CH2.sendMessage(Protocol.READY + " white " + CH1.getClientName() + " " + size);
-//        addToGamesList(game);
-        log(CH1.getClientName() + " and " + CH2.getClientName() + " start a game at boardsize " + size + ".");
-    }
-
-//    public void addToGamesList(Game game) {
-//        listGames.add(game);
-//    }
-
-    public void broadcastToWaiting(String msg) {
-        for (ClientHandler clients : listClientHandlers) {
-            if (clients.getStatus() != CHState.INGAME) {
-                clients.sendMessage(msg);
-            }
-        }
     }
 
     public boolean containsName(String name) {

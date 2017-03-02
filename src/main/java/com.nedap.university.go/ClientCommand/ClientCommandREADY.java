@@ -23,7 +23,7 @@ public class ClientCommandREADY implements ClientCommand {
         boolean color = colorToBoolean(args[1]);
         client.setColor(color);
         String opponentName = args[2];
-        client.setOpponent(opponentName);
+//        client.setOpponent(opponentName);
         int size = Integer.parseInt(args[3]);
 //        if (client.getBoard() != null) {
 //            client.getBoard().setDimension(size);
